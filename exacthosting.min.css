@@ -3,3 +3,9 @@
     background-color: #b51d27;
     font-size: x-large;
 }
+.cs-chat-container a:link {
+    color: #b51d27;
+}
+.cs-chat-container a:hover {
+    color: #191919;
+}
