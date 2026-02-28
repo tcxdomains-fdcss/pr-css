@@ -5,15 +5,15 @@
 }
 
 .cs-chat-container a:link {
-    color: #257eff;
+    color: #076afb;
 }
 
 .cs-chat-container a:visited {
-    color: #257eff;
+    color: #076afb;
 }
 
 .cs-chat-container a:hover {
-    color: #257eff;
+    color: #191919;
 }
 #chatLaunchButton {
   background-color: #0c967c;
