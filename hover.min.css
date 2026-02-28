@@ -13,10 +13,10 @@
 }
 
 .cs-chat-container a:hover {
-    color: #191919;
+    color: #021519;
 }
-#chatLaunchButton {
-  background-color: #0c967c;
-  border-radius: 50%;
-  border: none;
+
+.pr-conversation-popper-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
 }
