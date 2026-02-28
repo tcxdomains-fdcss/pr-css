@@ -12,3 +12,7 @@
 .cs-chat-container a:hover {
     color: #191919;
 }
+.pr-conversation-popper-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
