@@ -51,4 +51,4 @@ body{overflow:hidden !important}
 body::-webkit-scrollbar{display:none !important}
 
 /* Override "Send a message" placeholder text */
-.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:none !important;background:#ffffff !important;padding:8px 16px !important;flex-shrink:0 !important;align-items:center !important}
+.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid transparent !important;background:#ffffff !important;padding:8px 16px !important;flex-shrink:0 !important;align-items:center !important}
