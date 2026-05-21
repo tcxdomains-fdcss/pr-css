@@ -51,6 +51,6 @@ body{overflow:hidden !important}
 body::-webkit-scrollbar{display:none !important}
 
 /* Override "Send a message" placeholder text */
-.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid transparent !important;background:#ffffff !important;padding:8px 16px 4px !important;flex-shrink:0 !important;align-items:center !important}
+.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid transparent !important;background:#ffffff !important;padding:4px 16px !important;flex-shrink:0 !important;align-items:center !important}
 .cs-message-input__content-editor-container{background:transparent !important}
 .cs-message-input__content-editor[data-placeholder]:empty::before{content:"Let us know what you are looking for help with today..." !important;color:#9b9baa !important}
