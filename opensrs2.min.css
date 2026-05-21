@@ -61,7 +61,7 @@ body::-webkit-scrollbar{display:none !important}
 .cs-message--outgoing .cs-message__content{font-size:12.5px !important;font-weight:700 !important;color:#6f6f7b !important;border-left:3px solid #c7f9ff !important;padding-left:10px !important;margin-bottom:4px !important}
 .cs-message__avatar,.cs-avatar{display:none !important}
 .cs-message-separator{font-size:11px !important;color:#b0b0b0 !important;margin:8px 0 !important}
-.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid transparent !important;background:#ffffff !important;padding:20px 16px !important;flex-shrink:0 !important;align-items:center !important}
+.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:none !important;background:#ffffff !important;padding:0 16px !important;flex-shrink:0 !important;align-items:center !important}
 .cs-message-input__tools-wrapper,.cs-message-input__content-editor-container{border:none !important;outline:none !important;background:transparent !important}
 .cs-message-input__content-editor-wrapper{background:#f5f8fa !important;border:1.5px solid #d8d8d8 !important;border-radius:24px !important;padding:8px 16px !important;box-shadow:none !important}
 .cs-message-input__content-editor-wrapper:focus-within{border-color:#057499 !important;background:#ffffff !important;box-shadow:0 0 0 3px rgba(5,116,153,.12) !important}
