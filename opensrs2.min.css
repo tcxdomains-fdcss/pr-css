@@ -52,3 +52,4 @@ body::-webkit-scrollbar{display:none !important}
 
 /* Override "Send a message" placeholder text */
 .cs-message-input__content-editor:empty::before{content:"Let us know what you are looking for help with today..." !important;color:#9b9baa !important;pointer-events:none}
+.cs-message-input__content-editor-container{background:transparent !important}
