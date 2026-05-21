@@ -46,3 +46,10 @@
 .cs-chat-container{display:flex !important;flex-direction:column !important;height:100% !important}
 .cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid #efefef !important;flex-shrink:0 !important}
 .cs-message-list{order:1 !important;flex:1 !important}
+/* Hide scrollbar (keep scrolling functional) */
+.ps__rail-x,.ps__rail-y{display:none !important}
+.cs-message-list__scroll-wrapper{scrollbar-width:none !important;-ms-overflow-style:none !important}
+.cs-message-list__scroll-wrapper::-webkit-scrollbar{display:none !important}
+
+/* Override "Send a message" placeholder text */
+.cs-message-input__content-editor:empty::before{content:"Let us know what you are looking for help with today..." !important;color:#9b9baa !important;pointer-events:none}
