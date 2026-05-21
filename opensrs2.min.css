@@ -43,3 +43,6 @@
 .cs-button--send{color:#057499 !important;background:transparent !important;border:none !important;opacity:.75;transition:opacity .15s,color .15s !important}
 .cs-button--send:hover{color:#04034a !important;opacity:1}
 .cs-message-list__scroll-to button{background:#e0fcff !important;color:#057499 !important;border:1px solid #c7f9ff !important;border-radius:50% !important}
+.cs-chat-container{display:flex !important;flex-direction:column !important;height:100% !important}
+.cs-message-input{order:-1 !important;border-top:none !important;border-bottom:1px solid #efefef !important;flex-shrink:0 !important}
+.cs-message-list{order:1 !important;flex:1 !important}
