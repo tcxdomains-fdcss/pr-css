@@ -368,11 +368,14 @@
   border-bottom: 1px solid #efefef;
 }
 
-/* Header -- title_area handles full-width block positioning;
-   fd-contact-section-header overrides the theme's title_area text styles */
+/* Header -- left-aligned to match the contact cards below */
 .fd-contact-section-header {
   margin-bottom: 20px !important;
   padding-bottom: 0 !important;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .fd-contact-section-header p {
   font-size: 13px !important;
