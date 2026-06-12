@@ -21,3 +21,845 @@
   outline: 3px solid #ffffff;
   outline-offset: 2px;
 }
+
+/* ============================================================
+   LEFT-NAV v2 -- portal home layout additions
+   Loaded from opensrs4.min.css so overrides apply.
+   ============================================================ */ block is inserted after the
+  existing opensrs2.min.css <link> tag (marked with <- INSERT HERE comments).
+  All other content (GTM, PeopleReign, KB search tracker, etc.) is unchanged.
+{% endcomment %}
+
+<!-- Title for the page -->
+<title> {{ meta.title }} : {{ portal.name }} </title>
+<link rel="stylesheet" type="text/css" href="https://tcxdomains-fdcss.github.io/pr-css/opensrs4.min.css"></link>
+
+<!-- ============================================================
+     LEFT-NAV v2 -- layout additions
+     Loaded immediately after opensrs2.min.css so overrides apply.
+     ============================================================ -->
+<style>
+/* ================================================================
+   FD LEFT-NAV TWO-COLUMN LAYOUT  (v2)
+   Applied on top of opensrs2.min.css -- do not edit the minified file.
+   ================================================================ */
+
+/* ----- Page shell: sidebar + content side by side ----- */
+.fd-page-shell {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* ----- Sidebar ----- */
+.fd-left-nav {
+  width: 300px;
+  min-width: 300px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #efefef;
+  /* Sidebar grows/shrinks with its expanded content -- no scroll or fixed height */
+}
+
+/* ----- Main content -- top divider matching the sidebar border-top ----- */
+.fw-main-wrapper.fd-main-content {
+  border-top: 1px solid #e0e0e0;
+}
+
+.fd-left-nav-inner { padding: 0 0 48px; }
+
+/* ----- Home / root link at top of sidebar ----- */
+.fd-nav-home-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #04034a;
+  text-decoration: none !important;
+  border-bottom: 1px solid #efefef;
+  transition: color .15s;
+  background: #ffffff;
+}
+.fd-nav-home-link:hover { color: #057499; text-decoration: none !important; }
+.fd-nav-home-link:focus-visible { outline: 2px solid #057499; outline-offset: -2px; border-radius: 2px; }
+.fd-nav-home-link svg   { flex-shrink: 0; }
+
+/* ----- Topic filter input ----- */
+.fd-nav-search { padding: 12px 12px 8px; }
+
+.fd-nav-filter {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  border: 1px solid #efefef;    /* matches portal button border */
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: #04034a;
+  background: #ffffff;          /* white -- matches sidebar and body */
+  transition: border-color .18s, box-shadow .18s;
+}
+.fd-nav-filter::placeholder { color: #6f6f7b; }   /* matches eyebrow text color */
+.fd-nav-filter:focus {
+  outline: none;
+  border-color: #057499;        /* dark teal -- button text color */
+  box-shadow: 0 0 0 3px rgba(199,249,255,.6); /* light cyan glow */
+}
+
+/* ----- Category section headings ----- */
+.fd-nav-section  { margin-top: 4px; }
+
+/* Flex row: category name fills left, chevron sits on the right */
+.fd-nav-cat-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px 4px;
+  cursor: pointer;
+}
+
+.fd-nav-cat-link {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: #00aac4;
+  transition: color .15s;
+  line-height: 1.3;
+}
+.fd-nav-cat-header:hover .fd-nav-cat-link,
+.fd-nav-cat-link.is-active { color: #00889d; }
+
+/* Chevron -- points down when expanded, rotates right when collapsed */
+.fd-nav-cat-chevron {
+  flex-shrink: 0;
+  color: #00aac4;
+  transition: transform .2s ease, color .15s;
+}
+.fd-nav-cat-header:hover .fd-nav-cat-chevron { color: #00889d; }
+.fd-nav-cat-header[aria-expanded="false"] .fd-nav-cat-chevron {
+  transform: rotate(-90deg);
+}
+.fd-nav-cat-header:focus-visible {
+  outline: 2px solid #057499;
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Folder list hidden when its category is collapsed */
+.fd-nav-folder-list.fd-nav-cat-collapsed { display: none; }
+
+/* ----- Folder list under each category ----- */
+.fd-nav-folder-list {
+  list-style: none;
+  margin: 2px 0 6px;
+  padding: 0;
+}
+
+/* Folder row -- visual container; link navigates, toggle button expands */
+.fd-nav-folder-row {
+  display: flex;
+  align-items: stretch;
+  transition: background .12s;
+}
+.fd-nav-folder-row:hover {
+  background: rgba(199,249,255,.45);
+}
+.fd-nav-folder-item.is-active > .fd-nav-folder-row {
+  background: rgba(199,249,255,.7);
+}
+
+/* Folder name label inside the row */
+.fd-nav-folder-link {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  padding: 6px 12px 6px 22px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #04034a;
+  text-decoration: none !important;
+  border-left: 2px solid transparent;
+  transition: color .12s, border-color .12s;
+}
+.fd-nav-folder-link:focus-visible {
+  outline: 2px solid #057499;
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+.fd-nav-folder-row:hover .fd-nav-folder-link {
+  color: #057499;
+  border-left-color: #057499;
+}
+.fd-nav-folder-item.is-active > .fd-nav-folder-row .fd-nav-folder-link {
+  color: #057499;
+  border-left-color: #057499;
+  font-weight: 600;
+}
+
+/* Folder article-list toggle chevron button */
+.fd-nav-folder-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #b0b0b8;
+  transition: color .12s;
+}
+.fd-nav-folder-toggle:hover,
+.fd-nav-folder-toggle[aria-expanded="true"] { color: #057499; }
+.fd-nav-folder-toggle svg { transition: transform .2s ease; }
+.fd-nav-folder-toggle[aria-expanded="false"] svg { transform: rotate(-90deg); }
+.fd-nav-folder-toggle:focus-visible {
+  outline: 2px solid #057499;
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* ----- Article list (collapsible, inside each folder) ----- */
+.fd-nav-article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .22s ease;
+}
+.fd-nav-article-list.is-open {
+  max-height: 1200px;            /* large enough for any article count */
+}
+
+.fd-nav-article-item a {
+  display: block;
+  padding: 5px 12px 5px 32px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #6f6f7b;
+  text-decoration: none !important;
+  border-left: 2px solid transparent;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.fd-nav-article-item a:hover {
+  background: rgba(199,249,255,.3);
+  color: #057499;
+  border-left-color: #c7f9ff;
+  text-decoration: none !important;
+}
+.fd-nav-article-item.is-active > a {
+  background: rgba(199,249,255,.55);
+  color: #057499;
+  border-left-color: #057499;
+  font-weight: 600;
+}
+.fd-nav-article-item a:focus-visible {
+  outline: 2px solid #057499;
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+/* ----- "Submit a Request" CTA at bottom of sidebar ----- */
+.fd-nav-cta { padding: 20px 12px 8px; border-top: 1px solid #efefef; margin-top: 12px; }
+
+.fd-nav-cta-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  background: #e0fcff;           /* matches actual portal button background */
+  color: #057499 !important;     /* matches actual portal button text color */
+  border: 1px solid #efefef;     /* matches actual portal button border */
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background .15s;
+  justify-content: center;
+}
+.fd-nav-cta-link:hover {
+  background: #c7f9ff;           /* hover -- same as eyebrow/hero bg */
+  text-decoration: none !important;
+}
+
+/* ----- Main content column ----- */
+.fd-main-content {
+  flex: 1;
+  min-width: 0;    /* prevents flex blowout */
+  overflow: hidden;
+}
+
+/* ----- Mobile toggle button bar ----- */
+.fd-nav-mobile-bar {
+  display: none;
+  background: #F3FAFF !important;
+  border-bottom: 1px solid #efefef;
+}
+
+.fd-nav-mobile-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #F3FAFF !important;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #04034a;
+  cursor: pointer;
+  text-align: left;
+  transition: color .15s;
+}
+.fd-nav-mobile-toggle:hover         { color: #057499; }
+.fd-nav-mobile-toggle:focus-visible { outline: 2px solid #057499; outline-offset: -2px; }
+.fd-nav-mobile-toggle.is-open { color: #057499; background: #F3FAFF !important; }
+.fd-nav-mobile-toggle:active  { background: #F3FAFF !important; -webkit-tap-highlight-color: #F3FAFF; }
+
+/* ================================================================
+   SUPPRESS the now-redundant empty <aside class="menu_listing">
+   that exists inside article_view, article_list, solution_category.
+   CSS hides it and makes the content column fill full width.
+   ================================================================ */
+.article_content_area > aside.menu_listing,
+.listing_page          > aside.menu_listing,
+.category_content_area > aside.menu_listing,
+.solution_cca          > aside.menu_listing {
+  display: none !important;
+}
+
+/* Convert grid/flex containers to block so article fills full width */
+.article_content_area,
+.listing_page,
+.category_content_area,
+.solution_cca {
+  display: block !important;
+}
+
+.article_content_area > article,
+.listing_page > .listing_page_inside,
+.category_content_area > article,
+.solution_cca > article {
+  width: 100%     !important;
+  max-width: 100% !important;
+  margin-left: 0  !important;
+  padding-left: 0 !important;
+}
+
+/* Article mobile TOC: hide since category context is in left nav */
+.article_content_area > article > header.mobile_menu { display: none; }
+
+/* ================================================================
+   "GET IN TOUCH" CONTACT CARDS  (WPStaq-inspired layout)
+   ================================================================ */
+
+.fd-contact-section {
+  /* "grid" class on the section gives the same horizontal container as category sections.
+     We only need to add visual styling and vertical rhythm here. */
+  padding-top: 40px;
+  padding-bottom: 48px;
+  background: #ffffff;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+
+/* Header -- title_area handles full-width block positioning;
+   fd-contact-section-header overrides the theme's title_area text styles */
+.fd-contact-section-header {
+  margin-bottom: 20px !important;
+  padding-bottom: 0 !important;
+}
+.fd-contact-section-header p {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .65px !important;
+  text-transform: uppercase !important;
+  color: #6f6f7b !important;
+  margin: 0 0 6px !important;
+}
+.fd-contact-section-header h2 {
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  color: #04034a !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Cards -- grid_child_4 handles column widths; fd-contact-card handles visuals */
+.fd-contact-card {
+  background: #ffffff;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  padding: 26px 20px 22px;
+  text-align: center;
+  /* flex column so the CTA button always snaps to the card bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .18s, transform .18s, border-color .18s;
+}
+.fd-contact-card:hover {
+  box-shadow: 0 4px 20px rgba(4,3,74,.07);
+  transform: translateY(-2px);
+  border-color: #c7f9ff;
+}
+
+.fd-contact-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #e0fcff;
+  margin: 0 auto 14px;
+  color: #057499;
+}
+.fd-contact-card-icon svg { flex-shrink: 0; }
+
+.fd-contact-card h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #04034a;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.fd-contact-card p {
+  font-size: 12.5px;
+  color: #6f6f7b;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.fd-contact-card a,
+.fd-contact-card button.fd-contact-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #e0fcff;
+  color: #057499 !important;
+  border: 1px solid #c7f9ff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  margin-top: auto;               /* push button to bottom of every card */
+  transition: background .15s, border-color .15s;
+}
+.fd-contact-card a:hover,
+.fd-contact-card button.fd-contact-btn:hover {
+  background: #c7f9ff;
+  border-color: #a0f3ff;
+  text-decoration: none !important;
+}
+
+/* ----- Per-card colour variants ----- */
+/* Submit a Ticket -- blue */
+.fd-contact-card--ticket .fd-contact-card-icon { background: #dbeafe; color: #1d4ed8; }
+.fd-contact-card--ticket a,
+.fd-contact-card--ticket button.fd-contact-btn { background: #dbeafe; color: #1d4ed8 !important; border-color: #bfdbfe; }
+.fd-contact-card--ticket a:hover,
+.fd-contact-card--ticket button.fd-contact-btn:hover { background: #bfdbfe; border-color: #93c5fd; color: #1d4ed8 !important; }
+.fd-contact-card--ticket:hover { border-color: #bfdbfe; }
+
+/* Chat with Us -- original ticket teal (swapped with Submit a Ticket) */
+.fd-contact-card--chat .fd-contact-card-icon { background: #e0fcff; color: #057499; }
+.fd-contact-card--chat a,
+.fd-contact-card--chat button.fd-contact-btn { background: #e0fcff; color: #057499 !important; border-color: #c7f9ff; }
+.fd-contact-card--chat a:hover,
+.fd-contact-card--chat button.fd-contact-btn:hover { background: #c7f9ff; border-color: #a0f3ff; color: #057499 !important; }
+.fd-contact-card--chat:hover { border-color: #c7f9ff; }
+
+/* System Status -- green */
+.fd-contact-card--status .fd-contact-card-icon { background: #d1fae5; color: #047857; }
+.fd-contact-card--status a,
+.fd-contact-card--status button.fd-contact-btn { background: #d1fae5; color: #047857 !important; border-color: #a7f3d0; }
+.fd-contact-card--status a:hover,
+.fd-contact-card--status button.fd-contact-btn:hover { background: #a7f3d0; border-color: #6ee7b7; }
+.fd-contact-card--status:hover { border-color: #a7f3d0; }
+
+/* My Tickets -- purple */
+.fd-contact-card--mytickets .fd-contact-card-icon { background: #ede9fe; color: #6d28d9; }
+.fd-contact-card--mytickets a,
+.fd-contact-card--mytickets button.fd-contact-btn { background: #ede9fe; color: #6d28d9 !important; border-color: #ddd6fe; }
+.fd-contact-card--mytickets a:hover,
+.fd-contact-card--mytickets button.fd-contact-btn:hover { background: #ddd6fe; border-color: #c4b5fd; }
+.fd-contact-card--mytickets:hover { border-color: #ddd6fe; }
+
+/* Forums -- orange */
+.fd-contact-card--forums .fd-contact-card-icon { background: #fff7ed; color: #ea580c; }
+.fd-contact-card--forums a,
+.fd-contact-card--forums button.fd-contact-btn { background: #fff7ed; color: #ea580c !important; border-color: #fed7aa; }
+.fd-contact-card--forums a:hover,
+.fd-contact-card--forums button.fd-contact-btn:hover { background: #fed7aa; border-color: #fdba74; color: #ea580c !important; }
+.fd-contact-card--forums:hover { border-color: #fed7aa; }
+
+/* Equal-height cards -- .fd-contact-card and .grid_child_4 are the
+   SAME element (flex item + flex container), so we target it directly.
+   align-items: stretch on the row makes every item grow to the tallest.
+   height: auto !important stops Freshdesk's .full_height class from
+   setting height: 100% which would bypass the flex stretch. */
+.fd-contact-section .inside_grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.fd-contact-section .inside_grid > .grid_child_4 {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 140px;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ================================================================
+   SIDEBAR LOGO
+   ================================================================ */
+.fd-nav-logo {
+  padding: 14px 16px;
+  border-bottom: 1px solid #efefef;
+  text-align: center;
+}
+.fd-nav-logo a { display: block; line-height: 0; }
+.fd-nav-logo img {
+  max-width: 148px;
+  max-height: 48px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ================================================================
+   HEADER + EYEBROW -- override the max-width centered container
+   from opensrs2.min.css so the logo/eyebrow text start at the
+   far-left edge of the page (aligned with the sidebar below)
+   and the search/profile reach the far-right edge.
+   ================================================================ */
+.eyebrow .inner_eyebrow {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0  !important;
+  margin-right: 0 !important;
+  padding-left: 20px  !important;
+  padding-right: 20px !important;
+  box-sizing: border-box;
+}
+
+.header .inner_header {
+  width: 100% !important;          /* override Freshdesk's own width constraint */
+  max-width: none !important;
+  margin-left: 0  !important;
+  margin-right: 0 !important;
+  padding-left: 20px  !important;
+  padding-right: 20px !important;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;  /* logo left, search+profile right */
+}
+.header .menu_area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;   /* push search + profile to the right edge */
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   RESPONSIVE -- collapse sidebar on small screens
+   ================================================================ */
+@media (max-width: 1024px) {
+  .fd-left-nav { width: 240px; min-width: 240px; }
+}
+
+/* Mobile search close button -- hidden on desktop, shown when the
+   header search panel is open on small screens */
+#fd-search-close-btn {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  /* Show the close button inside the search input group */
+  #fd-search-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #666;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  #fd-search-close-btn:hover { color: #04034a; }
+
+  .fd-contact-section { padding-top: 28px; padding-bottom: 36px; }
+
+  /* Stack sidebar above content */
+  .fd-page-shell { flex-direction: column; }
+
+  /* Sidebar: collapsed by default, opens on toggle */
+  .fd-left-nav {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+    position: static;
+    max-height: 0;
+    overflow: hidden;
+    border-right: none;
+    border-bottom: 1px solid #efefef;
+    transition: max-height .3s ease;
+  }
+  .fd-left-nav.fd-nav-open {
+    max-height: 65vh;
+    overflow-y: auto;
+  }
+
+  /* Show the mobile toggle bar */
+  .fd-nav-mobile-bar { display: flex; }
+
+  /* Hero panel -- full-bleed with tighter radius on small screens */
+  section.hero.bg_color_6 { padding-top: 16px !important; padding-bottom: 16px !important; }
+  section.hero.bg_color_6 .inside_hero {
+    width: calc(100% - 32px);
+    border-radius: 12px;
+    padding: 20px 20px !important;
+  }
+  /* Featured Articles panel -- full-bleed on small screens */
+  section#featured.grid.bg_color_5 { padding-top: 16px !important; padding-bottom: 0 !important; }
+  .fd-featured-panel {
+    width: calc(100% - 32px);
+    border-radius: 12px 12px 0 0;
+    padding: 20px 20px 32px !important;
+  }
+  /* Cap at 3 cards per row on mobile/tablet to match the contact section */
+  .fd-featured-panel .inside_grid > .grid_child_4 {
+    min-width: calc(33.333% - 8px) !important;
+    max-width: none !important;
+  }
+
+}
+
+/* Phone: one featured article card per row, full width.
+   Also revert hero and featured panel to original full-width design -- no
+   inset rounded panel -- matching the original phone layout. */
+@media (max-width: 480px) {
+  /* Hero -- restore original full-width bg_color_6 background, no white outer shell */
+  section.hero.bg_color_6 {
+    background-color: #c7f9ff !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+  section.hero.bg_color_6 .inside_hero {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
+  }
+  /* Featured articles panel -- full-bleed, no inset box on phone */
+  .fd-featured-panel {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 16px 20px 32px !important;
+  }
+  /* Featured article cards -- one per row */
+  .fd-featured-panel .inside_grid > .grid_child_4 {
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* Featured section -- restore theme bg and revert flex layout on phone */
+  section#featured.grid.bg_color_5 {
+    background-color: var(--bg_color_5, transparent) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    flex: none !important;
+    display: block !important;
+  }
+}
+
+/* -- Hero section -- reduce top/bottom padding ------------------------
+   Theme CSS sets generous padding on .inside_hero (~80px). Tighten it
+   significantly so the search bar sits closer to the page content. */
+.hero .inside_hero {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* -- Header search "Clear recent" button fixes -----------------------
+   1. Height: theme.css forces .fw-search button to 2.75rem (44px).
+      Override to auto so the button is consistently sized on all states.
+   2. Hover colour: darker teal matching the tab buttons and search icon. */
+.fw-clear-all,
+.fw-clear-all:hover {
+  height: auto !important;
+}
+.fw-clear-all:hover {
+  background-color: rgb(0, 136, 157) !important;
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none !important;
+}
+
+/* -- Hero (and mobile-header) search tab colours ---------------------
+   The S3 opensrs2.min.css applies teal to inactive tabs in the main
+   header autocomplete dropdown but not in the hero or mobile search
+   forms. This causes inactive tabs there to render white-on-white
+   (invisible). Match the same teal scheme used in the header.
+   Active tab (fw-active-search-tab) already shows the correct dark
+   navy from theme.css and is intentionally left unchanged. */
+section.hero .fw-search-tab:not(.fw-active-search-tab),
+.search_container .fw-search-tab:not(.fw-active-search-tab) {
+  background-color: rgb(0, 170, 196) !important;  /* teal */
+  color: rgb(255, 255, 255) !important;
+}
+
+/* -- Search tab hover -- darker teal across all search forms ----------
+   theme.css sets the hover to grey (rgb(207,215,223)). Override every
+   inactive tab -- hero, mobile, and the main header dropdown -- to use
+   a darker shade of the teal instead. */
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):hover,
+section.hero .fw-search-tab:not(.fw-active-search-tab):hover,
+.search_container .fw-search-tab:not(.fw-active-search-tab):hover {
+  background-color: rgb(0, 136, 157) !important;  /* ~20% darker teal */
+  color: rgb(255, 255, 255) !important;
+}
+
+/* -- Search icon button (magnifying glass) hover -- darker teal -------
+   Applies to the header search button, the hero search button, and
+   the mobile search button -- all share #btnSearch. */
+#btnSearch:hover {
+  background-color: rgb(0, 136, 157) !important;
+  border-color: rgb(0, 136, 157) !important;
+}
+
+/* -- PeopleReign floating chat widget button hover -- darker teal -----
+   The launch button (#pr-chat-launch-button) is injected by PeopleReign
+   into the main page. Override its hover to match the darker teal used
+   across other interactive elements. */
+#pr-chat-launch-button:hover {
+  background-color: rgb(0, 136, 157) !important;
+}
+
+/* -- "Featured Articles" tab -----------------------------------------
+   Injected as <button class="fw-search-tab fd-featured-btn"> so it
+   inherits all native fw-search-tab sizing, spacing, and border-radius
+   without any overrides. Only the ::after content needs changing --
+   Freshdesk's button.fw-search-tab::after injects "Search"; override
+   it to "Articles" so the tab reads "Featured | Articles". */
+section.hero .fw-autocomplete-header .fd-featured-btn::after {
+  content: "Articles" !important;
+}
+
+/* -- Hero -- blue rounded panel, aligned with grid columns -------------
+   Clears the section's own blue background to white so only the bounded
+   .inside_hero panel is coloured. Panel shares the same max-width/width
+   as .grid .title_area and .inside_grid (1400 px / 85%) so its left
+   edge lines up with the "Need help" and "Featured Articles" headers. */
+section.hero.bg_color_6 {
+  background-color: #ffffff !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+section.hero.bg_color_6 .inside_hero {
+  background-color: var(--bg_color_6, #c7f9ff);
+  border-radius: 16px;
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+  padding: 32px 48px !important;
+}
+
+/* -- Remove divider lines between hero, contact, and featured sections -- */
+section.grid.fd-contact-section {
+  border-top: none !important;
+  border-bottom: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+section#featured.grid.bg_color_5 {
+  border-top: none !important;
+}
+
+/* -- Featured Articles -- bg_color_5 bounded panel, fills to footer ------
+   Section background is white; the panel carries bg_color_5 via its own
+   class (CSS variable fallback can't resolve Freshdesk class-based colours).
+   The panel rounds only the top corners and stretches to fill remaining
+   page height so no white space appears between it and the footer. */
+
+/* Make the main content column a flex column so section#featured can grow */
+.fd-main-content {
+  display: flex;
+  flex-direction: column;
+}
+section#featured.grid.bg_color_5 {
+  background-color: #ffffff !important;
+  padding-top: 40px !important;
+  padding-bottom: 0 !important;         /* panel butts against footer */
+  flex: 1;                               /* fill remaining height */
+  display: flex;
+  flex-direction: column;
+}
+.fd-featured-panel {
+  background-color: #e0fcff !important;  /* bg_color_5 blue */
+  border-radius: 16px 16px 0 0;         /* rounded top, straight bottom */
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+  padding: 32px 48px 48px;
+  flex: 1;                               /* stretch panel to section height */
+}
+/* .title_area and .inside_grid inside the panel would otherwise re-centre
+   at 85% of the panel width. Override them to fill the panel content area. */
+.fd-featured-panel .title_area,
+.fd-featured-panel .inside_grid {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.fd-featured-panel .title_area h2 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+}
+/* 5 cards per row, only the first 5 visible */
+/* 5 cards per row on desktop, wraps on mobile -- exactly mirrors contact section */
+.fd-featured-panel .inside_grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
+}
+.fd-featured-panel .inside_grid > .grid_child_4 {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 140px;
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+}
+.fd-featured-panel .inside_grid > .grid_child_4 > article {
+  flex: 1 !important;
+  height: auto !important;
+}
+.fd-featured-panel .inside_grid .grid_child_4:nth-child(n+6) {
+  display: none !important;
+}
