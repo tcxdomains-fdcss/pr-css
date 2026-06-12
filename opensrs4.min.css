@@ -47,7 +47,8 @@
 /* ----- Page shell: sidebar + content side by side ----- */
 .fd-page-shell {
   display: flex;
-  align-items: stretch;
+  flex-direction: row;
+  align-items: flex-start;  /* required for position:sticky on sidebar to work */
   min-height: 100vh;
 }
 
@@ -59,12 +60,19 @@
   background: #ffffff;
   border-top: 1px solid #e0e0e0;
   border-right: 1px solid #efefef;
-  /* Sidebar grows/shrinks with its expanded content -- no scroll or fixed height */
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* ----- Main content -- top divider matching the sidebar border-top ----- */
 .fw-main-wrapper.fd-main-content {
   border-top: 1px solid #e0e0e0;
+  margin-left: 0 !important;  /* prevent Freshdesk base CSS from adding a left gap */
+  flex: 1 1 0%;
+  min-width: 0;
 }
 
 .fd-left-nav-inner { padding: 0 0 48px; }
