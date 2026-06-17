@@ -891,11 +891,28 @@ section#featured.grid.bg_color_5 {
   padding-right: 0 !important;
 }
 
-/* Full-width in the two-column shell */
-.search_content_area,
-.discussion_cat_content_area {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-left: 0 !important;
+/* discussions_category, topic_list, topic_view, search: align with hero_subpage
+   panel — same 85%/centered sizing so content edges match the grey hero panel. */
+.discussion_cat_content_area,
+.search_content_area {
+  width: 85% !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* new_topic.html: Bootstrap's container-fluid has 12px horizontal padding that
+   shifts the inner container. Zero it on this specific wrapper so the
+   fw-wrapper-shadow panel aligns correctly with the hero panel. */
+.fd-hero-aligned {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.fd-hero-aligned .container.fw-wrapper-shadow {
+  width: 85% !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
