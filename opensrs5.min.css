@@ -983,6 +983,33 @@ section#featured.grid.bg_color_5 {
 }
 
 /* ══════════════════════════════════════════════════════════════════
+   WCAG 2.1 AA CONTRAST FIXES
+   Minimum-necessary color adjustments only; no layout or visual change.
+
+   1. Eyebrow banner text: #6f6f7b on #c7f9ff = 4.34:1 (needs 4.5:1)
+      → #636370 = 4.65:1 ✓
+   2. Subpage hero breadcrumb links: #076afb on #f7f7fc = 4.4:1
+      → #0060e6 = 4.71:1 ✓
+   3. Left-nav category links: #00aac4 on white = 2.78:1 (far from 4.5:1)
+      → #00768f = 4.79:1 ✓
+   4. Left-nav chevron icons: same #00aac4 issue → #00768f ✓
+   5. Left-nav active border: #00aac4 on white = 2.78:1 (needs 3:1 for non-text)
+      → #00768f = 4.79:1 ✓
+   ══════════════════════════════════════════════════════════════════ */
+.inner_eyebrow { color: #636370 !important; }
+
+.hero_subpage .breadcrumb-item a { color: #0060e6 !important; }
+
+.fd-nav-cat-link { color: #00768f !important; }
+.fd-nav-cat-header:hover .fd-nav-cat-link,
+.fd-nav-cat-link.is-active { color: #005f73 !important; }
+
+.fd-nav-cat-chevron { color: #00768f !important; }
+.fd-nav-cat-header:hover .fd-nav-cat-chevron { color: #005f73 !important; }
+
+.fd-nav-section.is-active > .fd-nav-cat-header { border-left-color: #00768f !important; }
+
+/* ══════════════════════════════════════════════════════════════════
    PEOPLEREIGN WIDGET — accessibility fix
    PeopleReign injects box-shadow:none on the chat iframe, making it
    white-on-white (fails WCAG 2.1 SC 1.4.11 Non-text Contrast, 3:1).
