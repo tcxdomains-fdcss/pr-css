@@ -965,8 +965,9 @@ section#featured.grid.bg_color_5 {
   padding-right: 42px !important;
 }
 
-/* new_topic.html: ensure form content fills the full col-lg-9 width
-   (right up to the sidebar), matching submit_ticket behaviour. */
+/* new_topic.html: remove Freshdesk's 32px left/right margins on the form
+   so it fills the full col-lg-9 width right up to the sidebar. */
 .fd-hero-aligned .fw-new-ticket {
-  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
