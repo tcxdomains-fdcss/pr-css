@@ -775,7 +775,7 @@ section.hero.bg_color_6 .inside_hero {
   background-color: var(--bg_color_6, #c7f9ff);
   border-radius: 16px;
   max-width: 1400px;
-  width: calc(100% - 32px);
+  width: 100%;
   margin: 0 !important;
   padding: 32px 48px !important;
 }
