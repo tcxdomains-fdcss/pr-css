@@ -1011,13 +1011,18 @@ section#featured.grid.bg_color_5 {
 .fd-nav-section.is-active > .fd-nav-cat-header { border-left-color: #00768f !important; }
 
 /* ══════════════════════════════════════════════════════════════════
-   PEOPLEREIGN WIDGET — accessibility fix
-   PeopleReign injects box-shadow:none on the chat iframe, making it
-   white-on-white (fails WCAG 2.1 SC 1.4.11 Non-text Contrast, 3:1).
-   ID selector (#pr-chat-window) wins over their class rule without !important.
+   PEOPLEREIGN WIDGET — accessibility fixes
+   1. Chat iframe: box-shadow:none makes it white-on-white
+      (fails WCAG 2.1 SC 1.4.11 Non-text Contrast, 3:1).
+   2. Launch button: white text on #00aac4 = 2.78:1 (needs 4.5:1
+      at 18.66px/700 — just under the 14pt-bold large-text threshold).
+      → #00768f = 5.27:1 ✓  (same accessible teal used for nav links)
    ══════════════════════════════════════════════════════════════════ */
 #pr-chat-window {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;
+}
+#pr-chat-launch-button {
+  background-color: #00768f !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
