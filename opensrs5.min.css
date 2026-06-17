@@ -939,9 +939,9 @@ section#featured.grid.bg_color_5 {
    .hero is exclusive to portal_home; subpages use .hero_subpage.
    ══════════════════════════════════════════════════════════════════ */
 
-/* portal_home hero: 42px on top, 25px left/right; margin-bottom left unchanged. */
+/* portal_home hero: 25px on top/left/right; margin-bottom left unchanged. */
 .hero {
-  margin-top: 42px !important;
+  margin-top: 25px !important;
   margin-left: 25px !important;
   margin-right: 25px !important;
   width: calc(100% - 50px) !important;
