@@ -863,11 +863,11 @@ section#featured.grid.bg_color_5 {
    ══════════════════════════════════════════════════════════════════ */
 
 /* hero_subpage has margin:auto which in a flex container absorbs all remaining
-   free space as margin-bottom (~366px computed). Zero it out so the gap
-   between hero and content equals only the hero's own bottom padding (74px). */
-.hero_subpage { margin-bottom: 0 !important; }
+   free space as margin-bottom (~366px computed). Fix to 40px so all subpages
+   have a consistent gap below the hero. portal_home uses .hero (not targeted). */
+.hero_subpage { margin-bottom: 40px !important; }
 
-/* Zero top gap — mirrors section.grid.fd-contact-section on portal_home */
+/* Zero top gap on content sections — the 40px comes from hero margin-bottom above */
 .article_content_area,
 .listing_page,
 .category_content_area,
