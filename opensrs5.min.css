@@ -215,10 +215,13 @@
   padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height .22s ease;
+  visibility: hidden;                              /* removes hidden items from tab order */
+  transition: max-height .22s ease, visibility 0s linear .22s;  /* visibility hides after close animation */
 }
 .fd-nav-article-list.is-open {
   max-height: 1200px;            /* large enough for any article count */
+  visibility: visible;           /* immediately visible on open */
+  transition: max-height .22s ease;  /* no delay when opening */
 }
 
 .fd-nav-article-item a {
