@@ -955,3 +955,21 @@ section#featured.grid.bg_color_5 {
   margin-right: 42px !important;
   width: calc(100% - 84px) !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   NEW TOPIC & SUBMIT TICKET — sidebar wrapper right padding,
+   and full-width form area on new_topic (fd-hero-aligned context).
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 42px right padding inside the sidebar wrapper on both pages */
+.fw-sidebar-wrapper {
+  padding-right: 42px !important;
+}
+
+/* new_topic.html: make the form content wrapper span full width.
+   Overrides Bootstrap col-lg-9 (75%) so the form fills the container. */
+.fd-hero-aligned .fw-content-wrapper {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
