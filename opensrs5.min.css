@@ -879,9 +879,19 @@ section#featured.grid.bg_color_5 {
    .grid{padding-top:80px}. Remove it. */
 .grid.cats_sections { padding-top: 0 !important; }
 
-/* Full-width in the two-column shell — same treatment already applied to
-   .article_content_area > article and .listing_page > .listing_page_inside */
-.ticket_list_container,
+/* ticket_list_container: align with hero_subpage panel (same 85%/centered sizing)
+   so "You have no tickets" text and the Export sidebar both line up with the
+   left/right edges of the grey hero background panel. */
+.ticket_list_container {
+  width: 85% !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Full-width in the two-column shell */
 .search_content_area,
 .discussion_cat_content_area {
   width: 100% !important;
