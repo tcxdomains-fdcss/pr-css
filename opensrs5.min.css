@@ -59,16 +59,17 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 16px;
+  padding: 14px 16px 14px 13px;  /* 13px left: leaves room for 3px border without shifting text */
   font-size: 14px;
   font-weight: 700;
   color: #04034a;
   text-decoration: none !important;
   border-bottom: 1px solid #efefef;
-  transition: color .15s, background .15s;
+  border-left: 3px solid transparent;  /* invisible at rest; becomes teal on hover */
+  transition: background .15s, border-color .15s;
   background: #ffffff;
 }
-.fd-nav-home-link:hover { color: #057499; background: rgba(0, 170, 196, .10); text-decoration: none !important; }
+.fd-nav-home-link:hover { background: rgba(0, 170, 196, .06); border-left-color: #00aac4; text-decoration: none !important; }
 .fd-nav-home-link:focus-visible { outline: 2px solid #057499; outline-offset: -2px; border-radius: 2px; }
 .fd-nav-home-link svg   { flex-shrink: 0; }
 
