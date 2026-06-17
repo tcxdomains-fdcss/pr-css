@@ -687,6 +687,7 @@
     flex: none !important;
     display: block !important;
   }
+
 }
 
 /* -- Hero section -- reduce top/bottom padding ------------------------
@@ -1017,4 +1018,43 @@ section#featured.grid.bg_color_5 {
    ══════════════════════════════════════════════════════════════════ */
 #pr-chat-window {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   WCAG 2.1 AA CONTRAST FIXES — PORTAL HOME (round 2)
+
+   6. Hero welcome text (.header_tag h1): #1290b3 on #c7f9ff = 3.25:1
+      (16 px bold = not large text; needs 4.5:1)
+      → #0f7596 = 4.60:1 ✓
+   7. Forums card link: #ea580c on #fff7ed = 3.35:1 (needs 4.5:1)
+      → #a53604 = 6.32:1 on #fff7ed ✓  |  4.96:1 on #fed7aa hover ✓
+   ══════════════════════════════════════════════════════════════════ */
+.hero .inside_hero .header_tag { color: #0f7596 !important; }
+
+.fd-contact-card--forums a,
+.fd-contact-card--forums button.fd-contact-btn { color: #a53604 !important; }
+.fd-contact-card--forums a:hover,
+.fd-contact-card--forums button.fd-contact-btn:hover { color: #a53604 !important; }
+
+/* ══════════════════════════════════════════════════════════════════
+   PHONE — remove 42px outer margins from hero panels
+   Must appear AFTER the desktop .hero / .hero_subpage rules above so
+   this !important declaration wins the cascade on narrow viewports.
+   Desktop and tablet (> 480px) are completely unaffected.
+   .hero_subpage margin-bottom (40px) is preserved — it spaces the
+   hero from the content below.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  .hero_subpage {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
 }
