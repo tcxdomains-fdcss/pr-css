@@ -959,6 +959,15 @@ section#featured.grid.bg_color_5 {
 /* new_topic.html layout is handled via inline <style> in new_topic.html */
 
 /* ══════════════════════════════════════════════════════════════════
+   DISCUSSIONS HOME / CATEGORY — align inside_grid left edge with hero
+   Default inside_grid has ~82px percentage margin; hero sits at 42px.
+   Scoped to .cats_sections so only forum listing pages are affected.
+   ══════════════════════════════════════════════════════════════════ */
+.cats_sections .inside_grid {
+  margin-left: 42px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
    SUBMIT TICKET — inner form left margin
    ══════════════════════════════════════════════════════════════════ */
 .ticket_list_container .fw-wrapper-shadow .fw-content {
