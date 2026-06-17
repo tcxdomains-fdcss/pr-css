@@ -862,19 +862,19 @@ section#featured.grid.bg_color_5 {
 
 /* ══════════════════════════════════════════════════════════════════
    SUBPAGE CONTENT SECTIONS — spacing & width corrections
-   All hero_subpage pages get 25px gap on top/left/right; 40px below
+   All hero_subpage pages get 42px gap on top/left/right; 40px below
    the hero is preserved. portal_home uses .hero (never targeted here).
    ══════════════════════════════════════════════════════════════════ */
 
-/* hero_subpage: 25px on top, left, right; 40px below unchanged.
+/* hero_subpage: 42px on top, left, right; 40px below unchanged.
    Overrides the original width:85%;margin:auto.
    portal_home uses .hero — not affected. */
 .hero_subpage {
-  margin-top: 25px !important;
+  margin-top: 42px !important;
   margin-bottom: 40px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
-  width: calc(100% - 50px) !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
 
 /* Zero top gap on content sections — gap below hero comes from hero margin-bottom */
@@ -889,69 +889,69 @@ section#featured.grid.bg_color_5 {
    .grid{padding-top:80px}. Remove it. */
 .grid.cats_sections { padding-top: 0 !important; }
 
-/* ticket pages: 25px left/right to match hero_subpage. */
+/* ticket pages: 42px left/right to match hero_subpage. */
 .ticket_list_container {
-  width: calc(100% - 50px) !important;
+  width: calc(100% - 84px) !important;
   max-width: 1400px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* discussions & search pages: 25px left/right to match hero_subpage. */
+/* discussions & search pages: 42px left/right to match hero_subpage. */
 .discussion_cat_content_area,
 .search_content_area {
-  width: calc(100% - 50px) !important;
+  width: calc(100% - 84px) !important;
   max-width: 1400px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 /* article & solution pages: Freshdesk native CSS sets ~82px auto left margin.
-   Override to match the 25px hero_subpage gap. */
+   Override to match the 42px hero_subpage gap. */
 .article_content_area,
 .category_content_area,
 .listing_page {
-  width: calc(100% - 50px) !important;
+  width: calc(100% - 84px) !important;
   max-width: 1400px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
 }
 
 /* new_topic.html: Bootstrap container-fluid has 12px padding — zero it so the
-   inner fw-wrapper-shadow aligns with the hero panel at 25px. */
+   inner fw-wrapper-shadow aligns with the hero panel at 42px. */
 .fd-hero-aligned {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 .fd-hero-aligned .container.fw-wrapper-shadow {
-  width: calc(100% - 50px) !important;
+  width: calc(100% - 84px) !important;
   max-width: 1400px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   PORTAL HOME — same 25px gap treatment as all other pages.
+   PORTAL HOME — same 42px gap treatment as all other pages.
    .hero is exclusive to portal_home; subpages use .hero_subpage.
    ══════════════════════════════════════════════════════════════════ */
 
-/* portal_home hero: 25px on top/left/right; margin-bottom left unchanged. */
+/* portal_home hero: 42px on top/left/right; margin-bottom left unchanged. */
 .hero {
-  margin-top: 25px !important;
-  margin-left: 25px !important;
-  margin-right: 25px !important;
-  width: calc(100% - 50px) !important;
+  margin-top: 42px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
 
-/* portal_home content sections: 25px left/right margins only.
+/* portal_home content sections: 42px left/right margins only.
    .fd-contact-section and #featured are specific to portal_home. */
 .grid.fd-contact-section,
 #featured {
-  margin-left: 25px !important;
-  margin-right: 25px !important;
-  width: calc(100% - 50px) !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
