@@ -854,3 +854,33 @@ section#featured.grid.bg_color_5 {
 .fd-featured-panel .inside_grid .grid_child_4:nth-child(n+6) {
   display: none !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   SUBPAGE CONTENT SECTIONS — spacing & width corrections
+   All hero_subpage pages get the same treatment as portal_home:
+   built-in top margin/padding is zeroed so the only gap between
+   hero and content is the hero_subpage's own bottom padding.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Zero top gap — mirrors section.grid.fd-contact-section on portal_home */
+.article_content_area,
+.listing_page,
+.category_content_area,
+.search_content_area,
+.ticket_list_container,
+.discussion_cat_content_area { margin-top: 0 !important; }
+
+/* solution_home / discussions_home use .grid.cats_sections which picks up
+   .grid{padding-top:80px}. Remove it. */
+.grid.cats_sections { padding-top: 0 !important; }
+
+/* Full-width in the two-column shell — same treatment already applied to
+   .article_content_area > article and .listing_page > .listing_page_inside */
+.ticket_list_container,
+.search_content_area,
+.discussion_cat_content_area {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
