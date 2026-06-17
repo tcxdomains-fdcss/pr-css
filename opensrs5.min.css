@@ -857,17 +857,22 @@ section#featured.grid.bg_color_5 {
 
 /* ══════════════════════════════════════════════════════════════════
    SUBPAGE CONTENT SECTIONS — spacing & width corrections
-   All hero_subpage pages get the same treatment as portal_home:
-   built-in top margin/padding is zeroed so the only gap between
-   hero and content is the hero_subpage's own bottom padding.
+   All hero_subpage pages get 15px gap on top/left/right; 40px below
+   the hero is preserved. portal_home uses .hero (never targeted here).
    ══════════════════════════════════════════════════════════════════ */
 
-/* hero_subpage has margin:auto which in a flex container absorbs all remaining
-   free space as margin-bottom (~366px computed). Fix to 40px so all subpages
-   have a consistent gap below the hero. portal_home uses .hero (not targeted). */
-.hero_subpage { margin-bottom: 40px !important; }
+/* hero_subpage: 15px on top, left, right; 40px below unchanged.
+   Overrides the original width:85%;margin:auto.
+   portal_home uses .hero — not affected. */
+.hero_subpage {
+  margin-top: 15px !important;
+  margin-bottom: 40px !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  width: calc(100% - 30px) !important;
+}
 
-/* Zero top gap on content sections — the 40px comes from hero margin-bottom above */
+/* Zero top gap on content sections — gap below hero comes from hero margin-bottom */
 .article_content_area,
 .listing_page,
 .category_content_area,
@@ -875,44 +880,73 @@ section#featured.grid.bg_color_5 {
 .ticket_list_container,
 .discussion_cat_content_area { margin-top: 0 !important; }
 
-/* solution_home / discussions_home use .grid.cats_sections which picks up
+/* solution_home / discussions_home: .grid.cats_sections picks up
    .grid{padding-top:80px}. Remove it. */
 .grid.cats_sections { padding-top: 0 !important; }
 
-/* ticket_list_container: align with hero_subpage panel (same 85%/centered sizing)
-   so "You have no tickets" text and the Export sidebar both line up with the
-   left/right edges of the grey hero background panel. */
+/* ticket pages: 15px left/right to match hero_subpage. */
 .ticket_list_container {
-  width: 85% !important;
+  width: calc(100% - 30px) !important;
   max-width: 1400px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* discussions_category, topic_list, topic_view, search: align with hero_subpage
-   panel — same 85%/centered sizing so content edges match the grey hero panel. */
+/* discussions & search pages: 15px left/right to match hero_subpage. */
 .discussion_cat_content_area,
 .search_content_area {
-  width: 85% !important;
+  width: calc(100% - 30px) !important;
   max-width: 1400px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* new_topic.html: Bootstrap's container-fluid has 12px horizontal padding that
-   shifts the inner container. Zero it on this specific wrapper so the
-   fw-wrapper-shadow panel aligns correctly with the hero panel. */
+/* article & solution pages: Freshdesk native CSS sets ~82px auto left margin.
+   Override to match the 15px hero_subpage gap. */
+.article_content_area,
+.category_content_area,
+.listing_page {
+  width: calc(100% - 30px) !important;
+  max-width: 1400px !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+/* new_topic.html: Bootstrap container-fluid has 12px padding — zero it so the
+   inner fw-wrapper-shadow aligns with the hero panel at 15px. */
 .fd-hero-aligned {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 .fd-hero-aligned .container.fw-wrapper-shadow {
-  width: 85% !important;
+  width: calc(100% - 30px) !important;
   max-width: 1400px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PORTAL HOME — same 15px gap treatment as all other pages.
+   .hero is exclusive to portal_home; subpages use .hero_subpage.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* portal_home hero: 15px on top/left/right; margin-bottom left unchanged. */
+.hero {
+  margin-top: 15px !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  width: calc(100% - 30px) !important;
+}
+
+/* portal_home content sections: 15px left/right margins only.
+   .fd-contact-section and #featured are specific to portal_home. */
+.grid.fd-contact-section,
+#featured {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  width: calc(100% - 30px) !important;
 }
