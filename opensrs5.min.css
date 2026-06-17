@@ -763,7 +763,7 @@ section.hero .fw-autocomplete-header .fd-featured-btn::after {
    edge lines up with the "Need help" and "Featured Articles" headers. */
 section.hero.bg_color_6 {
   background-color: #ffffff !important;
-  padding-top: 40px !important;
+  padding-top: 0 !important;
   padding-bottom: 40px !important;
 }
 section.hero.bg_color_6 .inside_hero {
