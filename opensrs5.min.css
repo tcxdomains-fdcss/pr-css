@@ -957,3 +957,28 @@ section#featured.grid.bg_color_5 {
 }
 
 /* new_topic.html layout is handled via inline <style> in new_topic.html */
+
+/* ══════════════════════════════════════════════════════════════════
+   SUBMIT TICKET — inner form left margin
+   ══════════════════════════════════════════════════════════════════ */
+.ticket_list_container .fw-wrapper-shadow .fw-content {
+  margin-left: 1.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ARTICLE VIEW — content body left/right margins
+   ══════════════════════════════════════════════════════════════════ */
+.article_content_area .content_body {
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PEOPLEREIGN WIDGET — accessibility fix
+   PeopleReign injects box-shadow:none on the chat iframe, making it
+   white-on-white (fails WCAG 2.1 SC 1.4.11 Non-text Contrast, 3:1).
+   ID selector (#pr-chat-window) wins over their class rule without !important.
+   ══════════════════════════════════════════════════════════════════ */
+#pr-chat-window {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;
+}
