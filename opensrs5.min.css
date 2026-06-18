@@ -1071,3 +1071,41 @@ section#featured.grid.bg_color_5 {
     width: 100% !important;
   }
 }@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* WCAG AA search button contrast fix - added in accessibility re-audit
+   White on #00aac4 is below AA contrast. #00768f is the nearest accessible
+   teal already used in this theme's accessibility color adjustments. */
+:root, body.portal--light {
+  --search_button_bgcolor: #00768f;
+  --search_button_color: #ffffff;
+}
+header.header .menu_area > form button,
+header.header .menu_area > form .fw-autocomplete-wrapper button,
+.search button[type=submit],
+.search input[type=submit],
+div.fw-search button,
+.requests_hero input[type=submit] {
+  background-color: #00768f !important;
+  color: #ffffff !important;
+}
+.search button[type=submit]:active,
+.search button[type=submit]:focus,
+.search button[type=submit]:hover,
+.search input[type=submit]:active,
+.search input[type=submit]:focus,
+.search input[type=submit]:hover,
+header.header .search button[type=submit]:active,
+header.header .search button[type=submit]:focus,
+header.header .search button[type=submit]:hover,
+header.header .search input[type=submit]:active,
+header.header .search input[type=submit]:focus,
+header.header .search input[type=submit]:hover {
+  background-color: #00768f !important;
+  color: #ffffff !important;
+}
+header.header .menu_area > form button .icon-search::before,
+header.header .search button[type=submit] .icon-search::before,
+div.fw-search button .icon-search::before {
+  color: #ffffff !important;
+}
