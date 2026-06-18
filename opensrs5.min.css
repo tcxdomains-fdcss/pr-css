@@ -1070,4 +1070,4 @@ section#featured.grid.bg_color_5 {
     margin-right: 0 !important;
     width: 100% !important;
   }
-}
+}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
