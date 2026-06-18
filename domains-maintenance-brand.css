@@ -1,0 +1,1085 @@
+/*
+  Tucows/domains Maintenance Portal brand stylesheet
+  Upload this file to a public HTTPS location such as S3, GitHub Pages, or another CDN,
+  then update domains_brand_css_url in maint_head.html.
+
+  Brand tokens from Domains quickguide:
+  - Indigo 8:  #7A82E3
+  - Indigo 12: #0C0B60
+  - Indigo 3:  #EBEDFC
+  - Indigo 1:  #F9FAFE
+  - Heading font: Sharp Sans Display No1
+  - Body font: Sharp Sans
+*/
+
+:root {
+  --domains-indigo-8: #7A82E3;
+  --domains-indigo-12: #0C0B60;
+  --domains-indigo-3: #EBEDFC;
+  --domains-indigo-1: #F9FAFE;
+  --domains-white: #FFFFFF;
+  --domains-ink: #0C0B60;
+  --domains-muted: #4E5578;
+  --domains-soft-text: #6D7293;
+  --domains-border: #DBDEF8;
+  --domains-border-strong: #C5CAF4;
+  --domains-focus: rgba(122, 130, 227, 0.36);
+  --domains-shadow-sm: 0 10px 24px rgba(12, 11, 96, 0.07);
+  --domains-shadow-md: 0 22px 60px rgba(12, 11, 96, 0.13);
+  --domains-shadow-lg: 0 36px 90px rgba(12, 11, 96, 0.18);
+  --domains-radius-sm: 14px;
+  --domains-radius-md: 22px;
+  --domains-radius-lg: 34px;
+  --domains-radius-xl: 46px;
+  --domains-heading-font: "Sharp Sans Display No1", "Sharp Sans", "Avenir Next", Avenir, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --domains-body-font: "Sharp Sans", "Avenir Next", Avenir, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 9% 12%, rgba(122, 130, 227, 0.18), transparent 25rem),
+    radial-gradient(circle at 94% 18%, rgba(235, 237, 252, 0.95), transparent 28rem),
+    linear-gradient(180deg, var(--domains-indigo-1) 0%, #FFFFFF 42%, var(--domains-indigo-1) 100%);
+  color: var(--domains-ink);
+  font-family: var(--domains-body-font);
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+}
+
+body a {
+  color: var(--domains-indigo-12);
+  text-decoration-color: rgba(122, 130, 227, 0.62);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+body a:hover,
+body a:focus {
+  color: var(--domains-indigo-8);
+  text-decoration-color: currentColor;
+}
+
+::selection {
+  background: var(--domains-indigo-3);
+  color: var(--domains-indigo-12);
+}
+
+.btn,
+button,
+input,
+textarea,
+select {
+  font-family: var(--domains-body-font);
+}
+
+h1, h2, h3, h4, h5, h6,
+.fw-page-title,
+.domains-section-title,
+.domains-footer-title,
+.fw-section-heading h2,
+.fw-section-heading h3,
+.card-title {
+  color: var(--domains-indigo-12);
+  font-family: var(--domains-heading-font);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+p,
+li,
+.fw-meta-info,
+.fw-page-title-wrapper p,
+.domains-card-description,
+.domains-page-lede,
+.domains-home-lede {
+  color: var(--domains-muted);
+  line-height: 1.65;
+}
+
+.g-24 {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+}
+
+.g-32 {
+  --bs-gutter-x: 2rem;
+  --bs-gutter-y: 2rem;
+}
+
+.py-10 {
+  padding-bottom: 0.625rem !important;
+  padding-top: 0.625rem !important;
+}
+
+.mt-32 {
+  margin-top: 2rem !important;
+}
+
+.fs-24 {
+  font-size: 1.5rem !important;
+}
+
+.fs-32 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem) !important;
+}
+
+.domains-eyebrow,
+.domains-page-eyebrow,
+.domains-home-eyebrow,
+.domains-section-eyebrow {
+  align-items: center;
+  color: var(--domains-indigo-8);
+  display: inline-flex;
+  font-family: var(--domains-body-font);
+  font-size: 0.78rem;
+  font-weight: 800;
+  gap: 9px;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.domains-eyebrow::before,
+.domains-page-eyebrow::before,
+.domains-home-eyebrow::before,
+.domains-section-eyebrow::before {
+  background: currentColor;
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+}
+
+.domains-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* Buttons */
+.btn,
+.btn-primary,
+.btn-outline-primary,
+.fw-primary-button,
+.fw-secondary-button,
+input[type="submit"],
+button[type="submit"],
+.domains-primary-cta,
+.domains-secondary-cta,
+.domains-nav-cta {
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em;
+  min-height: 44px;
+  padding: 0.7rem 1.15rem !important;
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.btn-primary,
+.fw-primary-button,
+input[type="submit"],
+button[type="submit"],
+.domains-primary-cta,
+.domains-nav-cta,
+.fw-new-ticket button[type="submit"],
+.fw-new-ticket input[type="submit"] {
+  background: var(--domains-indigo-8) !important;
+  border-color: var(--domains-indigo-8) !important;
+  box-shadow: 0 14px 30px rgba(122, 130, 227, 0.28);
+  color: var(--domains-white) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.fw-primary-button:hover,
+.fw-primary-button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+button[type="submit"]:hover,
+button[type="submit"]:focus,
+.domains-primary-cta:hover,
+.domains-primary-cta:focus,
+.domains-nav-cta:hover,
+.domains-nav-cta:focus {
+  background: var(--domains-indigo-12) !important;
+  border-color: var(--domains-indigo-12) !important;
+  box-shadow: 0 18px 34px rgba(12, 11, 96, 0.24);
+  color: var(--domains-white) !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-primary,
+.fw-secondary-button,
+.domains-secondary-cta {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid var(--domains-border-strong) !important;
+  color: var(--domains-indigo-12) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.fw-secondary-button:hover,
+.fw-secondary-button:focus,
+.domains-secondary-cta:hover,
+.domains-secondary-cta:focus {
+  background: var(--domains-indigo-3) !important;
+  border-color: var(--domains-indigo-8) !important;
+  color: var(--domains-indigo-12) !important;
+  box-shadow: 0 12px 28px rgba(12, 11, 96, 0.12);
+}
+
+/* Header */
+.domains-site-header,
+.fw-nav-wrapper.fixed-top.domains-site-header {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-bottom: 1px solid rgba(219, 222, 248, 0.9);
+  box-shadow: 0 10px 34px rgba(12, 11, 96, 0.07);
+  color: var(--domains-indigo-12);
+  backdrop-filter: blur(18px);
+}
+
+.domains-skipbar {
+  background: transparent !important;
+}
+
+.domains-navbar {
+  min-height: 78px;
+}
+
+.domains-brand-lockup {
+  align-items: center;
+  display: inline-flex;
+  gap: 16px;
+  min-width: 0;
+}
+
+.domains-brand-lockup img {
+  display: block;
+  height: auto !important;
+  max-height: 42px;
+  max-width: 230px;
+  min-width: 180px;
+  object-fit: contain;
+}
+
+.domains-wordmark {
+  align-items: baseline;
+  color: var(--domains-indigo-12) !important;
+  display: inline-flex;
+  font-family: var(--domains-heading-font);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  min-width: 180px;
+  text-decoration: none !important;
+}
+
+.domains-wordmark-slash,
+.domains-wordmark-domains {
+  color: var(--domains-indigo-8);
+}
+
+.domains-brand-kicker {
+  background: var(--domains-indigo-3);
+  border: 1px solid rgba(122, 130, 227, 0.2);
+  border-radius: 999px;
+  color: var(--domains-indigo-12);
+  display: inline-flex;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.7rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.domains-nav-links {
+  gap: 6px;
+}
+
+.domains-site-header .navbar-nav .nav-link,
+.domains-site-header .fw-nav-dropdown-wrapper a,
+.domains-site-header .dropdown-toggle {
+  border-radius: 999px;
+  color: var(--domains-indigo-12) !important;
+  font-weight: 750;
+  padding: 0.7rem 0.95rem !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .navbar-nav .nav-item.active .nav-link,
+.domains-site-header .navbar-nav .nav-link:hover,
+.domains-site-header .navbar-nav .nav-link:focus {
+  background: var(--domains-indigo-3);
+  color: var(--domains-indigo-12) !important;
+}
+
+.domains-header-user-nav {
+  gap: 6px;
+}
+
+/* Search bars and subnav */
+.domains-subnav,
+.fw-sticky.fw-searchbar-wrapper.domains-subnav {
+  background: rgba(249, 250, 254, 0.96) !important;
+  border-bottom: 1px solid rgba(219, 222, 248, 0.78);
+  z-index: 10;
+}
+
+.domains-subnav .breadcrumb,
+.domains-subnav .breadcrumb a,
+.domains-subnav .breadcrumb-item,
+.domains-subnav nav {
+  color: var(--domains-muted) !important;
+  font-size: 0.94rem;
+  font-weight: 650;
+}
+
+.domains-hero-search form,
+.domains-search-block form,
+.fw-helpcenter form,
+.fw-searchbar-wrapper form {
+  align-items: center;
+  background: var(--domains-white);
+  border: 1px solid rgba(219, 222, 248, 0.92);
+  border-radius: 999px;
+  box-shadow: var(--domains-shadow-sm);
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+}
+
+.domains-hero-search input,
+.domains-search-block input,
+.fw-helpcenter input,
+.fw-searchbar-wrapper input,
+input[type="search"] {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--domains-indigo-12) !important;
+  min-height: 48px;
+  padding: 0.8rem 1rem !important;
+}
+
+.domains-hero-search input::placeholder,
+.domains-search-block input::placeholder,
+.fw-helpcenter input::placeholder,
+.fw-searchbar-wrapper input::placeholder {
+  color: rgba(12, 11, 96, 0.56);
+}
+
+.domains-hero-search button,
+.domains-search-block button,
+.fw-helpcenter button,
+.fw-searchbar-wrapper button,
+.domains-hero-search .btn,
+.domains-search-block .btn,
+.fw-helpcenter .btn,
+.fw-searchbar-wrapper .btn {
+  background: var(--domains-indigo-8) !important;
+  border-color: var(--domains-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--domains-white) !important;
+  flex: 0 0 auto;
+  min-width: 48px;
+}
+
+/* Home hero */
+.domains-home-hero,
+.domains-page-hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(122, 130, 227, 0.42), transparent 23rem),
+    radial-gradient(circle at 14% 85%, rgba(235, 237, 252, 0.16), transparent 18rem),
+    linear-gradient(135deg, var(--domains-indigo-12) 0%, #17156f 52%, var(--domains-indigo-8) 145%);
+  color: var(--domains-white);
+  overflow: hidden;
+  position: relative;
+}
+
+.domains-home-hero::after,
+.domains-page-hero::after {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.20) 1px, transparent 1px);
+  background-size: 18px 18px;
+  content: "";
+  inset: 0;
+  opacity: 0.28;
+  pointer-events: none;
+  position: absolute;
+}
+
+.domains-home-hero > .container,
+.domains-page-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.domains-hero-inner,
+.domains-page-title-inner {
+  padding-bottom: clamp(64px, 8vw, 104px);
+  padding-top: clamp(66px, 9vw, 118px);
+}
+
+.domains-home-hero h1,
+.domains-page-hero h1,
+.domains-page-hero .fw-page-title {
+  color: var(--domains-white) !important;
+  font-family: var(--domains-heading-font);
+  font-size: clamp(3rem, 7.5vw, 6.25rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+  margin-bottom: 24px;
+  max-width: 950px;
+}
+
+.domains-home-eyebrow,
+.domains-page-eyebrow {
+  color: var(--domains-indigo-3);
+}
+
+.domains-home-lede,
+.domains-page-lede,
+.domains-home-hero p,
+.domains-page-hero p {
+  color: rgba(255, 255, 255, 0.84) !important;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  max-width: 760px;
+}
+
+.domains-hero-search {
+  margin-top: 30px;
+  max-width: 650px;
+}
+
+.domains-hero-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(235, 237, 252, 0.82);
+  border-radius: var(--domains-radius-lg);
+  box-shadow: var(--domains-shadow-lg);
+  color: var(--domains-indigo-12);
+  padding: clamp(24px, 3vw, 34px);
+}
+
+.domains-hero-card h2,
+.domains-hero-card h3 {
+  color: var(--domains-indigo-12) !important;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+}
+
+.domains-hero-card p,
+.domains-hero-card li {
+  color: var(--domains-muted) !important;
+}
+
+.domains-stat-badge {
+  background: var(--domains-indigo-3);
+  border: 1px solid rgba(122, 130, 227, 0.24);
+  border-radius: 999px;
+  color: var(--domains-indigo-12);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.48rem 0.75rem;
+  text-transform: uppercase;
+}
+
+.domains-hero-list,
+.domains-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.domains-hero-list li,
+.domains-check-list li {
+  margin-bottom: 12px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.domains-hero-list li::before,
+.domains-check-list li::before {
+  background: var(--domains-indigo-8);
+  border-radius: 999px;
+  box-shadow: 0 0 0 5px rgba(122, 130, 227, 0.14);
+  content: "";
+  height: 8px;
+  left: 4px;
+  position: absolute;
+  top: 0.72em;
+  width: 8px;
+}
+
+/* Card sections */
+.domains-home-section,
+.domains-content-section,
+.domains-list-section,
+.domains-ticket-section,
+.domains-knowledge-section,
+.domains-article-section {
+  padding-bottom: clamp(56px, 7vw, 86px) !important;
+  padding-top: clamp(48px, 6vw, 76px) !important;
+}
+
+.domains-home-quick-links {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(219, 222, 248, 0.9);
+  border-radius: var(--domains-radius-xl);
+  box-shadow: var(--domains-shadow-md);
+  margin-top: -54px;
+  padding: clamp(24px, 4vw, 42px);
+  position: relative;
+  z-index: 2;
+}
+
+.domains-section-heading h2,
+.domains-section-heading h3 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  margin-bottom: 8px;
+}
+
+.domains-section-heading a {
+  color: var(--domains-indigo-12);
+  font-weight: 800;
+}
+
+.domains-card-grid .card,
+.domains-home-card,
+.fw-kbase-card,
+.domains-articles-list .fw-article-info,
+.domains-aside-card,
+.domains-sidebar-panel,
+.domains-footer-contact-card,
+.domains-footer-links-card {
+  background: var(--domains-white) !important;
+  border: 1px solid rgba(219, 222, 248, 0.92) !important;
+  border-radius: var(--domains-radius-md) !important;
+  box-shadow: var(--domains-shadow-sm);
+  color: var(--domains-indigo-12) !important;
+  overflow: hidden;
+  text-decoration: none !important;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.domains-card-grid .card:hover,
+.domains-card-grid .card:focus,
+.domains-home-card:hover,
+.domains-home-card:focus,
+.fw-kbase-card:hover,
+.fw-kbase-card:focus,
+.domains-articles-list .fw-article-info:hover,
+.domains-articles-list .fw-article-info:focus {
+  border-color: rgba(122, 130, 227, 0.72) !important;
+  box-shadow: var(--domains-shadow-md);
+  transform: translateY(-2px);
+}
+
+.domains-home-card .card-body,
+.fw-kbase-card .card-body,
+.domains-card-grid .card .card-body {
+  padding: 22px !important;
+}
+
+.domains-home-card .card-title,
+.fw-kbase-card .card-title,
+.domains-card-grid .card-title {
+  color: var(--domains-indigo-12) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.16;
+  margin-bottom: 8px;
+}
+
+.domains-home-card p,
+.fw-kbase-card p,
+.domains-card-grid p {
+  color: var(--domains-muted) !important;
+}
+
+.fw-category-icon,
+.fw-icon-holder,
+.domains-icon-bubble {
+  align-items: center;
+  background: var(--domains-indigo-3) !important;
+  border-radius: 20px;
+  color: var(--domains-indigo-12) !important;
+  display: inline-flex;
+  height: 54px;
+  justify-content: center;
+  width: 54px;
+}
+
+.domains-icon-bubble {
+  background: var(--domains-indigo-8) !important;
+  color: var(--domains-white) !important;
+  font-weight: 900;
+}
+
+.domains-knowledge-section {
+  background: transparent !important;
+}
+
+.domains-article-section,
+.bg-light.domains-article-section {
+  background: var(--domains-indigo-3) !important;
+}
+
+.domains-articles-list {
+  background: transparent !important;
+}
+
+.domains-articles-list .fw-article-info {
+  margin-bottom: 16px;
+  padding: 18px !important;
+}
+
+/* Page content cards */
+.domains-form-card,
+.domains-list-card,
+.domains-ticket-view-card,
+.fw-wrapper-shadow.domains-form-card,
+.fw-wrapper-shadow.domains-list-card,
+.fw-wrapper-shadow.domains-ticket-view-card {
+  background: var(--domains-white) !important;
+  border: 1px solid rgba(219, 222, 248, 0.9);
+  border-radius: var(--domains-radius-xl) !important;
+  box-shadow: var(--domains-shadow-md) !important;
+  overflow: hidden;
+}
+
+.domains-form-card .fw-content-wrapper,
+.domains-list-card .fw-content-wrapper,
+.domains-ticket-view-card .fw-content-wrapper,
+.domains-ticket-thread {
+  background: var(--domains-white) !important;
+  padding: clamp(22px, 3vw, 40px) !important;
+}
+
+.domains-list-toolbar,
+#ticket-toolbar {
+  background: var(--domains-indigo-1) !important;
+  border-left: 1px solid rgba(219, 222, 248, 0.95);
+  padding: clamp(20px, 3vw, 30px) !important;
+}
+
+.domains-aside-card,
+.domains-sidebar-panel {
+  padding: 22px;
+}
+
+.domains-aside-card h2,
+.domains-sidebar-panel h2 {
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+}
+
+/* Freshdesk forms */
+.fw-new-ticket label,
+.fw-new-ticket .control-label,
+.fw-new-ticket .form-label,
+.form-group label,
+.form-field label {
+  color: var(--domains-indigo-12) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.012em;
+  margin-bottom: 8px;
+}
+
+.form-control,
+.fw-new-ticket input[type="text"],
+.fw-new-ticket input[type="email"],
+.fw-new-ticket input[type="number"],
+.fw-new-ticket input[type="tel"],
+.fw-new-ticket input[type="url"],
+.fw-new-ticket input[type="date"],
+.fw-new-ticket input[type="datetime-local"],
+.fw-new-ticket select,
+.fw-new-ticket textarea,
+input.form-control,
+select.form-control,
+textarea.form-control {
+  background: var(--domains-white) !important;
+  border: 1px solid var(--domains-border) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  color: var(--domains-indigo-12) !important;
+  min-height: 48px;
+  padding: 0.78rem 0.9rem !important;
+}
+
+.fw-new-ticket textarea,
+textarea.form-control {
+  min-height: 140px;
+}
+
+.form-control:focus,
+.fw-new-ticket input:focus,
+.fw-new-ticket select:focus,
+.fw-new-ticket textarea:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--domains-indigo-8) !important;
+  box-shadow: 0 0 0 4px var(--domains-focus) !important;
+  outline: 0 !important;
+}
+
+.fw-new-ticket .help-block,
+.fw-new-ticket .hint,
+.fw-new-ticket .text-muted,
+.fw-new-ticket small,
+.form-text {
+  color: var(--domains-soft-text) !important;
+}
+
+.fw-new-ticket .required,
+.fw-new-ticket abbr[title="required"],
+.required {
+  color: var(--domains-indigo-8) !important;
+}
+
+/* Ticket list */
+#ticket-list .table,
+#ticket-list table,
+.tickets-list-wrapper table {
+  background: var(--domains-white) !important;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  color: var(--domains-indigo-12);
+}
+
+#ticket-list th,
+.tickets-list-wrapper th {
+  border: 0 !important;
+  color: var(--domains-soft-text) !important;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#ticket-list td,
+.tickets-list-wrapper td {
+  background: var(--domains-indigo-1) !important;
+  border-bottom: 1px solid rgba(219, 222, 248, 0.72) !important;
+  border-top: 1px solid rgba(219, 222, 248, 0.72) !important;
+  color: var(--domains-indigo-12) !important;
+  padding: 16px !important;
+  vertical-align: middle;
+}
+
+#ticket-list tr td:first-child {
+  border-left: 1px solid rgba(219, 222, 248, 0.72) !important;
+  border-radius: 18px 0 0 18px;
+}
+
+#ticket-list tr td:last-child {
+  border-radius: 0 18px 18px 0;
+  border-right: 1px solid rgba(219, 222, 248, 0.72) !important;
+}
+
+#ticket-list a {
+  color: var(--domains-indigo-12) !important;
+  font-weight: 800;
+}
+
+.ticket-list-container .pagination,
+.pagination {
+  gap: 8px;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.pagination a,
+.pagination span,
+.page-link {
+  border-color: var(--domains-border) !important;
+  border-radius: 999px !important;
+  color: var(--domains-indigo-12) !important;
+}
+
+.pagination .active a,
+.pagination .active span,
+.page-item.active .page-link {
+  background: var(--domains-indigo-8) !important;
+  border-color: var(--domains-indigo-8) !important;
+  color: var(--domains-white) !important;
+}
+
+/* Ticket view */
+.domains-ticket-meta-card {
+  background: var(--domains-indigo-1);
+  border: 1px solid rgba(219, 222, 248, 0.92);
+  border-radius: var(--domains-radius-md);
+  padding: 18px;
+}
+
+.fw-comments-wrapper {
+  color: var(--domains-indigo-12);
+}
+
+.fw-closed-info,
+.fw-satisfaction-rating > div > * {
+  border-color: var(--domains-border) !important;
+  border-radius: var(--domains-radius-md) !important;
+}
+
+.comment-container,
+.bg-grey.comment-container,
+.fw-comment-item .comment-container {
+  background: var(--domains-indigo-1) !important;
+  border: 1px solid rgba(219, 222, 248, 0.86);
+  border-radius: var(--domains-radius-md) !important;
+  color: var(--domains-indigo-12);
+}
+
+.comment-container .author-info,
+.comment-container .author-info span,
+.fw-comments-meta,
+.fw-comments-meta label {
+  color: var(--domains-soft-text) !important;
+}
+
+.comment-scroll,
+.comment-scroll p,
+.ticket-description,
+.ticket-description p {
+  color: var(--domains-ink);
+}
+
+.fw-comment-editor {
+  flex: 1 1 auto;
+}
+
+.fw-ticket-reply-editor {
+  background: var(--domains-white) !important;
+  border: 1px solid var(--domains-border) !important;
+  border-radius: 999px !important;
+  min-height: 52px;
+}
+
+/* Footer */
+.domains-site-footer {
+  background: var(--domains-indigo-12) !important;
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 0;
+}
+
+.domains-footer-main {
+  background:
+    radial-gradient(circle at 83% 22%, rgba(122, 130, 227, 0.34), transparent 22rem),
+    linear-gradient(180deg, var(--domains-indigo-12) 0%, #09084f 100%);
+  padding: clamp(48px, 7vw, 82px) 0 34px;
+}
+
+.domains-footer-title {
+  color: var(--domains-white) !important;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  max-width: 720px;
+}
+
+.domains-site-footer p,
+.domains-site-footer li,
+.domains-site-footer span,
+.domains-site-footer .fw-contacts,
+.domains-site-footer .fw-laws {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.domains-site-footer h3,
+.domains-site-footer .domains-eyebrow {
+  color: var(--domains-white) !important;
+}
+
+.domains-site-footer a {
+  color: var(--domains-white) !important;
+  text-decoration-color: rgba(235, 237, 252, 0.52);
+}
+
+.domains-site-footer a:hover,
+.domains-site-footer a:focus {
+  color: var(--domains-indigo-3) !important;
+  text-decoration-color: currentColor;
+}
+
+.domains-footer-wordmark {
+  color: var(--domains-white) !important;
+  font-family: var(--domains-heading-font);
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.domains-footer-wordmark .domains-wordmark-slash,
+.domains-footer-wordmark .domains-wordmark-domains {
+  color: var(--domains-indigo-8);
+}
+
+.domains-footer-contact-card,
+.domains-footer-links-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(235, 237, 252, 0.16) !important;
+  box-shadow: none;
+  padding: 22px;
+}
+
+.domains-footer-bottom,
+.fw-credit.domains-footer-bottom {
+  background: var(--domains-indigo-12) !important;
+  border-top: 1px solid rgba(235, 237, 252, 0.16);
+  padding: 18px 0 28px !important;
+}
+
+.fw-contact-info,
+.fw-credit {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+.fw-credit .fw-laws,
+.domains-footer-laws {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+/* Modals, alerts and helper components */
+.modal-content,
+.modal-dialog .modal-content {
+  border: 1px solid var(--domains-border);
+  border-radius: var(--domains-radius-lg);
+  box-shadow: var(--domains-shadow-md);
+}
+
+.alert,
+.page-message,
+.fw-page-message {
+  border: 1px solid rgba(219, 222, 248, 0.9);
+  border-radius: var(--domains-radius-md);
+}
+
+.badge,
+.label,
+.ticket-status,
+.fw-status {
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+}
+
+.pr-conversation-popper-button {
+  border: 1px solid rgba(219, 222, 248, 0.9) !important;
+  box-shadow: var(--domains-shadow-md) !important;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 3px solid var(--domains-indigo-8) !important;
+  outline-offset: 3px;
+}
+
+.visually-hidden-focusable:focus {
+  background: var(--domains-white) !important;
+  color: var(--domains-indigo-12) !important;
+  z-index: 10000;
+}
+
+@media (max-width: 1199px) {
+  .domains-site-header .navbar-collapse {
+    background: var(--domains-white);
+    border: 1px solid var(--domains-border);
+    border-radius: var(--domains-radius-lg);
+    box-shadow: var(--domains-shadow-md);
+    margin-top: 14px;
+    padding: 18px;
+  }
+
+  .domains-site-header .navbar-nav {
+    align-items: stretch !important;
+    gap: 8px;
+  }
+
+  .domains-brand-lockup img,
+  .domains-wordmark {
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 991px) {
+  .domains-list-toolbar,
+  #ticket-toolbar {
+    border-left: 0;
+    border-top: 1px solid rgba(219, 222, 248, 0.9);
+  }
+
+  .domains-hero-card {
+    margin-top: 24px;
+  }
+
+  .domains-home-quick-links {
+    margin-top: -34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .domains-brand-kicker {
+    display: none;
+  }
+
+  .domains-brand-lockup img,
+  .domains-wordmark {
+    min-width: 128px;
+    max-width: 176px;
+  }
+
+  .domains-page-hero h1,
+  .domains-home-hero h1,
+  .domains-page-hero .fw-page-title {
+    font-size: clamp(2.35rem, 13vw, 3.4rem);
+  }
+
+  .domains-hero-search form,
+  .domains-search-block form,
+  .fw-helpcenter form,
+  .fw-searchbar-wrapper form {
+    border-radius: 24px;
+    display: block;
+    padding: 8px;
+  }
+
+  .domains-hero-search button,
+  .domains-search-block button,
+  .fw-helpcenter button,
+  .fw-searchbar-wrapper button,
+  .domains-hero-search .btn,
+  .domains-search-block .btn,
+  .fw-helpcenter .btn,
+  .fw-searchbar-wrapper .btn {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .domains-form-card .fw-content-wrapper,
+  .domains-list-card .fw-content-wrapper,
+  .domains-ticket-view-card .fw-content-wrapper {
+    padding: 18px !important;
+  }
+
+  .domains-home-quick-links,
+  .domains-form-card,
+  .domains-list-card,
+  .domains-ticket-view-card {
+    border-radius: 28px !important;
+  }
+}
