@@ -1078,3 +1078,90 @@ section#featured.grid.bg_color_5 {
 
 /* Accessibility: ticket-list filter label contrast. Scoped to Freshdesk generated filter labels only. */
 #fw-advanced-filters .form-label{color:#0C0B60!important}
+
+/* -- WAVE: portal-home search autocomplete contrast -----------------
+   Freshdesk's generated search controls inherit #00aac4 backgrounds
+   with white text in several portal-home search dropdown buttons.
+   That combination is 2.78:1. Use the accessible OpenSRS teal already
+   used elsewhere in this theme for these generated controls only.
+   No spacing, sizing, layout, or typography changes. */
+div.fw-search {
+  --search_button_bgcolor: #00768f;
+  --search_button_hover_bgcolor: #005f73;
+}
+
+/* Search submit button: visible text is injected with ::after in the
+   desktop hero/header search controls, so both button and pseudo-text
+   need the accessible color pairing. */
+div.fw-search #btnSearch,
+header.header .menu_area > form #btnSearch,
+.search_container #btnSearch {
+  background-color: #00768f !important;
+  border-color: #00768f !important;
+  color: #ffffff !important;
+}
+div.fw-search #btnSearch::after,
+div.fw-search #btnSearch .icon-search::before {
+  color: #ffffff !important;
+}
+div.fw-search #btnSearch:hover,
+div.fw-search #btnSearch:focus,
+div.fw-search #btnSearch:focus-visible,
+header.header .menu_area > form #btnSearch:hover,
+header.header .menu_area > form #btnSearch:focus,
+header.header .menu_area > form #btnSearch:focus-visible,
+.search_container #btnSearch:hover,
+.search_container #btnSearch:focus,
+.search_container #btnSearch:focus-visible {
+  background-color: #005f73 !important;
+  border-color: #005f73 !important;
+  color: #ffffff !important;
+}
+
+/* Autocomplete tab buttons: All/Articles/Topics/Tickets/Featured.
+   The active tab keeps Freshdesk's existing active-state styling; only
+   inactive tabs are darkened enough to meet contrast requirements. */
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab),
+section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab),
+.search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab) {
+  background-color: #00768f !important;
+  border-color: #00768f !important;
+  color: #ffffff !important;
+}
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab)::after,
+section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab)::after,
+.search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab)::after {
+  color: #ffffff !important;
+}
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):hover,
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus,
+.fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus-visible,
+section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):hover,
+section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus,
+section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus-visible,
+.search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):hover,
+.search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus,
+.search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):focus-visible {
+  background-color: #005f73 !important;
+  border-color: #005f73 !important;
+  color: #ffffff !important;
+}
+
+/* Recent-search action button. It is generated inside the autocomplete
+   dropdown and inherits the same low-contrast teal. Keep the existing
+   button shape/spacing and only darken the color pair. */
+.fw-search .fw-clear-all,
+.fw-search .fw-clear-all:visited {
+  background-color: #00768f !important;
+  border-color: #00768f !important;
+  color: #ffffff !important;
+}
+.fw-search .fw-clear-all:hover,
+.fw-search .fw-clear-all:focus,
+.fw-search .fw-clear-all:focus-visible {
+  background-color: #005f73 !important;
+  border-color: #005f73 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
