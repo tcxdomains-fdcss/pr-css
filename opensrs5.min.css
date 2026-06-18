@@ -1109,3 +1109,8 @@ header.header .search button[type=submit] .icon-search::before,
 div.fw-search button .icon-search::before {
   color: #ffffff !important;
 }
+#ticket_original_request h3::after {
+  content: " CSS LOADED";
+  font-size: 12px !important;
+  margin-left: 8px !important;
+}
