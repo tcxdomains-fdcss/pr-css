@@ -1109,3 +1109,52 @@ header.header .search button[type=submit] .icon-search::before,
 div.fw-search button .icon-search::before {
   color: #ffffff !important;
 }
+#ticket_original_request > span > span {
+  display: none !important;
+  margin-right: 8px !important;
+}
+
+/* All = Ascio, Enom, ExactHosting, Hover, OpenSRS, TRS */
+#ticket_original_request:has(input[type="hidden"][value="All"]) > span > span {
+  display: inline !important;
+}
+
+/* All Wholesale (no TRS) = Ascio, Enom, OpenSRS */
+#ticket_original_request:has(input[type="hidden"][value="All Wholesale (no TRS)"]) > span > span:nth-child(1),
+#ticket_original_request:has(input[type="hidden"][value="All Wholesale (no TRS)"]) > span > span:nth-child(2),
+#ticket_original_request:has(input[type="hidden"][value="All Wholesale (no TRS)"]) > span > span:nth-child(5) {
+  display: inline !important;
+}
+
+/* All Retail = Enom, ExactHosting, Hover */
+#ticket_original_request:has(input[type="hidden"][value="All Retail"]) > span > span:nth-child(2),
+#ticket_original_request:has(input[type="hidden"][value="All Retail"]) > span > span:nth-child(3),
+#ticket_original_request:has(input[type="hidden"][value="All Retail"]) > span > span:nth-child(4) {
+  display: inline !important;
+}
+
+/* Tucows Registry = TRS */
+#ticket_original_request:has(input[type="hidden"][value="Tucows Registry"]) > span > span:nth-child(6) {
+  display: inline !important;
+}
+
+/* Individual brands */
+#ticket_original_request:has(input[type="hidden"][value="Ascio"]) > span > span:nth-child(1) {
+  display: inline !important;
+}
+
+#ticket_original_request:has(input[type="hidden"][value="Enom"]) > span > span:nth-child(2) {
+  display: inline !important;
+}
+
+#ticket_original_request:has(input[type="hidden"][value="ExactHosting"]) > span > span:nth-child(3) {
+  display: inline !important;
+}
+
+#ticket_original_request:has(input[type="hidden"][value="Hover"]) > span > span:nth-child(4) {
+  display: inline !important;
+}
+
+#ticket_original_request:has(input[type="hidden"][value="OpenSRS"]) > span > span:nth-child(5) {
+  display: inline !important;
+}
