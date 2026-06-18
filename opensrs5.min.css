@@ -1165,3 +1165,18 @@ section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):f
   text-decoration: none !important;
 }
 
+/* ── Sidebar suggestion / topic link contrast ───────────────────
+   Scope only to New Topic and Submit Ticket sidebars/results.
+   No layout, spacing, sizing, typography, or behaviour changes. */
+
+#fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic,
+#fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:hover,
+#fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:focus,
+#fw-main-content .fd-hero-aligned .fw-suggestions-results a,
+#fw-main-content .fd-hero-aligned .fw-suggestions-results a:hover,
+#fw-main-content .fd-hero-aligned .fw-suggestions-results a:focus,
+#fw-main-content .ticket_list_container .suggestions-results a,
+#fw-main-content .ticket_list_container .suggestions-results a:hover,
+#fw-main-content .ticket_list_container .suggestions-results a:focus {
+  color: #0060e6 !important;
+}
