@@ -1,5 +1,5 @@
 /*
-  Tucows Domains - Maintenance Portal site-style theme, header fix
+  Tucows Domains - Maintenance Portal site-style theme, nav cleanup
   Upload this CSS file to S3, GitHub Pages, GitHub raw through a CDN, or another public HTTPS host,
   then update the domains_brand_css_url value in maint_head.html.
 
@@ -1937,5 +1937,254 @@ main[role="main"] {
   .domains-site-header .logoContainer img.logo,
   .domains-site-header img.logo {
     max-width: min(214px, 70vw) !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Header cleanup, v3
+   Removes the portal/site navigation links from the header and hides the
+   Freshdesk fw-signup control while preserving the Tucows brand bar, logo,
+   Submit a Maintenance CTA, and Login/account navigation.
+   -------------------------------------------------------------------------- */
+
+html.domains-nav-clean-v1 body,
+body.domains-maintenance-theme {
+  padding-top: 0 !important;
+}
+
+.domains-site-header .domains-navbar--minimal,
+.domains-site-header .navbar.domains-navbar--minimal,
+.domains-site-header .domains-navbar--minimal.headerMain {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(18px, 3vw, 42px) !important;
+  justify-content: space-between !important;
+  min-height: clamp(86px, 8vw, 104px) !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-header-actions {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  gap: clamp(14px, 2vw, 26px) !important;
+  justify-content: flex-end !important;
+  margin-left: auto !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-navbar--minimal .domains-menu-container,
+.domains-site-header .domains-navbar--minimal .menuContainer,
+.domains-site-header .domains-navbar--minimal .navbar-collapse,
+.domains-site-header .domains-navbar--minimal .domains-nav-list,
+.domains-site-header .domains-navbar--minimal .domains-primary-menu,
+.domains-site-header .domains-navbar--minimal .topNav,
+.domains-site-header .domains-navbar--minimal .domains-top-nav,
+.domains-site-header .domains-navbar--minimal .domains-portal-nav,
+.domains-site-header .domains-navbar--minimal .nav-overlay,
+.domains-site-header .domains-navbar--minimal .navbar-toggler,
+.domains-site-header .domains-navbar--minimal .hamburgerContainer,
+.domains-site-header .domains-navbar--minimal .iconBtn {
+  display: none !important;
+}
+
+.domains-site-header .domains-header-actions .domains-nav-submit,
+.domains-site-header .domains-header-actions .domains-header-submit {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  font-size: clamp(0.86rem, 0.8vw, 0.96rem) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  padding: 0.78rem 1.12rem !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-actions .domains-nav-submit:hover,
+.domains-site-header .domains-header-actions .domains-nav-submit:focus,
+.domains-site-header .domains-header-actions .domains-header-submit:hover,
+.domains-site-header .domains-header-actions .domains-header-submit:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper {
+  align-items: center !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  width: auto !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav .fw-signup,
+.domains-site-header .domains-header-actions .domains-header-user-nav .fw-sign-up,
+.domains-site-header .domains-header-actions .domains-header-user-nav .freshid-signup,
+.domains-site-header .domains-header-actions .fw-signup,
+.domains-site-header .domains-header-actions .fw-sign-up,
+.domains-site-header .domains-header-actions .freshid-signup,
+.domains-site-header .domains-header-actions a[href*="signup"],
+.domains-site-header .domains-header-actions a[href*="sign_up"] {
+  display: none !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav a,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a,
+.domains-site-header .domains-header-actions .domains-header-user-nav button,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper button {
+  color: var(--td-indigo-12) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.86rem, 0.8vw, 0.96rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  padding: 9px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav a:hover,
+.domains-site-header .domains-header-actions .domains-header-user-nav a:focus,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a:hover,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a:focus {
+  color: var(--td-indigo-8) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Submit-ticket hero extension
+   The blue area now begins at the divider above the Home breadcrumb and extends
+   by a matching amount below the page hero before the white form area starts.
+   -------------------------------------------------------------------------- */
+
+.domains-submit-hero-zone {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(122, 130, 227, 0.34), transparent 23rem),
+    linear-gradient(135deg, var(--td-indigo-12) 0%, #111066 72%, #1a1876 100%) !important;
+  color: var(--td-white) !important;
+  overflow: hidden !important;
+  padding-bottom: clamp(42px, 5.5vw, 76px) !important;
+  position: relative !important;
+}
+
+.domains-submit-hero-zone::before {
+  background: var(--td-indigo-8);
+  border-radius: 56px;
+  content: "";
+  height: 360px;
+  opacity: 0.12;
+  position: absolute;
+  right: -160px;
+  top: -70px;
+  transform: rotate(-19deg);
+  width: 540px;
+}
+
+.domains-submit-hero-zone .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.domains-submit-hero-zone .domains-subnav,
+.domains-submit-hero-zone .fw-searchbar-wrapper.domains-subnav,
+.domains-submit-hero-zone .fw-sticky.fw-searchbar-wrapper {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(235, 237, 252, 0.24) !important;
+  box-shadow: none !important;
+  color: var(--td-white) !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 2 !important;
+}
+
+.domains-submit-hero-zone .domains-subnav .row,
+.domains-submit-hero-zone .fw-searchbar-wrapper .row {
+  min-height: clamp(58px, 5vw, 72px) !important;
+}
+
+.domains-submit-hero-zone .domains-subnav a,
+.domains-submit-hero-zone .domains-subnav nav,
+.domains-submit-hero-zone .domains-subnav ol,
+.domains-submit-hero-zone .domains-subnav li,
+.domains-submit-hero-zone .domains-subnav .breadcrumb,
+.domains-submit-hero-zone .domains-subnav .fw-breadcrumb,
+.domains-submit-hero-zone .domains-subnav .breadcrumb-item,
+.domains-submit-hero-zone .domains-subnav .breadcrumb-item::before {
+  color: rgba(249, 250, 254, 0.88) !important;
+}
+
+.domains-submit-hero-zone .domains-subnav a:hover,
+.domains-submit-hero-zone .domains-subnav a:focus {
+  color: var(--td-white) !important;
+}
+
+.domains-submit-hero-zone .domains-search-block form,
+.domains-submit-hero-zone .fw-searchbar-wrapper form,
+.domains-submit-hero-zone .fw-searchbar-wrapper .input-group {
+  background: rgba(249, 250, 254, 0.98) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero,
+.domains-submit-hero-zone .domains-page-hero--new-ticket,
+.domains-submit-hero-zone .domains-page-hero--extended {
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero::after {
+  color: rgba(249, 250, 254, 0.10) !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero .content,
+.domains-submit-hero-zone .domains-page-content {
+  padding-bottom: clamp(18px, 3vw, 40px) !important;
+  padding-top: clamp(44px, 6vw, 82px) !important;
+}
+
+.domains-submit-hero-zone + .domains-content-section,
+.domains-submit-hero-zone + .domains-ticket-new-section {
+  padding-top: clamp(44px, 6vw, 82px) !important;
+}
+
+@media (max-width: 760px) {
+  .domains-site-header .domains-navbar--minimal,
+  .domains-site-header .navbar.domains-navbar--minimal {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    padding-bottom: 18px !important;
+    padding-top: 18px !important;
+  }
+
+  .domains-site-header .domains-header-actions {
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-header-actions .domains-header-submit {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+
+  .domains-submit-hero-zone {
+    padding-bottom: 42px !important;
+  }
+
+  .domains-submit-hero-zone .domains-search-block {
+    margin-top: 10px !important;
   }
 }
