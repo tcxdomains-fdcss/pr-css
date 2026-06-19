@@ -1,5 +1,5 @@
 /*
-  Tucows Domains - Maintenance Portal site-style theme
+  Tucows Domains - Maintenance Portal site-style theme, header fix
   Upload this CSS file to S3, GitHub Pages, GitHub raw through a CDN, or another public HTTPS host,
   then update the domains_brand_css_url value in maint_head.html.
 
@@ -1502,5 +1502,440 @@ small {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Header correction, v2
+   Fixes the top-area issue where the desktop nav wrapped into the hero and
+   a mobile menu title rendered beside the logo. This also matches the shared
+   tucowsdomains.com header more closely: non-fixed white header, compact
+   parent-company eyebrow bar, logo-only lockup, and one-line desktop nav.
+   -------------------------------------------------------------------------- */
+
+html.domains-maintenance-theme body,
+body.domains-maintenance-theme {
+  padding-top: 0 !important;
+}
+
+.domains-site-header,
+.domains-site-header.fixed-top,
+.fw-nav-wrapper.domains-site-header,
+.fw-nav-wrapper.fixed-top.domains-site-header {
+  background: var(--td-white) !important;
+  border-bottom: 1px solid var(--td-indigo-3) !important;
+  box-shadow: none !important;
+  left: auto !important;
+  position: relative !important;
+  right: auto !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  z-index: 10 !important;
+}
+
+#fw-main-content,
+.fw-main-content,
+.fw-main-wrapper,
+main[role="main"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.domains-site-header .container,
+.domains-subnav .container,
+.fw-searchbar-wrapper .container,
+.heroBanner .container,
+.domains-home-hero .container,
+.domains-page-hero .container,
+.domains-content-section .container,
+.domains-list-section .container,
+.domains-ticket-section .container,
+.domains-footer-main .container {
+  max-width: min(1288px, calc(100vw - 48px));
+}
+
+.domains-site-header .domains-skipbar,
+.domains-site-header .domains-skipbar.container-fluid {
+  background: transparent !important;
+  border: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-eyebrow-menu,
+.domains-site-header .eyebrow_menu.domains-eyebrow-menu {
+  background: var(--td-indigo-1) !important;
+  border-bottom: 1px solid var(--td-indigo-3) !important;
+}
+
+.domains-site-header .domains-eyebrow-inner,
+.domains-site-header .eyebrow_menu .container {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  min-height: 50px !important;
+}
+
+.domains-site-header .domains-eyebrow-inner p,
+.domains-site-header .eyebrow_menu p {
+  color: var(--td-muted) !important;
+  flex: 0 0 auto !important;
+  font-size: 0.86rem !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav,
+.domains-site-header .brandNav {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav ul,
+.domains-site-header .brandNav ul {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav a,
+.domains-site-header .brandNav a {
+  color: var(--td-indigo-12) !important;
+  font-size: 0.86rem !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .domains-navbar,
+.domains-site-header .navbar.domains-navbar,
+.domains-site-header .headerMain {
+  align-items: center !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  min-height: 104px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.domains-site-header .domains-logo-container,
+.domains-site-header .logoContainer {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  min-height: 58px !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-logo-link,
+.domains-site-header .logoContainer a {
+  align-items: center !important;
+  display: inline-flex !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .domains-logo,
+.domains-site-header .logoContainer img.logo,
+.domains-site-header img.logo {
+  display: block !important;
+  height: auto !important;
+  max-height: 43px !important;
+  max-width: clamp(188px, 18vw, 236px) !important;
+  width: auto !important;
+}
+
+.domains-site-header .domains-portal-label,
+.domains-site-header .domains-mobile-nav-header,
+.domains-site-header .mobileNavHeader,
+.domains-site-header .domains-mobile-title {
+  display: none !important;
+}
+
+.domains-site-header .domains-menu-container,
+.domains-site-header .menuContainer,
+.domains-site-header .navbar-collapse {
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  justify-content: flex-end !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-nav-list,
+.domains-site-header .navbar-nav.domains-nav-list,
+.domains-site-header .topNav > ul {
+  align-items: center !important;
+  background: transparent !important;
+  display: flex !important;
+  flex: 0 1 auto !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(10px, 1.05vw, 18px) !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-nav-list .nav-item,
+.domains-site-header .domains-nav-list li {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-nav-list .nav-link,
+.domains-site-header .topNav a,
+.domains-site-header .nav-link {
+  color: var(--td-indigo-12) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.95rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  padding: 10px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-nav-submit,
+.domains-site-header .domains-nav-cta,
+.domains-site-header .domains-cta-item > a {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.94rem) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  padding: 0.72rem 1rem !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-nav-submit::after,
+.domains-site-header .domains-nav-cta::after,
+.domains-site-header .domains-cta-item > a::after {
+  display: none !important;
+}
+
+.domains-site-header .domains-nav-submit:hover,
+.domains-site-header .domains-nav-submit:focus,
+.domains-site-header .domains-nav-cta:hover,
+.domains-site-header .domains-nav-cta:focus,
+.domains-site-header .domains-cta-item > a:hover,
+.domains-site-header .domains-cta-item > a:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-site-header .domains-header-user-nav,
+.domains-site-header .fw-nav-dropdown-wrapper {
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  gap: 12px !important;
+  margin: 0 0 0 clamp(12px, 1.5vw, 22px) !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-header-user-nav .nav-item,
+.domains-site-header .domains-header-user-nav li {
+  align-items: center !important;
+  display: flex !important;
+  margin: 0 !important;
+}
+
+.domains-site-header .domains-header-user-nav a,
+.domains-site-header .fw-nav-dropdown-wrapper a,
+.domains-site-header .domains-header-user-nav button,
+.domains-site-header .fw-nav-dropdown-wrapper button {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--td-indigo-12) !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.94rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  padding: 10px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-user-nav a:hover,
+.domains-site-header .domains-header-user-nav a:focus,
+.domains-site-header .fw-nav-dropdown-wrapper a:hover,
+.domains-site-header .fw-nav-dropdown-wrapper a:focus {
+  color: var(--td-indigo-8) !important;
+}
+
+.domains-site-header .domains-header-user-nav a:empty,
+.domains-site-header .domains-header-user-nav button:empty,
+.domains-site-header .fw-nav-dropdown-wrapper a:empty,
+.domains-site-header .fw-nav-dropdown-wrapper button:empty {
+  display: none !important;
+}
+
+.domains-site-header .navbar-toggler,
+.domains-site-header .hamburgerContainer,
+.domains-site-header .iconBtn {
+  align-items: center !important;
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 999px !important;
+  color: var(--td-indigo-12) !important;
+  display: none !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  min-height: 46px !important;
+  min-width: 46px !important;
+}
+
+.domains-page-hero,
+.domains-home-hero,
+.heroBanner.homepage {
+  clear: both !important;
+}
+
+@media (max-width: 1320px) and (min-width: 1200px) {
+  .domains-site-header .domains-site-link.domains-optional-site-link {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .domains-site-header .domains-navbar,
+  .domains-site-header .navbar.domains-navbar,
+  .domains-site-header .headerMain {
+    min-height: 88px !important;
+  }
+
+  .domains-site-header .navbar-toggler,
+  .domains-site-header .hamburgerContainer,
+  .domains-site-header .iconBtn {
+    display: inline-flex !important;
+  }
+
+  .domains-site-header .domains-menu-container,
+  .domains-site-header .menuContainer,
+  .domains-site-header .navbar-collapse {
+    align-items: stretch !important;
+    background: var(--td-white) !important;
+    border: 1px solid var(--td-indigo-3) !important;
+    border-radius: 24px !important;
+    box-shadow: var(--td-shadow-card) !important;
+    display: none !important;
+    flex-basis: 100% !important;
+    flex-direction: column !important;
+    margin-top: 16px !important;
+    padding: 20px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .navbar-collapse.show,
+  .domains-site-header .menuContainer.show,
+  .domains-site-header .domains-menu-container.show {
+    display: flex !important;
+  }
+
+  .domains-site-header .domains-nav-list,
+  .domains-site-header .navbar-nav.domains-nav-list,
+  .domains-site-header .topNav > ul {
+    align-items: stretch !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-item,
+  .domains-site-header .domains-nav-list li {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link,
+  .domains-site-header .topNav a,
+  .domains-site-header .nav-link {
+    border-radius: 14px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link::after,
+  .domains-site-header .topNav a::after,
+  .domains-site-header .nav-link::after {
+    display: none !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link:hover,
+  .domains-site-header .domains-nav-list .nav-link:focus,
+  .domains-site-header .domains-nav-list .active > .nav-link {
+    background: var(--td-indigo-1) !important;
+    color: var(--td-indigo-12) !important;
+  }
+
+  .domains-site-header .domains-nav-submit,
+  .domains-site-header .domains-nav-cta,
+  .domains-site-header .domains-cta-item > a {
+    justify-content: center !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-header-user-nav,
+  .domains-site-header .fw-nav-dropdown-wrapper {
+    border-top: 1px solid var(--td-indigo-3) !important;
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+    margin: 16px 0 0 !important;
+    padding-top: 16px !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .domains-site-header .domains-eyebrow-inner,
+  .domains-site-header .eyebrow_menu .container {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    min-height: 0 !important;
+    padding-bottom: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .domains-site-header .domains-brand-nav ul,
+  .domains-site-header .brandNav ul {
+    gap: 8px 0 !important;
+  }
+
+  .domains-site-header .domains-logo,
+  .domains-site-header .logoContainer img.logo,
+  .domains-site-header img.logo {
+    max-width: min(214px, 70vw) !important;
   }
 }
