@@ -1,0 +1,2338 @@
+/*
+  Tucows Domains - Maintenance Portal site-style theme, hero refined
+  Upload this CSS file to S3, GitHub Pages, GitHub raw through a CDN, or another public HTTPS host,
+  then update the domains_brand_css_url value in maint_head.html.
+
+  Look-and-feel source: tucowsdomains.com homepage structure:
+  - white header with a parent-company eyebrow menu
+  - Indigo 8 (#7A82E3) homepage and page heroes with a search-first support flow
+  - clean white/light sections for secondary actions
+  - dark footer with Tucows Domains legal/support links
+
+  Brand quickguide tokens:
+  Indigo 8:  #7A82E3
+  Indigo 12: #0C0B60
+  Indigo 3:  #EBEDFC
+  Indigo 1:  #F9FAFE
+*/
+
+:root {
+  --td-indigo-12: #0C0B60;
+  --td-indigo-8: #7A82E3;
+  --td-indigo-3: #EBEDFC;
+  --td-indigo-1: #F9FAFE;
+  --td-white: #FFFFFF;
+  --td-black: #050518;
+  --td-ink: #0C0B60;
+  --td-body: #252345;
+  --td-muted: #686981;
+  --td-border: #E3E5F8;
+  --td-border-strong: #C8CDF7;
+  --td-shadow-soft: 0 12px 34px rgba(12, 11, 96, 0.08);
+  --td-shadow-card: 0 18px 54px rgba(12, 11, 96, 0.11);
+  --td-radius-xs: 6px;
+  --td-radius-sm: 12px;
+  --td-radius-md: 22px;
+  --td-radius-lg: 34px;
+  --td-container: 1180px;
+  --td-heading-font: "Sharp Sans Display No1", "Sharp Sans Display", "Sharp Sans", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --td-body-font: "Sharp Sans", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: var(--td-white);
+  color: var(--td-body);
+  font-family: var(--td-body-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+body a {
+  color: var(--td-indigo-12);
+  text-decoration-color: rgba(122, 130, 227, 0.48);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+body a:hover,
+body a:focus {
+  color: var(--td-indigo-8);
+}
+
+::selection {
+  background: var(--td-indigo-3);
+  color: var(--td-indigo-12);
+}
+
+.container {
+  max-width: var(--td-container);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.fw-page-title,
+.card-title,
+.domains-section-title {
+  color: var(--td-indigo-12);
+  font-family: var(--td-heading-font);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+
+p,
+li,
+label,
+input,
+textarea,
+select,
+button {
+  font-family: var(--td-body-font);
+}
+
+img {
+  max-width: 100%;
+}
+
+.domains-sr-only,
+.visually-hidden:not(:focus):not(:active) {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+
+/* Buttons and standalone links */
+.btn,
+.button,
+button,
+input[type="submit"],
+.fw-primary-button,
+.fw-secondary-button,
+.domains-primary-cta,
+.domains-secondary-cta {
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em;
+}
+
+.btn-primary,
+.button,
+.domains-primary-cta,
+.fw-primary-button,
+input[type="submit"],
+button[type="submit"] {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  color: var(--td-white) !important;
+  box-shadow: none !important;
+  padding: 0.78rem 1.35rem !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.button:hover,
+.button:focus,
+.domains-primary-cta:hover,
+.domains-primary-cta:focus,
+.fw-primary-button:hover,
+.fw-primary-button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-primary,
+.domains-secondary-cta,
+.fw-secondary-button {
+  background: transparent !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  color: var(--td-indigo-12) !important;
+  padding: 0.72rem 1.25rem !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.domains-secondary-cta:hover,
+.domains-secondary-cta:focus,
+.fw-secondary-button:hover,
+.fw-secondary-button:focus {
+  background: var(--td-indigo-3) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-indigo-12) !important;
+}
+
+.standAlone,
+.learn_more,
+.domains-link-arrow {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 800;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.standAlone::after,
+.learn_more::after,
+.domains-link-arrow::after {
+  content: "→";
+  font-weight: 900;
+  transform: translateY(-1px);
+  transition: transform 160ms ease;
+}
+
+.standAlone:hover::after,
+.learn_more:hover::after,
+.domains-link-arrow:hover::after {
+  transform: translate(4px, -1px);
+}
+
+.standAlone.white,
+.learn_more.white {
+  color: var(--td-white) !important;
+  text-decoration: none;
+}
+
+/* Header: close to tucowsdomains.com */
+.domains-site-header,
+.domains-site-header.fw-nav-wrapper,
+.fw-nav-wrapper.domains-site-header {
+  background: var(--td-white) !important;
+  border-bottom: 1px solid var(--td-indigo-3);
+  box-shadow: none !important;
+  color: var(--td-indigo-12);
+  z-index: 1000;
+}
+
+.domains-skipbar {
+  background: transparent !important;
+  height: 0;
+}
+
+.domains-skipbar .btn:focus {
+  background: var(--td-white) !important;
+  box-shadow: 0 0 0 4px rgba(122, 130, 227, 0.34) !important;
+  position: relative;
+  z-index: 1002;
+}
+
+.domains-site-header .eyebrow_menu {
+  background: var(--td-indigo-1);
+  border-bottom: 1px solid var(--td-indigo-3);
+  font-size: 0.82rem;
+}
+
+.domains-site-header .eyebrow_menu .container {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  min-height: 36px;
+}
+
+.domains-site-header .eyebrow_menu p {
+  color: var(--td-muted);
+  line-height: 1;
+  margin: 0;
+}
+
+.domains-site-header .brandNav ul,
+.domains-site-header .topNav ul,
+.domains-footer-site-links,
+.footerNav .subMenu {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.domains-site-header .brandNav li + li::before {
+  color: rgba(12, 11, 96, 0.32);
+  content: "/";
+  margin: 0 10px;
+}
+
+.domains-site-header .brandNav a {
+  color: var(--td-indigo-12);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.domains-site-header .brandNav a:hover,
+.domains-site-header .brandNav a:focus {
+  color: var(--td-indigo-8);
+}
+
+.domains-site-header .headerMain,
+.domains-navbar.headerMain,
+.domains-site-header .navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 86px;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.domains-site-header .logoContainer,
+.domains-site-header .logoContainer a,
+.domains-site-header .navbar-brand,
+.domains-site-header .fw-logo,
+.domains-brand-link {
+  align-items: center;
+  display: inline-flex;
+  min-height: 54px;
+  text-decoration: none;
+}
+
+.domains-site-header .logo,
+.domains-site-header .logoContainer img,
+.domains-site-header .navbar-brand img,
+.domains-site-header .fw-logo img {
+  height: auto !important;
+  max-height: 42px;
+  max-width: min(256px, 52vw);
+  object-fit: contain;
+  width: auto !important;
+}
+
+.domains-wordmark {
+  align-items: baseline;
+  display: inline-flex;
+  font-family: var(--td-heading-font);
+  font-size: clamp(1.55rem, 2vw, 2.08rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 1;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.domains-wordmark-tucows { color: var(--td-indigo-12); }
+.domains-wordmark-slash,
+.domains-wordmark-domains { color: var(--td-indigo-8); }
+
+.domains-site-header .menuContainer,
+.domains-site-header #menuContainer {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.domains-site-header .topNav > ul,
+.domains-site-header .navbar-nav.domains-primary-menu {
+  align-items: center;
+  display: flex;
+  gap: clamp(18px, 2vw, 34px);
+}
+
+.domains-site-header .topNav a,
+.domains-site-header .nav-link,
+.domains-site-header .domains-site-link {
+  border-radius: 0 !important;
+  color: var(--td-indigo-12) !important;
+  display: inline-flex;
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.1;
+  padding: 9px 0 !important;
+  position: relative;
+  text-decoration: none;
+}
+
+.domains-site-header .topNav a::after,
+.domains-site-header .nav-link::after,
+.domains-site-header .domains-site-link::after {
+  background: var(--td-indigo-8);
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+  width: 100%;
+}
+
+.domains-site-header .topNav a:hover::after,
+.domains-site-header .topNav a:focus::after,
+.domains-site-header .nav-item.active > .nav-link::after,
+.domains-site-header .nav-link:hover::after,
+.domains-site-header .nav-link:focus::after,
+.domains-site-header .domains-site-link:hover::after,
+.domains-site-header .domains-site-link:focus::after {
+  transform: scaleX(1);
+}
+
+.domains-site-header .domains-nav-submit {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  padding: 12px 18px !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .domains-nav-submit::after { display: none !important; }
+.domains-site-header .domains-nav-submit:hover,
+.domains-site-header .domains-nav-submit:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-site-header .fw-nav-dropdown-wrapper {
+  margin-left: 18px;
+}
+
+.domains-site-header .hamburgerContainer,
+.domains-site-header .navbar-toggler,
+.domains-site-header .iconBtn {
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 999px !important;
+}
+
+.domains-mobile-eyebrow {
+  display: none;
+}
+
+.nav-overlay {
+  background: rgba(12, 11, 96, 0.46);
+}
+
+/* Search bar / secondary nav */
+.fw-sticky.fw-searchbar-wrapper,
+.fw-searchbar-wrapper.domains-subnav,
+.domains-subnav {
+  background: var(--td-white) !important;
+  border-bottom: 1px solid var(--td-indigo-3);
+  box-shadow: none !important;
+}
+
+.domains-subnav .container,
+.fw-searchbar-wrapper .container {
+  max-width: var(--td-container);
+}
+
+.domains-subnav .breadcrumb,
+.domains-subnav nav,
+.domains-subnav .fw-breadcrumb,
+.domains-subnav a {
+  color: var(--td-indigo-12);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.domains-search-block form,
+.domains-hero-search form,
+.fw-helpcenter form,
+.fw-searchbar-wrapper form,
+.fw-searchbar-wrapper .input-group,
+.fw-searchbar-wrapper .search,
+.fw-helpcenter .search {
+  position: relative;
+}
+
+.domains-search-block input,
+.domains-hero-search input,
+.fw-helpcenter input,
+.fw-searchbar-wrapper input,
+input[type="search"] {
+  background: var(--td-white) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--td-indigo-12) !important;
+  min-height: 50px;
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+}
+
+.domains-search-block input:focus,
+.domains-hero-search input:focus,
+.fw-helpcenter input:focus,
+.fw-searchbar-wrapper input:focus,
+input[type="search"]:focus,
+.form-control:focus,
+.form-select:focus,
+select:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+  border-color: var(--td-indigo-8) !important;
+  box-shadow: 0 0 0 4px rgba(122, 130, 227, 0.24) !important;
+  outline: none !important;
+}
+
+/* Homepage: site-like heroBanner/search-first pattern */
+.heroBanner.homepage,
+.domains-home-hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(249, 250, 254, 0.30), transparent 25rem),
+    linear-gradient(135deg, #7A82E3 0%, #858DEA 56%, #A7ADF3 100%);
+  color: var(--td-white);
+  overflow: hidden;
+  padding: clamp(78px, 9vw, 128px) 0 clamp(70px, 8vw, 110px);
+  position: relative;
+}
+
+.heroBanner.homepage::before,
+.domains-home-hero::before {
+  background: var(--td-indigo-8);
+  border-radius: 56px;
+  content: "";
+  height: 430px;
+  opacity: 0.16;
+  position: absolute;
+  right: -220px;
+  top: -70px;
+  transform: rotate(-19deg);
+  width: 620px;
+}
+
+.heroBanner.homepage::after,
+.domains-home-hero::after {
+  color: rgba(249, 250, 254, 0.12);
+  content: "/";
+  font-family: var(--td-heading-font);
+  font-size: clamp(18rem, 28vw, 32rem);
+  font-weight: 900;
+  line-height: 1;
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-48%);
+}
+
+.heroBanner.homepage .container,
+.domains-home-hero .container,
+.whoisLookup .container,
+.furtherQuestions .container {
+  position: relative;
+  z-index: 1;
+}
+
+.heroBanner.homepage .content,
+.domains-hero-content {
+  align-items: center;
+  display: grid;
+  gap: clamp(28px, 5vw, 66px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.78fr);
+}
+
+.heroBanner.homepage .descriptionContainer,
+.domains-hero-copy {
+  max-width: 760px;
+}
+
+.domains-home-eyebrow,
+.domains-page-eyebrow,
+.domains-section-eyebrow,
+.domains-eyebrow {
+  color: var(--td-indigo-8);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  margin: 0 0 17px;
+  text-transform: uppercase;
+}
+
+.heroBanner.homepage .domains-home-eyebrow,
+.domains-home-hero .domains-home-eyebrow,
+.domains-page-hero .domains-page-eyebrow {
+  color: var(--td-indigo-3);
+}
+
+.heroBanner.homepage h1,
+.domains-home-hero h1 {
+  color: var(--td-white);
+  font-size: clamp(3.1rem, 6.4vw, 6.05rem);
+  line-height: 0.92;
+  margin: 0 0 24px;
+  max-width: 850px;
+}
+
+.heroBanner.homepage p,
+.domains-home-hero .domains-home-lede,
+.domains-home-hero .domains-lede {
+  color: rgba(249, 250, 254, 0.88);
+  font-size: clamp(1.08rem, 1vw + 0.9rem, 1.28rem);
+  line-height: 1.62;
+  margin-bottom: 0;
+  max-width: 660px;
+}
+
+.heroBanner.homepage .formContainer,
+.domains-hero-search {
+  margin-top: 32px;
+  max-width: 610px;
+}
+
+.quickSearch,
+.domains-hero-search form,
+.domains-hero-search .input-group,
+.fw-helpcenter form {
+  background: var(--td-white);
+  border-radius: 999px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.quickSearch input,
+.domains-hero-search input,
+.fw-helpcenter input {
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--td-indigo-12) !important;
+  flex: 1 1 auto;
+  font-size: 1.04rem;
+  min-height: 66px;
+  padding: 0 26px !important;
+}
+
+.quickSearch input::placeholder,
+.domains-hero-search input::placeholder,
+.fw-helpcenter input::placeholder {
+  color: rgba(12, 11, 96, 0.52);
+}
+
+.quickSearch .submit_button,
+.quickSearch button,
+.domains-hero-search button,
+.fw-helpcenter button {
+  align-items: center;
+  align-self: center;
+  aspect-ratio: 1 / 1;
+  background: var(--td-indigo-8) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  display: inline-flex;
+  flex: 0 0 52px;
+  height: 52px;
+  justify-content: center;
+  margin-right: 8px;
+  min-width: 52px;
+  padding: 0 !important;
+}
+
+.quickSearch .submit_button:hover,
+.quickSearch button:hover,
+.domains-hero-search button:hover,
+.fw-helpcenter button:hover,
+.quickSearch .submit_button:focus,
+.quickSearch button:focus,
+.domains-hero-search button:focus,
+.fw-helpcenter button:focus {
+  background: var(--td-indigo-12) !important;
+}
+
+.quickSearch .submit_button img,
+.quickSearch button img,
+.domains-hero-search button img,
+.fw-helpcenter button img {
+  height: 20px;
+  width: 20px;
+}
+
+.quickSearch .error_msg {
+  bottom: -28px;
+  color: var(--td-white);
+  font-size: 0.86rem;
+  left: 22px;
+  margin: 0;
+  position: absolute;
+}
+
+.domains-hero-side-card,
+.domains-hero-card {
+  background: rgba(249, 250, 254, 0.08) !important;
+  border: 1px solid rgba(235, 237, 252, 0.32) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--td-white);
+  padding: clamp(24px, 3vw, 38px);
+}
+
+.domains-hero-side-card h2,
+.domains-hero-card h2,
+.domains-hero-card h3 {
+  color: var(--td-white);
+  font-size: clamp(1.72rem, 3vw, 2.7rem);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.domains-hero-side-card p,
+.domains-hero-card p,
+.domains-hero-card li {
+  color: rgba(249, 250, 254, 0.86);
+}
+
+.domains-stat-badge {
+  background: var(--td-indigo-3);
+  color: var(--td-indigo-12);
+  display: inline-flex;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  padding: 9px 12px;
+  text-transform: uppercase;
+}
+
+.domains-hero-list,
+.domains-check-list,
+.domains-info-list {
+  display: grid;
+  gap: 13px;
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.domains-hero-list li,
+.domains-check-list li,
+.domains-info-list li {
+  padding-left: 30px;
+  position: relative;
+}
+
+.domains-hero-list li::before,
+.domains-check-list li::before,
+.domains-info-list li::before {
+  color: var(--td-indigo-8);
+  content: "/";
+  font-family: var(--td-heading-font);
+  font-size: 1.2rem;
+  font-weight: 900;
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  top: 0.05rem;
+}
+
+/* Homepage secondary sections matching tucowsdomains.com rhythm */
+.whoisLookup,
+.domains-submit-section {
+  background: var(--td-white);
+  padding: clamp(64px, 8vw, 116px) 0;
+  position: relative;
+}
+
+.whoisLookup .content,
+.domains-submit-section .content,
+.domains-submit-content {
+  max-width: 760px;
+}
+
+.whoisLookup h2,
+.domains-submit-section h2 {
+  color: var(--td-indigo-12);
+  font-size: clamp(2.75rem, 5vw, 5.25rem);
+  line-height: 0.94;
+  margin-bottom: 20px;
+}
+
+.whoisLookup p,
+.domains-submit-section p {
+  color: var(--td-body);
+  font-size: clamp(1.05rem, 1vw + 0.86rem, 1.22rem);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.domains-action-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.furtherQuestions,
+.domains-help-section {
+  background: var(--td-indigo-1);
+  padding: clamp(56px, 7vw, 96px) 0;
+}
+
+.furtherQuestions .descriptionContainer,
+.domains-help-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.furtherQuestions h3,
+.domains-help-card h3 {
+  color: var(--td-indigo-12);
+  font-size: clamp(1.6rem, 2.5vw, 2.45rem);
+  line-height: 1.02;
+  margin-bottom: 13px;
+}
+
+.furtherQuestions p,
+.domains-help-card p {
+  color: var(--td-body);
+  line-height: 1.66;
+}
+
+.furtherQuestions .redirectedSection,
+.furtherQuestions .descriptionContainer > div,
+.domains-help-card {
+  background: var(--td-white);
+  border: 1px solid var(--td-indigo-3);
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(24px, 3vw, 38px);
+}
+
+.domains-home-section,
+.domains-portal-cards,
+.domains-knowledge-section,
+.domains-article-section {
+  padding: clamp(52px, 7vw, 92px) 0;
+}
+
+.domains-home-section {
+  background: var(--td-white);
+}
+
+.domains-knowledge-section {
+  background: var(--td-indigo-1);
+}
+
+.domains-article-section.bg-light,
+.domains-article-section {
+  background: var(--td-white) !important;
+}
+
+.domains-section-heading,
+.fw-section-heading {
+  margin-bottom: 28px;
+}
+
+.domains-section-heading.text-center,
+.fw-section-heading.text-center {
+  display: block;
+  text-align: center;
+}
+
+.domains-section-heading h2,
+.domains-section-heading h3,
+.fw-section-heading h2,
+.fw-section-heading h3 {
+  color: var(--td-indigo-12);
+  font-size: clamp(2.2rem, 4vw, 4.4rem);
+  line-height: 0.96;
+  margin: 0;
+}
+
+.domains-card-description,
+.domains-section-heading p:not(.domains-section-eyebrow) {
+  color: var(--td-muted);
+  font-size: 1.06rem;
+  line-height: 1.6;
+}
+
+/* Cards and Freshdesk content */
+.card,
+.domains-home-card,
+.fw-kbase-card,
+.domains-articles-list,
+.fw-articles,
+.domains-form-card,
+.domains-list-card,
+.domains-ticket-view-card,
+.fw-wrapper-shadow,
+.domains-aside-card,
+.domains-sidebar-panel,
+.domains-footer-contact-card,
+.domains-footer-links-card {
+  background: var(--td-white) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.card,
+a.card,
+.domains-home-card,
+.fw-kbase-card {
+  color: var(--td-body);
+  text-decoration: none !important;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover,
+.card:focus-within,
+a.card:hover,
+a.card:focus,
+.domains-home-card:hover,
+.domains-home-card:focus,
+.fw-kbase-card:hover,
+.fw-kbase-card:focus {
+  border-color: var(--td-indigo-8) !important;
+  box-shadow: var(--td-shadow-soft) !important;
+  transform: translateY(-2px);
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.domains-home-card {
+  min-height: 174px;
+}
+
+.domains-home-card .card-title,
+.fw-kbase-card .card-title,
+.card-title {
+  color: var(--td-indigo-12) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.16;
+  margin-bottom: 9px;
+}
+
+.domains-home-card p,
+.fw-kbase-card p,
+.card p {
+  color: var(--td-muted);
+  line-height: 1.54;
+}
+
+.fw-category-icon,
+.fw-icon-holder,
+.domains-icon-bubble {
+  align-items: center;
+  background: var(--td-indigo-3);
+  color: var(--td-indigo-12);
+  display: inline-flex;
+  font-weight: 900;
+  justify-content: center;
+  min-height: 58px;
+  min-width: 58px;
+}
+
+.fw-category-icon img,
+.fw-category-icon svg,
+.fw-icon-holder img,
+.fw-icon-holder svg {
+  max-height: 34px;
+  max-width: 34px;
+}
+
+/* Page heroes */
+.domains-page-hero,
+.fw-page-title-wrapper.domains-page-hero {
+  background:
+    radial-gradient(circle at 86% 16%, rgba(249, 250, 254, 0.28), transparent 23rem),
+    linear-gradient(135deg, #7A82E3 0%, #858DEA 56%, #A7ADF3 100%) !important;
+  color: var(--td-white);
+  overflow: hidden;
+  position: relative;
+}
+
+.domains-page-hero::after {
+  color: rgba(249, 250, 254, 0.10);
+  content: "/";
+  font-family: var(--td-heading-font);
+  font-size: clamp(12rem, 20vw, 24rem);
+  font-weight: 900;
+  line-height: 1;
+  position: absolute;
+  right: 6vw;
+  top: 48%;
+  transform: translateY(-50%);
+}
+
+.domains-page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.domains-page-title-inner,
+.domains-page-hero .fw-search-meta-info {
+  min-height: clamp(238px, 26vw, 338px);
+  padding: clamp(42px, 6vw, 72px) 0 !important;
+}
+
+.domains-page-hero h1,
+.domains-page-hero .fw-page-title {
+  color: var(--td-white) !important;
+  font-size: clamp(2.85rem, 5.6vw, 5.6rem);
+  line-height: 0.94;
+  margin: 0 0 18px;
+}
+
+.domains-page-hero p,
+.domains-page-hero .domains-page-lede {
+  color: rgba(249, 250, 254, 0.86);
+  font-size: clamp(1.02rem, 1vw + 0.86rem, 1.18rem);
+  line-height: 1.62;
+  max-width: 760px;
+}
+
+.domains-page-hero .fw-icon-holder {
+  background: rgba(249, 250, 254, 0.12);
+  border: 1px solid rgba(235, 237, 252, 0.28);
+  color: var(--td-white);
+}
+
+.domains-page-hero .domains-secondary-cta {
+  background: transparent !important;
+  border-color: var(--td-indigo-3) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-page-hero .domains-secondary-cta:hover,
+.domains-page-hero .domains-secondary-cta:focus {
+  background: var(--td-white) !important;
+  border-color: var(--td-white) !important;
+  color: var(--td-indigo-12) !important;
+}
+
+.domains-content-section,
+.domains-ticket-new-section,
+.domains-list-section,
+.domains-ticket-section {
+  background: var(--td-white);
+  padding: clamp(44px, 6vw, 82px) 0 !important;
+}
+
+.fw-content-wrapper,
+.domains-ticket-list-body,
+.domains-ticket-thread {
+  background: var(--td-white) !important;
+}
+
+.domains-form-card .fw-content,
+.domains-ticket-list-body,
+.domains-ticket-thread .fw-comments-wrapper {
+  padding: clamp(24px, 3.4vw, 42px) !important;
+}
+
+.domains-list-toolbar,
+.fw-sidebar-wrapper,
+#ticket-toolbar,
+.domains-ticket-view-card > .fw-sidebar-wrapper {
+  background: var(--td-indigo-1) !important;
+  border-left: 1px solid var(--td-indigo-3);
+}
+
+.domains-aside-card,
+.domains-sidebar-panel {
+  margin: 22px;
+  padding: 24px;
+}
+
+.domains-aside-card h2,
+.domains-sidebar-panel h2 {
+  color: var(--td-indigo-12);
+  font-size: 1.45rem;
+  line-height: 1.04;
+  margin: 0 0 12px;
+}
+
+.domains-aside-card p,
+.domains-aside-card li,
+.domains-sidebar-panel p {
+  color: var(--td-muted);
+  line-height: 1.58;
+}
+
+/* Forms */
+.fw-new-ticket,
+.fw-content form {
+  color: var(--td-body);
+}
+
+.form-group,
+.form-field,
+.control-group,
+.fw-form-field {
+  margin-bottom: 22px;
+}
+
+label,
+.control-label,
+.form-label,
+.fw-new-ticket label,
+legend {
+  color: var(--td-indigo-12) !important;
+  font-size: 0.93rem;
+  font-weight: 800 !important;
+  margin-bottom: 8px;
+}
+
+.form-control,
+.form-select,
+select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="number"] {
+  background: var(--td-white) !important;
+  border: 1px solid var(--td-border) !important;
+  border-radius: 0 !important;
+  color: var(--td-indigo-12) !important;
+  min-height: 50px;
+}
+
+textarea,
+textarea.form-control {
+  min-height: 152px;
+}
+
+.help-block,
+.help-text,
+.form-text,
+.fw-help-block,
+small {
+  color: var(--td-muted) !important;
+}
+
+.required,
+.mandatory,
+.asterisk {
+  color: var(--td-indigo-8) !important;
+}
+
+/* List/table/ticket thread */
+#ticket-list table,
+#ticket-list .table,
+.domains-list-card table {
+  color: var(--td-body);
+}
+
+#ticket-list th,
+.domains-list-card th {
+  color: var(--td-indigo-12);
+  font-weight: 900;
+}
+
+#ticket-list tr,
+.domains-list-card tr {
+  border-color: var(--td-indigo-3) !important;
+}
+
+#ticket-list a,
+.domains-list-card a {
+  font-weight: 800;
+}
+
+#ticket-list .badge,
+.ticket-status,
+.fw-status-label,
+.status-label {
+  border-radius: 999px !important;
+  font-weight: 900;
+  padding: 6px 10px;
+}
+
+.pagination,
+.domains-pagination {
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.pagination a,
+.pagination span {
+  border-radius: 999px !important;
+  color: var(--td-indigo-12);
+}
+
+.fw-comments-wrapper,
+.domains-ticket-thread .fw-comments-wrapper {
+  background: var(--td-white) !important;
+}
+
+.domains-ticket-meta-card,
+.meta-info {
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3);
+  margin-bottom: 22px;
+  padding: 16px;
+}
+
+.fw-closed-info {
+  background: var(--td-indigo-3) !important;
+  border-color: var(--td-border-strong) !important;
+  border-radius: 0 !important;
+  color: var(--td-indigo-12);
+  padding: 14px 16px;
+}
+
+.fw-comment-item {
+  gap: 12px;
+}
+
+.comment-container,
+.bg-grey,
+.fw-comment-editor input,
+.fw-ticket-reply-editor {
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 0 !important;
+}
+
+.comment-container {
+  color: var(--td-body);
+  padding: 18px !important;
+}
+
+.comment-scroll {
+  color: var(--td-body);
+  line-height: 1.66;
+}
+
+.author-info,
+.meta-info,
+.ticket-info,
+.fw-meta-info,
+.domains-muted {
+  color: var(--td-muted) !important;
+}
+
+/* Footer: close to tucowsdomains.com */
+.page-footer,
+.domains-site-footer {
+  background: var(--td-indigo-12) !important;
+  color: rgba(249, 250, 254, 0.80);
+  margin-top: 0;
+}
+
+.domains-site-footer section,
+.page-footer > section,
+.domains-footer-main {
+  padding: clamp(46px, 7vw, 80px) 0 36px;
+}
+
+.domains-site-footer .footerMain,
+.page-footer .footerMain,
+.domains-footer-main .footerMain {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.domains-site-footer .footerLogo img,
+.domains-footer-logo img {
+  display: block;
+  height: auto;
+  max-height: 46px;
+  max-width: 260px;
+}
+
+.domains-footer-title {
+  color: var(--td-white);
+  font-size: clamp(2.1rem, 4vw, 4.2rem);
+  line-height: 0.96;
+  margin: 18px 0 12px;
+}
+
+.domains-footer-kicker,
+.domains-site-footer .domains-eyebrow {
+  color: var(--td-indigo-3) !important;
+}
+
+.domains-site-footer p {
+  color: rgba(249, 250, 254, 0.78);
+}
+
+.footerNav,
+.domains-footer-nav {
+  border-bottom: 1px solid rgba(235, 237, 252, 0.18);
+  border-top: 1px solid rgba(235, 237, 252, 0.18);
+  margin: 28px 0;
+  padding: 20px 0;
+}
+
+.footerNav .subMenu,
+.domains-footer-site-links {
+  gap: 18px 32px;
+}
+
+.footerNav a,
+.domains-site-footer a,
+.domains-footer-site-links a {
+  color: var(--td-white) !important;
+  font-weight: 800;
+  text-decoration-color: rgba(235, 237, 252, 0.36);
+}
+
+.footerNav a:hover,
+.footerNav a:focus,
+.domains-site-footer a:hover,
+.domains-site-footer a:focus {
+  color: var(--td-indigo-3) !important;
+}
+
+.footerFoot,
+.domains-footer-foot {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.icann_logo img,
+.domains-icann-logo img {
+  max-height: 52px;
+  width: auto;
+}
+
+.footerFoot .info,
+.domains-footer-foot .info {
+  color: rgba(249, 250, 254, 0.70);
+  font-size: 0.93rem;
+  line-height: 1.48;
+}
+
+.footerFoot p,
+.domains-footer-foot p {
+  margin: 0 0 4px;
+}
+
+.fw-contact-info,
+.fw-credit,
+.domains-footer-bottom {
+  background: transparent !important;
+  color: rgba(249, 250, 254, 0.74) !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.fw-laws,
+.fw-contacts {
+  margin: 0;
+}
+
+.fw-credit.domains-footer-bottom {
+  border-top: 1px solid rgba(235, 237, 252, 0.18);
+  margin-top: 24px;
+  padding-top: 22px !important;
+}
+
+/* Chat widget */
+.pr-conversation-popper-button {
+  border: 1px solid var(--td-indigo-3) !important;
+  box-shadow: var(--td-shadow-soft) !important;
+}
+
+.pr-conversation-popper-button svg path {
+  fill: var(--td-indigo-12);
+}
+
+/* Alerts / modals */
+.alert,
+.fw-alert,
+.modal-content {
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--td-shadow-soft) !important;
+}
+
+.alert-info,
+.alert-success {
+  background: var(--td-indigo-3) !important;
+  color: var(--td-indigo-12) !important;
+}
+
+@media (max-width: 1199.98px) {
+  .domains-site-header .headerMain,
+  .domains-site-header .navbar {
+    min-height: 78px;
+  }
+
+  .domains-site-header .menuContainer,
+  .domains-site-header .navbar-collapse {
+    background: var(--td-white);
+    border-top: 1px solid var(--td-indigo-3);
+    box-shadow: 0 20px 40px rgba(12, 11, 96, 0.12);
+    display: block;
+    left: 0;
+    margin-top: 0;
+    padding: 24px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+
+  .domains-site-header .navbar-collapse:not(.show),
+  .domains-site-header .menuContainer:not(.show) {
+    display: none;
+  }
+
+  .domains-site-header .topNav > ul,
+  .domains-site-header .navbar-nav.domains-primary-menu {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .domains-site-header .domains-nav-submit {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .heroBanner.homepage .content,
+  .domains-hero-content,
+  .furtherQuestions .descriptionContainer,
+  .domains-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .domains-hero-side-card,
+  .domains-hero-card {
+    max-width: 650px;
+  }
+
+  .domains-list-toolbar,
+  .fw-sidebar-wrapper,
+  #ticket-toolbar,
+  .domains-ticket-view-card > .fw-sidebar-wrapper {
+    border-left: 0;
+    border-top: 1px solid var(--td-indigo-3);
+  }
+
+  .footerFoot,
+  .domains-footer-foot {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .domains-site-header .eyebrow_menu .container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .domains-site-header .brandNav ul {
+    gap: 8px 0;
+  }
+
+  .heroBanner.homepage,
+  .domains-home-hero {
+    padding: 72px 0 64px;
+  }
+
+  .heroBanner.homepage h1,
+  .domains-home-hero h1,
+  .domains-page-hero h1,
+  .domains-page-hero .fw-page-title {
+    letter-spacing: -0.06em;
+  }
+
+  .quickSearch,
+  .domains-hero-search form,
+  .domains-hero-search .input-group,
+  .fw-helpcenter form {
+    border-radius: 30px;
+  }
+
+  .quickSearch input,
+  .domains-hero-search input,
+  .fw-helpcenter input {
+    min-height: 58px;
+  }
+
+  .quickSearch .submit_button,
+  .quickSearch button,
+  .domains-hero-search button,
+  .fw-helpcenter button {
+    height: 46px;
+    min-width: 46px;
+  }
+
+  .domains-page-title-inner,
+  .domains-page-hero .fw-search-meta-info {
+    min-height: 220px;
+  }
+
+  .footerNav .subMenu,
+  .domains-footer-site-links {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Header correction, v2
+   Fixes the top-area issue where the desktop nav wrapped into the hero and
+   a mobile menu title rendered beside the logo. This also matches the shared
+   tucowsdomains.com header more closely: non-fixed white header, compact
+   parent-company eyebrow bar, logo-only lockup, and one-line desktop nav.
+   -------------------------------------------------------------------------- */
+
+html.domains-maintenance-theme body,
+body.domains-maintenance-theme {
+  padding-top: 0 !important;
+}
+
+.domains-site-header,
+.domains-site-header.fixed-top,
+.fw-nav-wrapper.domains-site-header,
+.fw-nav-wrapper.fixed-top.domains-site-header {
+  background: var(--td-white) !important;
+  border-bottom: 1px solid var(--td-indigo-3) !important;
+  box-shadow: none !important;
+  left: auto !important;
+  position: relative !important;
+  right: auto !important;
+  top: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  z-index: 10 !important;
+}
+
+#fw-main-content,
+.fw-main-content,
+.fw-main-wrapper,
+main[role="main"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.domains-site-header .container,
+.domains-subnav .container,
+.fw-searchbar-wrapper .container,
+.heroBanner .container,
+.domains-home-hero .container,
+.domains-page-hero .container,
+.domains-content-section .container,
+.domains-list-section .container,
+.domains-ticket-section .container,
+.domains-footer-main .container {
+  max-width: min(1288px, calc(100vw - 48px));
+}
+
+.domains-site-header .domains-skipbar,
+.domains-site-header .domains-skipbar.container-fluid {
+  background: transparent !important;
+  border: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-eyebrow-menu,
+.domains-site-header .eyebrow_menu.domains-eyebrow-menu {
+  background: var(--td-indigo-1) !important;
+  border-bottom: 1px solid var(--td-indigo-3) !important;
+}
+
+.domains-site-header .domains-eyebrow-inner,
+.domains-site-header .eyebrow_menu .container {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  min-height: 50px !important;
+}
+
+.domains-site-header .domains-eyebrow-inner p,
+.domains-site-header .eyebrow_menu p {
+  color: var(--td-muted) !important;
+  flex: 0 0 auto !important;
+  font-size: 0.86rem !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav,
+.domains-site-header .brandNav {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav ul,
+.domains-site-header .brandNav ul {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-brand-nav a,
+.domains-site-header .brandNav a {
+  color: var(--td-indigo-12) !important;
+  font-size: 0.86rem !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .domains-navbar,
+.domains-site-header .navbar.domains-navbar,
+.domains-site-header .headerMain {
+  align-items: center !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  min-height: 104px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.domains-site-header .domains-logo-container,
+.domains-site-header .logoContainer {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  min-height: 58px !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-logo-link,
+.domains-site-header .logoContainer a {
+  align-items: center !important;
+  display: inline-flex !important;
+  text-decoration: none !important;
+}
+
+.domains-site-header .domains-logo,
+.domains-site-header .logoContainer img.logo,
+.domains-site-header img.logo {
+  display: block !important;
+  height: auto !important;
+  max-height: 43px !important;
+  max-width: clamp(188px, 18vw, 236px) !important;
+  width: auto !important;
+}
+
+.domains-site-header .domains-portal-label,
+.domains-site-header .domains-mobile-nav-header,
+.domains-site-header .mobileNavHeader,
+.domains-site-header .domains-mobile-title {
+  display: none !important;
+}
+
+.domains-site-header .domains-menu-container,
+.domains-site-header .menuContainer,
+.domains-site-header .navbar-collapse {
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  justify-content: flex-end !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-nav-list,
+.domains-site-header .navbar-nav.domains-nav-list,
+.domains-site-header .topNav > ul {
+  align-items: center !important;
+  background: transparent !important;
+  display: flex !important;
+  flex: 0 1 auto !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(10px, 1.05vw, 18px) !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-nav-list .nav-item,
+.domains-site-header .domains-nav-list li {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-nav-list .nav-link,
+.domains-site-header .topNav a,
+.domains-site-header .nav-link {
+  color: var(--td-indigo-12) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.95rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  padding: 10px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-nav-submit,
+.domains-site-header .domains-nav-cta,
+.domains-site-header .domains-cta-item > a {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.94rem) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  padding: 0.72rem 1rem !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-nav-submit::after,
+.domains-site-header .domains-nav-cta::after,
+.domains-site-header .domains-cta-item > a::after {
+  display: none !important;
+}
+
+.domains-site-header .domains-nav-submit:hover,
+.domains-site-header .domains-nav-submit:focus,
+.domains-site-header .domains-nav-cta:hover,
+.domains-site-header .domains-nav-cta:focus,
+.domains-site-header .domains-cta-item > a:hover,
+.domains-site-header .domains-cta-item > a:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-site-header .domains-header-user-nav,
+.domains-site-header .fw-nav-dropdown-wrapper {
+  align-items: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  gap: 12px !important;
+  margin: 0 0 0 clamp(12px, 1.5vw, 22px) !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-header-user-nav .nav-item,
+.domains-site-header .domains-header-user-nav li {
+  align-items: center !important;
+  display: flex !important;
+  margin: 0 !important;
+}
+
+.domains-site-header .domains-header-user-nav a,
+.domains-site-header .fw-nav-dropdown-wrapper a,
+.domains-site-header .domains-header-user-nav button,
+.domains-site-header .fw-nav-dropdown-wrapper button {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--td-indigo-12) !important;
+  font-size: clamp(0.84rem, 0.78vw, 0.94rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  padding: 10px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-user-nav a:hover,
+.domains-site-header .domains-header-user-nav a:focus,
+.domains-site-header .fw-nav-dropdown-wrapper a:hover,
+.domains-site-header .fw-nav-dropdown-wrapper a:focus {
+  color: var(--td-indigo-8) !important;
+}
+
+.domains-site-header .domains-header-user-nav a:empty,
+.domains-site-header .domains-header-user-nav button:empty,
+.domains-site-header .fw-nav-dropdown-wrapper a:empty,
+.domains-site-header .fw-nav-dropdown-wrapper button:empty {
+  display: none !important;
+}
+
+.domains-site-header .navbar-toggler,
+.domains-site-header .hamburgerContainer,
+.domains-site-header .iconBtn {
+  align-items: center !important;
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 999px !important;
+  color: var(--td-indigo-12) !important;
+  display: none !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  min-height: 46px !important;
+  min-width: 46px !important;
+}
+
+.domains-page-hero,
+.domains-home-hero,
+.heroBanner.homepage {
+  clear: both !important;
+}
+
+@media (max-width: 1320px) and (min-width: 1200px) {
+  .domains-site-header .domains-site-link.domains-optional-site-link {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .domains-site-header .domains-navbar,
+  .domains-site-header .navbar.domains-navbar,
+  .domains-site-header .headerMain {
+    min-height: 88px !important;
+  }
+
+  .domains-site-header .navbar-toggler,
+  .domains-site-header .hamburgerContainer,
+  .domains-site-header .iconBtn {
+    display: inline-flex !important;
+  }
+
+  .domains-site-header .domains-menu-container,
+  .domains-site-header .menuContainer,
+  .domains-site-header .navbar-collapse {
+    align-items: stretch !important;
+    background: var(--td-white) !important;
+    border: 1px solid var(--td-indigo-3) !important;
+    border-radius: 24px !important;
+    box-shadow: var(--td-shadow-card) !important;
+    display: none !important;
+    flex-basis: 100% !important;
+    flex-direction: column !important;
+    margin-top: 16px !important;
+    padding: 20px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .navbar-collapse.show,
+  .domains-site-header .menuContainer.show,
+  .domains-site-header .domains-menu-container.show {
+    display: flex !important;
+  }
+
+  .domains-site-header .domains-nav-list,
+  .domains-site-header .navbar-nav.domains-nav-list,
+  .domains-site-header .topNav > ul {
+    align-items: stretch !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-item,
+  .domains-site-header .domains-nav-list li {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link,
+  .domains-site-header .topNav a,
+  .domains-site-header .nav-link {
+    border-radius: 14px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link::after,
+  .domains-site-header .topNav a::after,
+  .domains-site-header .nav-link::after {
+    display: none !important;
+  }
+
+  .domains-site-header .domains-nav-list .nav-link:hover,
+  .domains-site-header .domains-nav-list .nav-link:focus,
+  .domains-site-header .domains-nav-list .active > .nav-link {
+    background: var(--td-indigo-1) !important;
+    color: var(--td-indigo-12) !important;
+  }
+
+  .domains-site-header .domains-nav-submit,
+  .domains-site-header .domains-nav-cta,
+  .domains-site-header .domains-cta-item > a {
+    justify-content: center !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-header-user-nav,
+  .domains-site-header .fw-nav-dropdown-wrapper {
+    border-top: 1px solid var(--td-indigo-3) !important;
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+    margin: 16px 0 0 !important;
+    padding-top: 16px !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .domains-site-header .domains-eyebrow-inner,
+  .domains-site-header .eyebrow_menu .container {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    min-height: 0 !important;
+    padding-bottom: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  .domains-site-header .domains-brand-nav ul,
+  .domains-site-header .brandNav ul {
+    gap: 8px 0 !important;
+  }
+
+  .domains-site-header .domains-logo,
+  .domains-site-header .logoContainer img.logo,
+  .domains-site-header img.logo {
+    max-width: min(214px, 70vw) !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Header cleanup, v3
+   Removes the portal/site navigation links from the header and hides the
+   Freshdesk fw-signup control while preserving the Tucows brand bar, logo,
+   Submit a Maintenance CTA, and Login/account navigation.
+   -------------------------------------------------------------------------- */
+
+html.domains-nav-clean-v1 body,
+body.domains-maintenance-theme {
+  padding-top: 0 !important;
+}
+
+.domains-site-header .domains-navbar--minimal,
+.domains-site-header .navbar.domains-navbar--minimal,
+.domains-site-header .domains-navbar--minimal.headerMain {
+  align-items: center !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(18px, 3vw, 42px) !important;
+  justify-content: space-between !important;
+  min-height: clamp(86px, 8vw, 104px) !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-header-actions {
+  align-items: center !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  gap: clamp(14px, 2vw, 26px) !important;
+  justify-content: flex-end !important;
+  margin-left: auto !important;
+  min-width: 0 !important;
+}
+
+.domains-site-header .domains-navbar--minimal .domains-menu-container,
+.domains-site-header .domains-navbar--minimal .menuContainer,
+.domains-site-header .domains-navbar--minimal .navbar-collapse,
+.domains-site-header .domains-navbar--minimal .domains-nav-list,
+.domains-site-header .domains-navbar--minimal .domains-primary-menu,
+.domains-site-header .domains-navbar--minimal .topNav,
+.domains-site-header .domains-navbar--minimal .domains-top-nav,
+.domains-site-header .domains-navbar--minimal .domains-portal-nav,
+.domains-site-header .domains-navbar--minimal .nav-overlay,
+.domains-site-header .domains-navbar--minimal .navbar-toggler,
+.domains-site-header .domains-navbar--minimal .hamburgerContainer,
+.domains-site-header .domains-navbar--minimal .iconBtn {
+  display: none !important;
+}
+
+.domains-site-header .domains-header-actions .domains-nav-submit,
+.domains-site-header .domains-header-actions .domains-header-submit {
+  background: var(--td-indigo-8) !important;
+  border: 2px solid var(--td-indigo-8) !important;
+  border-radius: 999px !important;
+  color: var(--td-white) !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  font-size: clamp(0.86rem, 0.8vw, 0.96rem) !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  padding: 0.78rem 1.12rem !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-actions .domains-nav-submit:hover,
+.domains-site-header .domains-header-actions .domains-nav-submit:focus,
+.domains-site-header .domains-header-actions .domains-header-submit:hover,
+.domains-site-header .domains-header-actions .domains-header-submit:focus {
+  background: var(--td-indigo-12) !important;
+  border-color: var(--td-indigo-12) !important;
+  color: var(--td-white) !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper {
+  align-items: center !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  width: auto !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav .fw-signup,
+.domains-site-header .domains-header-actions .domains-header-user-nav .fw-sign-up,
+.domains-site-header .domains-header-actions .domains-header-user-nav .freshid-signup,
+.domains-site-header .domains-header-actions .fw-signup,
+.domains-site-header .domains-header-actions .fw-sign-up,
+.domains-site-header .domains-header-actions .freshid-signup,
+.domains-site-header .domains-header-actions a[href*="signup"],
+.domains-site-header .domains-header-actions a[href*="sign_up"] {
+  display: none !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav a,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a,
+.domains-site-header .domains-header-actions .domains-header-user-nav button,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper button {
+  color: var(--td-indigo-12) !important;
+  display: inline-flex !important;
+  font-size: clamp(0.86rem, 0.8vw, 0.96rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  padding: 9px 0 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.domains-site-header .domains-header-actions .domains-header-user-nav a:hover,
+.domains-site-header .domains-header-actions .domains-header-user-nav a:focus,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a:hover,
+.domains-site-header .domains-header-actions .fw-nav-dropdown-wrapper a:focus {
+  color: var(--td-indigo-8) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Submit-ticket hero extension
+   The blue area now begins at the divider above the Home breadcrumb and extends
+   by a matching amount below the page hero before the white form area starts.
+   -------------------------------------------------------------------------- */
+
+.domains-submit-hero-zone {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(249, 250, 254, 0.28), transparent 23rem),
+    linear-gradient(135deg, #7A82E3 0%, #858DEA 56%, #A7ADF3 100%) !important;
+  color: var(--td-white) !important;
+  overflow: hidden !important;
+  padding-bottom: clamp(12px, calc(5.5vw - 30px), 46px) !important;
+  position: relative !important;
+}
+
+.domains-submit-hero-zone::before {
+  background: var(--td-indigo-8);
+  border-radius: 56px;
+  content: "";
+  height: 360px;
+  opacity: 0.12;
+  position: absolute;
+  right: -160px;
+  top: -70px;
+  transform: rotate(-19deg);
+  width: 540px;
+}
+
+.domains-submit-hero-zone .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.domains-submit-hero-zone .domains-subnav,
+.domains-submit-hero-zone .fw-searchbar-wrapper.domains-subnav,
+.domains-submit-hero-zone .fw-sticky.fw-searchbar-wrapper {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(235, 237, 252, 0.24) !important;
+  box-shadow: none !important;
+  color: var(--td-white) !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 2 !important;
+}
+
+.domains-submit-hero-zone .domains-subnav .row,
+.domains-submit-hero-zone .fw-searchbar-wrapper .row {
+  min-height: clamp(58px, 5vw, 72px) !important;
+}
+
+.domains-submit-hero-zone .domains-subnav a,
+.domains-submit-hero-zone .domains-subnav nav,
+.domains-submit-hero-zone .domains-subnav ol,
+.domains-submit-hero-zone .domains-subnav li,
+.domains-submit-hero-zone .domains-subnav .breadcrumb,
+.domains-submit-hero-zone .domains-subnav .fw-breadcrumb,
+.domains-submit-hero-zone .domains-subnav .breadcrumb-item,
+.domains-submit-hero-zone .domains-subnav .breadcrumb-item::before {
+  color: rgba(249, 250, 254, 0.88) !important;
+}
+
+.domains-submit-hero-zone .domains-subnav a:hover,
+.domains-submit-hero-zone .domains-subnav a:focus {
+  color: var(--td-white) !important;
+}
+
+.domains-submit-hero-zone .domains-search-block form,
+.domains-submit-hero-zone .fw-searchbar-wrapper form,
+.domains-submit-hero-zone .fw-searchbar-wrapper .input-group {
+  background: rgba(249, 250, 254, 0.98) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero,
+.domains-submit-hero-zone .domains-page-hero--new-ticket,
+.domains-submit-hero-zone .domains-page-hero--extended {
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero::after {
+  color: rgba(249, 250, 254, 0.10) !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero .content,
+.domains-submit-hero-zone .domains-page-content {
+  padding-bottom: clamp(18px, 3vw, 40px) !important;
+  padding-top: clamp(14px, calc(6vw - 30px), 52px) !important;
+}
+
+.domains-submit-hero-zone + .domains-content-section,
+.domains-submit-hero-zone + .domains-ticket-new-section {
+  padding-top: clamp(44px, 6vw, 82px) !important;
+}
+
+@media (max-width: 760px) {
+  .domains-site-header .domains-navbar--minimal,
+  .domains-site-header .navbar.domains-navbar--minimal {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    padding-bottom: 18px !important;
+    padding-top: 18px !important;
+  }
+
+  .domains-site-header .domains-header-actions {
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .domains-site-header .domains-header-actions .domains-header-submit {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+
+  .domains-submit-hero-zone {
+    padding-bottom: 12px !important;
+  }
+
+  .domains-submit-hero-zone .domains-search-block {
+    margin-top: 10px !important;
+  }
+}
+
+
+/* Hero refinement requested June 2026:
+   - Page/home hero backgrounds now use an Indigo 8 (#7A82E3) gradient.
+   - The existing faded top-right hero artwork remains intact via pseudo-elements above.
+   - Submit Maintenance hero spacing is reduced by 30px above the mini label and below the hero.
+*/
+
+/* --------------------------------------------------------------------------
+   Client-required field / compact header / compact submit hero revision
+   -------------------------------------------------------------------------- */
+
+/* Remove the Tucows parent-company eyebrow area and any visible top utility strip. */
+.domains-site-header .domains-skipbar,
+.domains-site-header .domains-eyebrow-menu,
+.domains-site-header .eyebrow_menu.domains-eyebrow-menu,
+.domains-site-header .eyebrow_menu {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.domains-site-header .domains-navbar,
+.domains-site-header .navbar.domains-navbar,
+.domains-site-header .headerMain {
+  min-height: 92px !important;
+}
+
+/* Tighter Submit a Maintenance hero spacing. */
+.domains-submit-hero-zone {
+  padding-bottom: clamp(8px, 2.2vw, 24px) !important;
+}
+
+.domains-submit-hero-zone .domains-subnav .row,
+.domains-submit-hero-zone .fw-searchbar-wrapper .row {
+  min-height: clamp(46px, 4vw, 58px) !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero .content,
+.domains-submit-hero-zone .domains-page-content {
+  padding-bottom: clamp(8px, 1.9vw, 24px) !important;
+  padding-top: clamp(8px, 1.9vw, 24px) !important;
+}
+
+.domains-submit-hero-zone .domains-mini-label {
+  margin-bottom: 8px !important;
+}
+
+.domains-submit-hero-zone .domains-page-description h1,
+.domains-submit-hero-zone .domains-page-hero h1 {
+  margin-bottom: 12px !important;
+}
+
+.domains-submit-hero-zone + .domains-content-section,
+.domains-submit-hero-zone + .domains-ticket-new-section {
+  padding-top: clamp(30px, 4.4vw, 58px) !important;
+}
+
+/* Client-side required fields added by maint_submit_ticket.html. */
+.domains-client-required-marker {
+  color: var(--td-indigo-8);
+  font-weight: 900;
+}
+
+.fw-new-ticket [data-domains-required-label='true'],
+.fw-new-ticket-wrapper [data-domains-required-label='true'] {
+  color: var(--td-indigo-12) !important;
+}
+
+.domains-field-error {
+  color: var(--td-indigo-12);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 8px;
+}
+
+.domains-field-error::before {
+  content: '!';
+  align-items: center;
+  background: var(--td-indigo-8);
+  border-radius: 999px;
+  color: var(--td-white);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 900;
+  height: 18px;
+  justify-content: center;
+  margin-right: 7px;
+  width: 18px;
+}
+
+.domains-client-required-missing,
+.fw-new-ticket .domains-client-required-missing,
+.fw-new-ticket-wrapper .domains-client-required-missing {
+  border-color: var(--td-indigo-8) !important;
+  box-shadow: 0 0 0 4px rgba(122, 130, 227, 0.18) !important;
+}
+
+.domains-field-has-error .select2-selection,
+.domains-field-has-error .choices__inner,
+.domains-field-has-error .chosen-container-single .chosen-single {
+  border-color: var(--td-indigo-8) !important;
+  box-shadow: 0 0 0 4px rgba(122, 130, 227, 0.18) !important;
+}
+
+/* Visual UTC suffix for the two time fields. The script appends UTC to the value
+   on blur/submit, so users do not need to type it themselves. */
+.domains-utc-field-wrap {
+  display: block;
+  position: relative;
+}
+
+.domains-utc-field-wrap input {
+  padding-right: 4.75rem !important;
+}
+
+.domains-utc-field-suffix {
+  color: var(--td-muted);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.domains-utc-field-wrap.domains-time-has-utc .domains-utc-field-suffix {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .domains-site-header .domains-navbar,
+  .domains-site-header .navbar.domains-navbar,
+  .domains-site-header .headerMain {
+    min-height: 76px !important;
+  }
+
+  .domains-submit-hero-zone .domains-page-hero .content,
+  .domains-submit-hero-zone .domains-page-content {
+    padding-bottom: 12px !important;
+    padding-top: 12px !important;
+  }
+}
