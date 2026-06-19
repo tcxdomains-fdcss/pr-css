@@ -1,5 +1,5 @@
 /*
-  Tucows Domains - Maintenance Portal site-style theme, hero refined
+  Tucows Domains - Maintenance Portal site-style theme, portal home fixed
   Upload this CSS file to S3, GitHub Pages, GitHub raw through a CDN, or another public HTTPS host,
   then update the domains_brand_css_url value in maint_head.html.
 
@@ -2335,4 +2335,489 @@ body.domains-maintenance-theme {
     padding-bottom: 12px !important;
     padding-top: 12px !important;
   }
+}
+
+
+/* Header padding + submit-page breadcrumb removal, v6.
+   The submit ticket template no longer renders the Home breadcrumb/search container.
+   Keep the Tucows-style header flush vertically. */
+header.header {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.domains-site-header.header,
+.domains-site-header.header.white {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/* With the submit page's Home/breadcrumb container removed, do not leave any
+   extra wrapper breathing room above or below the hero. */
+.domains-submit-hero-zone {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.domains-submit-hero-zone .domains-page-hero {
+  border-top: 1px solid rgba(235, 237, 252, 0.38);
+}
+
+
+/* --------------------------------------------------------------------------
+   Portal home repair, v7
+   The previous portal-home template reused Tucows site classes such as
+   heroBanner, whoisLookup, formContainer, content, quickSearch, and
+   furtherQuestions. Those classes made Freshdesk's generated search markup
+   inherit circular/cropped search styles. This block uses only namespaced
+   Domains classes and resets the search shell so the home page renders cleanly.
+   -------------------------------------------------------------------------- */
+
+.domains-home-hero--clean {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(249, 250, 254, 0.32), transparent 22rem),
+    linear-gradient(135deg, #7A82E3 0%, #8B93EA 56%, #B4BAF4 100%) !important;
+  color: var(--td-white);
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 96px) 0 !important;
+  position: relative;
+}
+
+.domains-home-hero--clean::before {
+  background: rgba(249, 250, 254, 0.14) !important;
+  border-radius: 48px !important;
+  content: "" !important;
+  display: block !important;
+  height: 360px !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  right: -190px !important;
+  top: -90px !important;
+  transform: rotate(-19deg) !important;
+  width: 540px !important;
+}
+
+.domains-home-hero--clean::after {
+  color: rgba(249, 250, 254, 0.10) !important;
+  content: "/" !important;
+  display: block !important;
+  font-family: var(--td-heading-font) !important;
+  font-size: clamp(12rem, 20vw, 23rem) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  position: absolute !important;
+  right: 6vw !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 0 !important;
+}
+
+.domains-home-hero--clean .container {
+  position: relative;
+  z-index: 1;
+}
+
+.domains-home-hero-grid {
+  align-items: center;
+  display: grid;
+  gap: clamp(28px, 5vw, 70px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.72fr);
+  margin: 0;
+  min-height: 0;
+}
+
+.domains-home-hero-copy {
+  max-width: 760px;
+  min-width: 0;
+}
+
+.domains-mini-label {
+  color: var(--td-indigo-8);
+  font-family: var(--td-body-font);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.domains-mini-label--light,
+.domains-home-hero--clean .domains-mini-label {
+  color: rgba(249, 250, 254, 0.88) !important;
+}
+
+.domains-home-hero--clean h1 {
+  color: var(--td-white) !important;
+  font-size: clamp(3rem, 6vw, 5.65rem) !important;
+  line-height: 0.93 !important;
+  margin: 0 0 22px !important;
+  max-width: 830px;
+}
+
+.domains-home-hero--clean .domains-home-lede {
+  color: rgba(249, 250, 254, 0.88) !important;
+  font-size: clamp(1.05rem, 1vw + 0.88rem, 1.24rem) !important;
+  line-height: 1.62 !important;
+  margin: 0 !important;
+  max-width: 650px;
+}
+
+.domains-home-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 22px;
+  margin-top: 30px;
+}
+
+.domains-text-cta {
+  align-items: center;
+  color: var(--td-indigo-12) !important;
+  display: inline-flex;
+  font-weight: 850;
+  gap: 10px;
+  text-decoration: none !important;
+}
+
+.domains-text-cta::after {
+  content: "→";
+  font-weight: 900;
+  transform: translateY(-1px);
+  transition: transform 160ms ease;
+}
+
+.domains-text-cta:hover::after,
+.domains-text-cta:focus::after {
+  transform: translate(4px, -1px);
+}
+
+.domains-text-cta--light {
+  color: var(--td-white) !important;
+}
+
+.domains-home-search-card {
+  background: rgba(249, 250, 254, 0.14);
+  border: 1px solid rgba(235, 237, 252, 0.35);
+  color: var(--td-white);
+  padding: clamp(24px, 3vw, 38px);
+  position: relative;
+  z-index: 1;
+}
+
+.domains-home-search-card h2 {
+  color: var(--td-white) !important;
+  font-size: clamp(1.85rem, 3.1vw, 3rem) !important;
+  line-height: 0.98 !important;
+  margin: 0 0 12px;
+}
+
+.domains-home-search-card p {
+  color: rgba(249, 250, 254, 0.86) !important;
+  line-height: 1.62;
+  margin: 0 0 22px;
+}
+
+.domains-search-shell,
+.domains-home-search,
+.domains-lookup-search,
+.domains-search-shell.quickSearch {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+  max-width: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+.domains-search-shell form,
+.domains-search-shell .input-group,
+.domains-search-shell .search,
+.domains-search-shell .fw-search,
+.domains-search-shell .fw-search-form,
+.domains-home-search form,
+.domains-home-search .input-group,
+.domains-lookup-search form,
+.domains-lookup-search .input-group {
+  align-items: center !important;
+  background: var(--td-white) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 18px 44px rgba(12, 11, 96, 0.13) !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+  max-width: 100% !important;
+  min-height: 64px !important;
+  overflow: hidden !important;
+  padding: 6px !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+.domains-search-shell input,
+.domains-search-shell input[type="search"],
+.domains-search-shell .form-control,
+.domains-home-search input,
+.domains-lookup-search input {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--td-indigo-12) !important;
+  flex: 1 1 auto !important;
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+  min-height: 52px !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding: 0 20px !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
+.domains-search-shell input::placeholder,
+.domains-home-search input::placeholder,
+.domains-lookup-search input::placeholder {
+  color: rgba(12, 11, 96, 0.52) !important;
+  opacity: 1 !important;
+}
+
+.domains-search-shell .input-group-append,
+.domains-search-shell .input-group-btn,
+.domains-search-shell .search-button,
+.domains-home-search .input-group-append,
+.domains-lookup-search .input-group-append {
+  display: flex !important;
+  flex: 0 0 auto !important;
+}
+
+.domains-search-shell button,
+.domains-search-shell .btn,
+.domains-search-shell input[type="submit"],
+.domains-home-search button,
+.domains-home-search .btn,
+.domains-lookup-search button,
+.domains-lookup-search .btn {
+  align-items: center !important;
+  aspect-ratio: auto !important;
+  background: var(--td-indigo-8) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  color: var(--td-white) !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  font-size: 0.98rem !important;
+  font-weight: 850 !important;
+  height: 52px !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  min-height: 52px !important;
+  min-width: 108px !important;
+  overflow: visible !important;
+  padding: 0 22px !important;
+  text-indent: 0 !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
+.domains-search-shell button:hover,
+.domains-search-shell button:focus,
+.domains-search-shell .btn:hover,
+.domains-search-shell .btn:focus,
+.domains-search-shell input[type="submit"]:hover,
+.domains-search-shell input[type="submit"]:focus {
+  background: var(--td-indigo-12) !important;
+}
+
+.domains-search-shell button img,
+.domains-search-shell .btn img {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.domains-card-section--home {
+  background: var(--td-white);
+  padding: clamp(42px, 6vw, 74px) 0 clamp(34px, 5vw, 66px) !important;
+}
+
+.domains-section-heading--compact {
+  margin-bottom: clamp(22px, 3vw, 34px) !important;
+}
+
+.domains-home-card-row {
+  gap: 0;
+}
+
+.domains-home-card {
+  min-height: 168px !important;
+}
+
+.domains-lookup-section--clean {
+  background: var(--td-indigo-1) !important;
+  padding: clamp(46px, 6vw, 82px) 0 !important;
+}
+
+.domains-lookup-panel {
+  align-items: center;
+  background: var(--td-white);
+  border: 1px solid var(--td-indigo-3);
+  display: grid;
+  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.8fr);
+  padding: clamp(28px, 4vw, 52px);
+}
+
+.domains-lookup-copy h2 {
+  color: var(--td-indigo-12) !important;
+  font-size: clamp(2.1rem, 4vw, 4.2rem) !important;
+  line-height: 0.98 !important;
+  margin: 0 0 18px;
+}
+
+.domains-lookup-copy p:not(.domains-section-eyebrow) {
+  color: var(--td-body);
+  font-size: clamp(1.02rem, 1vw + 0.86rem, 1.18rem);
+  line-height: 1.68;
+  margin: 0;
+  max-width: 620px;
+}
+
+.domains-lookup-actions {
+  min-width: 0;
+}
+
+.domains-lookup-actions .domains-text-cta {
+  margin-top: 16px;
+}
+
+.domains-further-questions--clean {
+  background: var(--td-white) !important;
+  padding: clamp(42px, 6vw, 82px) 0 !important;
+}
+
+.domains-question-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.domains-question-card {
+  background: var(--td-indigo-1) !important;
+  border: 1px solid var(--td-indigo-3) !important;
+  padding: clamp(24px, 3vw, 38px);
+}
+
+.domains-question-card h3 {
+  color: var(--td-indigo-12) !important;
+  font-size: clamp(1.55rem, 2.5vw, 2.35rem) !important;
+  line-height: 1.04 !important;
+  margin: 0 0 14px;
+}
+
+.domains-question-card p {
+  color: var(--td-body);
+  line-height: 1.66;
+}
+
+.domains-question-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 991.98px) {
+  .domains-home-hero-grid,
+  .domains-lookup-panel,
+  .domains-question-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .domains-home-search-card {
+    max-width: 760px;
+  }
+
+  .domains-lookup-panel {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .domains-home-hero--clean {
+    padding: 44px 0 52px !important;
+  }
+
+  .domains-home-hero--clean h1 {
+    font-size: clamp(2.45rem, 13vw, 3.25rem) !important;
+  }
+
+  .domains-search-shell form,
+  .domains-search-shell .input-group,
+  .domains-search-shell .search,
+  .domains-search-shell .fw-search,
+  .domains-search-shell .fw-search-form {
+    border-radius: 26px !important;
+    display: block !important;
+    min-height: 0 !important;
+    padding: 8px !important;
+  }
+
+  .domains-search-shell input,
+  .domains-search-shell input[type="search"],
+  .domains-search-shell .form-control {
+    display: block !important;
+    min-height: 52px !important;
+    width: 100% !important;
+  }
+
+  .domains-search-shell button,
+  .domains-search-shell .btn,
+  .domains-search-shell input[type="submit"] {
+    display: flex !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+  }
+
+  .domains-home-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* Portal home search wrapper hardening, v7.1.
+   Freshdesk can render extra container/row wrappers around search_element; keep
+   those wrappers from reintroducing oversized circular search blocks. */
+.domains-search-shell .container,
+.domains-search-shell .container-fluid,
+.domains-search-shell .row,
+.domains-search-shell [class^="col-"],
+.domains-search-shell [class*=" col-"],
+.domains-search-shell .fw-helpcenter,
+.domains-search-shell .fw-sticky,
+.domains-search-shell .fw-searchbar-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: block !important;
+  margin: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  width: 100% !important;
+}
+
+.domains-search-shell .row {
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0 !important;
+}
+
+.domains-home-search-card .domains-search-shell,
+.domains-lookup-panel .domains-search-shell {
+  min-height: 0 !important;
 }
