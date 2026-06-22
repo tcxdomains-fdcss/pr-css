@@ -10,13 +10,13 @@
    ============================================================================= */
 
 .pr-custom-header {
-  background-color:#00768f;
-  color:#fff;
+  background-color:#00768f !important; /* needs !important — overrides Freshdesk base header styles */
+  color:#fff !important;
   font-size:x-large
 }
 
 .pr-custom-header * {
-  color:#fff
+  color:#fff !important; /* needs !important — overrides Freshdesk component-level color inheritance */
 }
 
 @font-face {
