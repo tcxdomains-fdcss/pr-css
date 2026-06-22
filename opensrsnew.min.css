@@ -10,13 +10,13 @@
    ============================================================================= */
 
 .pr-custom-header {
-  background-color:#00768f !important; /* needs !important — overrides Freshdesk base header styles */
-  color:#fff !important;
+  background-color:#00768f!important;
+  color:#fff!important;
   font-size:x-large
 }
 
 .pr-custom-header * {
-  color:#fff !important; /* needs !important — overrides Freshdesk component-level color inheritance */
+  color:#fff!important
 }
 
 @font-face {
@@ -1208,8 +1208,7 @@ ol.breadcrumb li {
 }
 
 ol.breadcrumb li.d-lg-none {
-  /* Bootstrap's own .d-lg-none already carries display:none !important — our rule is redundant. */
-  display:none
+  display:none!important
 }
 
 ol.breadcrumb li+li:before {
@@ -1640,8 +1639,7 @@ header.header .menu_area>form {
 }
 
 header.header .menu_area>form div.form-group.fw-search {
-  /* 0-4-3 beats div.fw-search 0-1-1 — no !important needed */
-  margin-top:0
+  margin-top:0!important
 }
 
 header.header .menu_area>form .input-group {
@@ -2077,8 +2075,7 @@ header.header .main_menu .search,header.header .main_menu .search-container {
   }
   header.header .dropdown-menu {
     display:block;
-    /* 0-2-1 beats Bootstrap's .dropdown-menu 0-1-0 */
-    position:static
+    position:static!important
   }
 }
 
@@ -2620,8 +2617,7 @@ footer.footer_section .blurb_section {
 }
 
 footer.footer_section .blurb_section .navbar-brand {
-  /* 0-3-1 beats Bootstrap's .navbar-brand 0-1-0 */
-  display:inline-block;
+  display:inline-block!important;
   vertical-align:middle;
   padding-left:0
 }
@@ -3856,8 +3852,7 @@ a:active,a:focus,a:hover {
   position:relative;
   padding:16px;
   padding-left:0;
-  /* 0-2-0 beats any Freshdesk .acc_head single-class rule */
-  font-weight:600;
+  font-weight:600!important;
   background-color:#ebebf5;
   border-radius:15px
 }
@@ -4891,8 +4886,7 @@ section.eyebrow a:hover {
 }
 
 div.fw-search {
-  /* 0-1-1; the header override above (0-4-3) wins there without !important */
-  margin-top:32px
+  margin-top:32px!important
 }
 
 div.fw-search button {
@@ -4901,8 +4895,6 @@ div.fw-search button {
   color:var(--search_button_color,#fff);
   padding:8px 12px;
   border-radius:8px;
-  /* !important legitimately needed: Bootstrap's .input-group child rules
-     force border-radius:0 with !important on grouped buttons. */
   border-top-left-radius:8px!important;
   border-bottom-left-radius:8px!important;
   margin-left:-5px!important
@@ -5333,8 +5325,6 @@ div.fw-search button:hover {
 }
 
 .article_content_area>article img,.article_content_area>article table {
-  /* !important legitimately needed: Freshdesk editor can inject inline
-     style="width:Xpx" on images and tables; only !important beats inline styles. */
   max-width:100%!important
 }
 
@@ -5879,9 +5869,6 @@ div.fw-search button:hover {
 }
 
 .article_content_area>article h1>span,.article_content_area>article h2>span,.article_content_area>article h3>span,.article_content_area>article h4>span,.article_content_area>article h5>span,.article_content_area>article h6>span {
-  /* !important legitimately needed: the Freshdesk WYSIWYG editor injects
-     inline style="font-size:Xpx; font-weight:N" on heading spans; only
-     !important beats inline styles. */
   font-size:inherit!important;
   font-weight:inherit!important;
   line-height:inherit!important
@@ -5985,8 +5972,6 @@ div.fw-search button:hover {
 }
 
 .discussion_cat_content_area .fw-comments-wrapper .row.meta-info a.btn.d-none {
-  /* !important legitimately needed: Bootstrap's .d-none carries
-     display:none !important; beating it requires !important here. */
   display:inline-block!important
 }
 
@@ -6757,8 +6742,8 @@ footer.footer_section .footer_menu a {
 /* ----- Main content -- top divider matching the sidebar border-top ----- */
 .fw-main-wrapper.fd-main-content {
   border-top: 1px solid #e0e0e0;
-  /* 0-2-0 beats Freshdesk's single .fw-main-wrapper 0-1-0 */
-  margin-left: 0;
+  margin-left: 0 !important;
+  /* prevent Freshdesk base CSS from adding a left gap */
   flex: 1 1 0%;
   min-width: 0;
 }
@@ -6777,8 +6762,7 @@ footer.footer_section .footer_menu a {
   font-size: 14px;
   font-weight: 700;
   color: #04034a;
-  /* 0-1-0 beats global a{} 0-0-1 */
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: 1px solid #efefef;
   border-left: 3px solid transparent;
   /* invisible at rest; becomes teal on hover */
@@ -6789,7 +6773,7 @@ footer.footer_section .footer_menu a {
 .fd-nav-home-link:hover {
   background: rgba(0, 170, 196, .06);
   border-left-color: #00aac4;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .fd-nav-home-link:focus-visible {
@@ -6928,8 +6912,7 @@ footer.footer_section .footer_menu a {
   font-size: 14px;
   line-height: 1.4;
   color: #04034a;
-  /* 0-1-0 beats global a{} 0-0-1 */
-  text-decoration: none;
+  text-decoration: none !important;
   border-left: 3px solid transparent;
   transition: color .12s, border-color .12s;
 }
@@ -7012,8 +6995,7 @@ footer.footer_section .footer_menu a {
   font-size: 13px;
   line-height: 1.45;
   color: #6f6f7b;
-  /* 0-1-1 beats global a{} 0-0-1 */
-  text-decoration: none;
+  text-decoration: none !important;
   border-left: 2px solid transparent;
   transition: background .12s, color .12s, border-color .12s;
 }
@@ -7022,7 +7004,7 @@ footer.footer_section .footer_menu a {
   background: rgba(199,249,255,.3);
   color: #057499;
   border-left-color: #c7f9ff;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .fd-nav-article-item.is-active > a {
@@ -7052,14 +7034,14 @@ footer.footer_section .footer_menu a {
   padding: 9px 14px;
   background: #e0fcff;
   /* matches actual portal button background */
-  /* 0-1-0 owns this custom class — no competing rule */
-  color: #057499;
+  color: #057499 !important;
+  /* matches actual portal button text color */
   border: 1px solid #efefef;
   /* matches actual portal button border */
   border-radius: 6px;
   font-size: 14px;
   font-weight: 700;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: background .15s;
   justify-content: center;
 }
@@ -7067,7 +7049,7 @@ footer.footer_section .footer_menu a {
 .fd-nav-cta-link:hover {
   background: #c7f9ff;
   /* hover -- same as eyebrow/hero bg */
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* ----- Main content column ----- */
@@ -7081,8 +7063,7 @@ footer.footer_section .footer_menu a {
 /* ----- Mobile toggle button bar ----- */
 .fd-nav-mobile-bar {
   display: none;
-  /* own class — no competing rule */
-  background: #F3FAFF;
+  background: #F3FAFF !important;
   border-bottom: 1px solid #efefef;
 }
 
@@ -7092,8 +7073,7 @@ footer.footer_section .footer_menu a {
   gap: 8px;
   width: 100%;
   padding: 10px 16px;
-  /* own class — no competing rule */
-  background: #F3FAFF;
+  background: #F3FAFF !important;
   border: none;
   font-size: 13px;
   font-weight: 700;
@@ -7114,13 +7094,11 @@ footer.footer_section .footer_menu a {
 
 .fd-nav-mobile-toggle.is-open {
   color: #057499;
-  /* 0-2-0 — own class compound selector, no competing rule */
-  background: #F3FAFF;
+  background: #F3FAFF !important;
 }
 
 .fd-nav-mobile-toggle:active {
-  /* 0-1-1 — own class pseudo-class, no competing rule */
-  background: #F3FAFF;
+  background: #F3FAFF !important;
   -webkit-tap-highlight-color: #F3FAFF;
 }
 
@@ -7129,24 +7107,20 @@ footer.footer_section .footer_menu a {
    that exists inside article_view, article_list, solution_category.
    CSS hides it and makes the content column fill full width.
    ================================================================ */
-/* 0-2-1 beats Freshdesk's aside.menu_listing 0-1-1 — no !important needed */
 .article_content_area > aside.menu_listing, .listing_page          > aside.menu_listing, .category_content_area > aside.menu_listing, .solution_cca          > aside.menu_listing {
-  display: none;
+  display: none !important;
 }
 
-/* Convert grid/flex containers to block so article fills full width.
-   These are Freshdesk class names we override; our stylesheet loads after Freshdesk's
-   so we win by source order even at the same 0-1-0 specificity. */
+/* Convert grid/flex containers to block so article fills full width */
 .article_content_area, .listing_page, .category_content_area, .solution_cca {
-  display: block;
+  display: block !important;
 }
 
-/* Child article: 0-1-1 / 0-2-0 beats Freshdesk's base single-class rules */
 .article_content_area > article, .listing_page > .listing_page_inside, .category_content_area > article, .solution_cca > article {
-  width: 100%;
-  max-width: 100%;
-  margin-left: 0;
-  padding-left: 0;
+  width: 100%     !important;
+  max-width: 100% !important;
+  margin-left: 0  !important;
+  padding-left: 0 !important;
 }
 
 /* Article mobile TOC: hide since category context is in left nav */
@@ -7169,29 +7143,25 @@ footer.footer_section .footer_menu a {
 
 /* Header -- left-aligned to match the contact cards below */
 .fd-contact-section-header {
-  /* 0-1-0 — own class; Freshdesk's .title_area margin rules are same specificity
-     but our rule appears later in source, so we win without !important */
-  margin-bottom: 20px;
-  padding-bottom: 0;
+  margin-bottom: 20px !important;
+  padding-bottom: 0 !important;
 }
 
 .fd-contact-section-header p {
-  /* 0-1-1 beats global p{} 0-0-1 */
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .65px;
-  text-transform: uppercase;
-  color: #6f6f7b;
-  margin: 0 0 6px;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .65px !important;
+  text-transform: uppercase !important;
+  color: #6f6f7b !important;
+  margin: 0 0 6px !important;
 }
 
 .fd-contact-section-header h2 {
-  /* 0-1-1 beats global h2{} 0-0-1 */
-  font-size: 30px;
-  font-weight: 800;
-  color: #04034a;
-  margin: 0;
-  line-height: 1.2;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  color: #04034a !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
 }
 
 /* Cards -- grid_child_4 handles column widths; fd-contact-card handles visuals */
@@ -7257,13 +7227,12 @@ footer.footer_section .footer_menu a {
   display: inline-block;
   padding: 8px 18px;
   background: #e0fcff;
-  /* 0-1-1 / 0-2-0 — own classes; no Freshdesk rule competes on color */
-  color: #057499;
+  color: #057499 !important;
   border: 1px solid #c7f9ff;
   border-radius: 6px;
   font-size: 13px;
   font-weight: 700;
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
   font-family: inherit;
   line-height: 1;
@@ -7275,7 +7244,7 @@ footer.footer_section .footer_menu a {
 .fd-contact-card a:hover, .fd-contact-card button.fd-contact-btn:hover {
   background: #c7f9ff;
   border-color: #a0f3ff;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* ----- Per-card colour variants ----- */
@@ -7287,15 +7256,14 @@ footer.footer_section .footer_menu a {
 
 .fd-contact-card--ticket a, .fd-contact-card--ticket button.fd-contact-btn {
   background: #dbeafe;
-  /* 0-2-1 — own variant class; overrides base card rule above by specificity */
-  color: #1d4ed8;
+  color: #1d4ed8 !important;
   border-color: #bfdbfe;
 }
 
 .fd-contact-card--ticket a:hover, .fd-contact-card--ticket button.fd-contact-btn:hover {
   background: #bfdbfe;
   border-color: #93c5fd;
-  color: #1d4ed8;
+  color: #1d4ed8 !important;
 }
 
 .fd-contact-card--ticket:hover {
@@ -7310,15 +7278,14 @@ footer.footer_section .footer_menu a {
 
 .fd-contact-card--chat a, .fd-contact-card--chat button.fd-contact-btn {
   background: #e0fcff;
-  /* 0-2-1 — own variant class */
-  color: #057499;
+  color: #057499 !important;
   border-color: #c7f9ff;
 }
 
 .fd-contact-card--chat a:hover, .fd-contact-card--chat button.fd-contact-btn:hover {
   background: #c7f9ff;
   border-color: #a0f3ff;
-  color: #057499;
+  color: #057499 !important;
 }
 
 .fd-contact-card--chat:hover {
@@ -7333,8 +7300,7 @@ footer.footer_section .footer_menu a {
 
 .fd-contact-card--status a, .fd-contact-card--status button.fd-contact-btn {
   background: #d1fae5;
-  /* 0-2-1 — own variant class */
-  color: #047857;
+  color: #047857 !important;
   border-color: #a7f3d0;
 }
 
@@ -7355,8 +7321,7 @@ footer.footer_section .footer_menu a {
 
 .fd-contact-card--mytickets a, .fd-contact-card--mytickets button.fd-contact-btn {
   background: #ede9fe;
-  /* 0-2-1 — own variant class */
-  color: #6d28d9;
+  color: #6d28d9 !important;
   border-color: #ddd6fe;
 }
 
@@ -7377,15 +7342,14 @@ footer.footer_section .footer_menu a {
 
 .fd-contact-card--forums a, .fd-contact-card--forums button.fd-contact-btn {
   background: #fff7ed;
-  /* 0-2-1 — own variant class */
-  color: #ea580c;
+  color: #ea580c !important;
   border-color: #fed7aa;
 }
 
 .fd-contact-card--forums a:hover, .fd-contact-card--forums button.fd-contact-btn:hover {
   background: #fed7aa;
   border-color: #fdba74;
-  color: #ea580c;
+  color: #ea580c !important;
 }
 
 .fd-contact-card--forums:hover {
@@ -7398,24 +7362,22 @@ footer.footer_section .footer_menu a {
    height: auto !important stops Freshdesk's .full_height class from
    setting height: 100% which would bypass the flex stretch. */
 .fd-contact-section .inside_grid {
-  /* 0-2-0 beats Freshdesk's .inside_grid 0-1-0 */
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
-  max-width: 1400px;
-  margin-left: 0;
-  margin-right: 0;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .fd-contact-section .inside_grid > .grid_child_4 {
-  /* 0-3-0 beats Freshdesk's .grid_child_4 0-1-0 */
-  flex: 1 1 0;
-  width: auto;
+  flex: 1 1 0 !important;
+  width: auto !important;
   min-width: 140px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* ================================================================
@@ -7446,26 +7408,25 @@ footer.footer_section .footer_menu a {
    and the search/profile reach the far-right edge.
    ================================================================ */
 .eyebrow .inner_eyebrow {
-  /* 0-2-0 beats Freshdesk's .inner_eyebrow 0-1-0 */
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0  !important;
+  margin-right: 0 !important;
+  padding-left: 20px  !important;
+  padding-right: 20px !important;
   box-sizing: border-box;
 }
 
 .header .inner_header {
-  /* 0-2-0 beats Freshdesk's .inner_header 0-1-0 */
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 100% !important;
+  /* override Freshdesk's own width constraint */
+  max-width: none !important;
+  margin-left: 0  !important;
+  margin-right: 0 !important;
+  padding-left: 20px  !important;
+  padding-right: 20px !important;
   box-sizing: border-box;
-  display: flex;
+  display: flex !important;
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -7543,35 +7504,29 @@ footer.footer_section .footer_menu a {
     display: flex;
   }
   /* Hero panel -- full-bleed with tighter radius on small screens */
-  /* 0-0-2-1 — desktop rule at ~7691 also uses !important on same selector; later wins either way */
   section.hero.bg_color_6 {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
   }
-  /* 0-0-3-1 — desktop rule at ~7703 also uses !important on same selector; later wins either way */
   section.hero.bg_color_6 .inside_hero {
     width: calc(100% - 32px);
     border-radius: 12px;
-    padding: 20px 20px;
+    padding: 20px 20px !important;
   }
   /* Featured Articles panel -- full-bleed on small screens */
-  /* 0-0-3-2 — desktop rule at ~7733 also uses !important on same selector; later wins either way */
   section#featured.grid.bg_color_5 {
-    padding-top: 16px;
-    padding-bottom: 0;
+    padding-top: 16px !important;
+    padding-bottom: 0 !important;
   }
   .fd-featured-panel {
     width: calc(100% - 32px);
     border-radius: 12px 12px 0 0;
-    /* Desktop rule at ~7750 has no !important — this !important is needed to win on ≤820px */
     padding: 20px 20px 32px !important;
   }
   /* Cap at 3 cards per row on mobile/tablet to match the contact section */
   .fd-featured-panel .inside_grid > .grid_child_4 {
-    /* Desktop rule at ~7783 has no !important — this !important is needed to win on ≤820px */
     min-width: calc(33.333% - 8px) !important;
-    /* 0-0-3-0 — desktop rule at ~7782 also uses !important; same value (none); later wins either way */
-    max-width: none;
+    max-width: none !important;
   }
 }
 
@@ -7580,61 +7535,40 @@ footer.footer_section .footer_menu a {
    inset rounded panel -- matching the original phone layout. */
 @media (max-width: 480px) {
   /* Hero -- restore original full-width bg_color_6 background, no white outer shell */
-  /* 0-0-2-1 — desktop rule at ~7691 also uses !important on same selector; later wins either way */
   section.hero.bg_color_6 {
-    background-color: #c7f9ff;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    background-color: #c7f9ff !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
   section.hero.bg_color_6 .inside_hero {
-    /* Desktop rule at ~7698 has no !important — this !important is needed to win on ≤480px */
     background-color: transparent !important;
-    /* Desktop rule at ~7699 has no !important — this !important is needed to win on ≤480px */
     border-radius: 0 !important;
-    /* Desktop rule at ~7701 has no !important but same value (100%) — safe to remove */
-    width: 100%;
-    /* Desktop rule at ~7700 has no !important; max-width:1400px has no effect at phone widths */
-    max-width: 100%;
-    /* 0-0-3-1 — desktop rule at ~7702 also uses !important; same value (0); later wins either way */
-    margin: 0;
-    /* 0-0-3-1 — desktop rule at ~7703 also uses !important; later wins either way */
-    padding: 0 20px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
   }
   /* Featured articles panel -- full-bleed, no inset box on phone */
   .fd-featured-panel {
-    /* 0-0-1-0 — desktop rule at ~7743 also uses !important; later wins either way */
-    background-color: transparent;
-    /* Desktop rule at ~7745 has no !important — this !important is needed to win on ≤480px */
+    background-color: transparent !important;
     border-radius: 0 !important;
-    /* Desktop rule at ~7748 has no !important and uses calc(100% - 32px) — this !important is needed */
     width: 100% !important;
-    /* Desktop rule at ~7747 has no !important; max-width:1400px has no effect at phone widths */
-    max-width: 100%;
-    /* 0-0-1-0 — desktop rule at ~7749 also uses !important; same value (0); later wins either way */
-    margin: 0;
-    /* Desktop rule at ~7750 has no !important — this !important is needed to win on ≤480px */
+    max-width: 100% !important;
+    margin: 0 !important;
     padding: 16px 20px 32px !important;
   }
   /* Featured article cards -- one per row */
   .fd-featured-panel .inside_grid > .grid_child_4 {
-    /* 0-0-3-0 — desktop rule at ~7780 also uses !important; later wins either way */
-    flex: 0 0 100%;
-    /* Desktop rule at ~7783 has no !important — this !important is needed to win on ≤480px */
+    flex: 0 0 100% !important;
     min-width: 100% !important;
-    /* 0-0-3-0 — desktop rule at ~7782 also uses !important; later wins either way */
-    max-width: 100%;
+    max-width: 100% !important;
   }
   /* Featured section -- restore theme bg and revert flex layout on phone */
   section#featured.grid.bg_color_5 {
-    /* 0-0-3-2 — desktop rule at ~7732 also uses !important; later wins either way */
-    background-color: var(--bg_color_5, transparent);
-    /* 0-0-3-2 — desktop rule at ~7733 also uses !important; later wins either way */
-    padding-top: 0;
-    /* 0-0-3-2 — desktop rule at ~7734 also uses !important; same value (0); later wins either way */
-    padding-bottom: 0;
-    /* Desktop rule at ~7736 has no !important — this !important is needed to win on ≤480px */
+    background-color: var(--bg_color_5, transparent) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     flex: none !important;
-    /* Desktop rule at ~7738 has no !important — this !important is needed to win on ≤480px */
     display: block !important;
   }
 }
@@ -7642,26 +7576,23 @@ footer.footer_section .footer_menu a {
 /* -- Hero section -- reduce top/bottom padding ------------------------
    Theme CSS sets generous padding on .inside_hero (~80px). Tighten it
    significantly so the search bar sits closer to the page content. */
-/* 0-0-2-0 beats Freshdesk's .inside_hero 0-0-1-0 */
 .hero .inside_hero {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 /* -- Header search "Clear recent" button fixes -----------------------
    1. Height: theme.css forces .fw-search button to 2.75rem (44px).
       Override to auto so the button is consistently sized on all states.
    2. Hover colour: darker teal matching the tab buttons and search icon. */
-/* .fw-search .fw-clear-all is 0-0-2-0 — beats Freshdesk's .fw-search button 0-0-1-1 */
-.fw-search .fw-clear-all, .fw-search .fw-clear-all:hover {
-  height: auto;
+.fw-clear-all, .fw-clear-all:hover {
+  height: auto !important;
 }
 
-/* 0-0-2-1 beats Freshdesk's .fw-search button:hover 0-0-1-2 */
-.fw-search .fw-clear-all:hover {
-  background-color: rgb(0, 136, 157);
-  color: rgb(255, 255, 255);
-  text-decoration: none;
+.fw-clear-all:hover {
+  background-color: rgb(0, 136, 157) !important;
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none !important;
 }
 
 /* -- Hero (and mobile-header) search tab colours ---------------------
@@ -7671,40 +7602,36 @@ footer.footer_section .footer_menu a {
    (invisible). Match the same teal scheme used in the header.
    Active tab (fw-active-search-tab) already shows the correct dark
    navy from theme.css and is intentionally left unchanged. */
-/* section.hero .fw-search-tab:not() = 0-0-3-1; .search_container .fw-search-tab:not() = 0-0-3-0 — both beat Freshdesk's .fw-search-tab 0-0-1-0 */
 section.hero .fw-search-tab:not(.fw-active-search-tab), .search_container .fw-search-tab:not(.fw-active-search-tab) {
-  background-color: rgb(0, 170, 196);
+  background-color: rgb(0, 170, 196) !important;
   /* teal */
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
 }
 
 /* -- Search tab hover -- darker teal across all search forms ----------
    theme.css sets the hover to grey (rgb(207,215,223)). Override every
    inactive tab -- hero, mobile, and the main header dropdown -- to use
    a darker shade of the teal instead. */
-/* 0-0-3-1 / 0-0-4-1 / 0-0-4-0 — all beat Freshdesk's .fw-search-tab:hover 0-0-1-1 */
 .fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab):hover, section.hero .fw-search-tab:not(.fw-active-search-tab):hover, .search_container .fw-search-tab:not(.fw-active-search-tab):hover {
-  background-color: rgb(0, 136, 157);
+  background-color: rgb(0, 136, 157) !important;
   /* ~20% darker teal */
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
 }
 
 /* -- Search icon button (magnifying glass) hover -- darker teal -------
    Applies to the header search button, the hero search button, and
    the mobile search button -- all share #btnSearch. */
-/* ID selector (1-0-0) beats any Freshdesk class rule */
 #btnSearch:hover {
-  background-color: rgb(0, 136, 157);
-  border-color: rgb(0, 136, 157);
+  background-color: rgb(0, 136, 157) !important;
+  border-color: rgb(0, 136, 157) !important;
 }
 
 /* -- PeopleReign floating chat widget button hover -- darker teal -----
    The launch button (#pr-chat-launch-button) is injected by PeopleReign
    into the main page. Override its hover to match the darker teal used
    across other interactive elements. */
-/* ID selector (1-0-0) beats PeopleReign's class selector (0-1-0) */
 #pr-chat-launch-button:hover {
-  background-color: rgb(0, 136, 157);
+  background-color: rgb(0, 136, 157) !important;
 }
 
 /* -- "Featured Articles" tab -----------------------------------------
@@ -7713,9 +7640,8 @@ section.hero .fw-search-tab:not(.fw-active-search-tab), .search_container .fw-se
    without any overrides. Only the ::after content needs changing --
    Freshdesk's button.fw-search-tab::after injects "Search"; override
    it to "Articles" so the tab reads "Featured | Articles". */
-/* 0-0-3-1 beats Freshdesk's button.fw-search-tab::after 0-0-1-1 */
 section.hero .fw-autocomplete-header .fd-featured-btn::after {
-  content: "Articles";
+  content: "Articles" !important;
 }
 
 /* -- Hero -- blue rounded panel, aligned with grid columns -------------
@@ -7723,11 +7649,10 @@ section.hero .fw-autocomplete-header .fd-featured-btn::after {
    .inside_hero panel is coloured. Panel shares the same max-width/width
    as .grid .title_area and .inside_grid (1400 px / 85%) so its left
    edge lines up with the "Need help" and "Featured Articles" headers. */
-/* 0-0-2-1 — our stylesheet loads after Freshdesk's, so same-specificity rules win by source order */
 section.hero.bg_color_6 {
-  background-color: #ffffff;
-  padding-top: 0;
-  padding-bottom: 40px;
+  background-color: #ffffff !important;
+  padding-top: 0 !important;
+  padding-bottom: 40px !important;
 }
 
 section.hero.bg_color_6 .inside_hero {
@@ -7735,24 +7660,22 @@ section.hero.bg_color_6 .inside_hero {
   border-radius: 16px;
   max-width: 1400px;
   width: 100%;
-  margin: 0;
-  padding: 32px 48px;
+  margin: 0 !important;
+  padding: 32px 48px !important;
 }
 
 /* -- Remove divider lines between hero, contact, and featured sections -- */
-/* 0-0-2-1 — our stylesheet loads after Freshdesk's */
 section.grid.fd-contact-section {
-  border-top: none;
-  border-bottom: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  border-top: none !important;
+  border-bottom: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-/* 0-0-3-2 — our stylesheet loads after Freshdesk's */
 section#featured.grid.bg_color_5 {
-  border-top: none;
+  border-top: none !important;
 }
 
 /* -- Featured Articles -- bg_color_5 bounded panel, fills to footer ------
@@ -7766,11 +7689,10 @@ section#featured.grid.bg_color_5 {
   flex-direction: column;
 }
 
-/* 0-0-3-2 — our stylesheet loads after Freshdesk's */
 section#featured.grid.bg_color_5 {
-  background-color: #ffffff;
-  padding-top: 40px;
-  padding-bottom: 0;
+  background-color: #ffffff !important;
+  padding-top: 40px !important;
+  padding-bottom: 0 !important;
   /* panel butts against footer */
   flex: 1;
   /* fill remaining height */
@@ -7778,15 +7700,14 @@ section#featured.grid.bg_color_5 {
   flex-direction: column;
 }
 
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .fd-featured-panel {
-  background-color: #e0fcff;
+  background-color: #e0fcff !important;
   /* bg_color_5 blue */
   border-radius: 16px 16px 0 0;
   /* rounded top, straight bottom */
   max-width: 1400px;
   width: calc(100% - 32px);
-  margin: 0;
+  margin: 0 !important;
   padding: 32px 48px 48px;
   flex: 1;
   /* stretch panel to section height */
@@ -7794,49 +7715,43 @@ section#featured.grid.bg_color_5 {
 
 /* .title_area and .inside_grid inside the panel would otherwise re-centre
    at 85% of the panel width. Override them to fill the panel content area. */
-/* 0-0-2-0 beats Freshdesk's .title_area / .inside_grid 0-0-1-0 */
 .fd-featured-panel .title_area, .fd-featured-panel .inside_grid {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-/* 0-0-2-1 beats Freshdesk's h2{} 0-0-0-1 or .title_area h2 0-0-1-1 */
 .fd-featured-panel .title_area h2 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
 }
 
 /* 5 cards per row, only the first 5 visible */
 /* 5 cards per row on desktop, wraps on mobile -- exactly mirrors contact section */
-/* 0-0-2-0 beats Freshdesk's .inside_grid 0-0-1-0 */
 .fd-featured-panel .inside_grid {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   align-items: stretch;
   gap: 12px;
 }
 
-/* 0-0-3-0 beats Freshdesk's .inside_grid > .grid_child_4 0-0-2-0 */
 .fd-featured-panel .inside_grid > .grid_child_4 {
-  flex: 1 1 0;
-  width: auto;
-  max-width: none;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  max-width: none !important;
   min-width: 140px;
-  display: flex;
-  flex-direction: column;
-  height: auto;
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
 }
 
-/* 0-0-3-1 beats Freshdesk's .grid_child_4 > article 0-0-1-1 */
 .fd-featured-panel .inside_grid > .grid_child_4 > article {
-  flex: 1;
-  height: auto;
+  flex: 1 !important;
+  height: auto !important;
 }
 
-/* Bootstrap's .d-none carries display:none !important — needed to beat it */
 .fd-featured-panel .inside_grid .grid_child_4:nth-child(n+6) {
   display: none !important;
 }
@@ -7849,74 +7764,66 @@ section#featured.grid.bg_color_5 {
 /* hero_subpage: 42px on top, left, right; 40px below unchanged.
    Overrides the original width:85%;margin:auto.
    portal_home uses .hero — not affected. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .hero_subpage {
-  margin-top: 42px;
-  margin-bottom: 40px;
-  margin-left: 42px;
-  margin-right: 42px;
-  width: calc(100% - 84px);
+  margin-top: 42px !important;
+  margin-bottom: 40px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
 
 /* Zero top gap on content sections — gap below hero comes from hero margin-bottom */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .article_content_area, .listing_page, .category_content_area, .search_content_area, .ticket_list_container, .discussion_cat_content_area {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 /* solution_home / discussions_home: .grid.cats_sections picks up
    .grid{padding-top:80px}. Remove it. */
-/* 0-0-2-0 beats Freshdesk's .grid 0-0-1-0 */
 .grid.cats_sections {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 /* ticket pages: 42px left/right to match hero_subpage. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .ticket_list_container {
-  width: calc(100% - 84px);
-  max-width: 1400px;
-  margin-left: 42px;
-  margin-right: 42px;
-  padding-left: 0;
-  padding-right: 0;
+  width: calc(100% - 84px) !important;
+  max-width: 1400px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* discussions & search pages: 42px left/right to match hero_subpage. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .discussion_cat_content_area, .search_content_area {
-  width: calc(100% - 84px);
-  max-width: 1400px;
-  margin-left: 42px;
-  margin-right: 42px;
-  padding-left: 0;
-  padding-right: 0;
+  width: calc(100% - 84px) !important;
+  max-width: 1400px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* article & solution pages: Freshdesk native CSS sets ~82px auto left margin.
    Override to match the 42px hero_subpage gap. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .article_content_area, .category_content_area, .listing_page {
-  width: calc(100% - 84px);
-  max-width: 1400px;
-  margin-left: 42px;
-  margin-right: 42px;
+  width: calc(100% - 84px) !important;
+  max-width: 1400px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
 }
 
 /* new_topic.html: Bootstrap container-fluid has 12px padding — zero it so the
    inner fw-wrapper-shadow aligns with the hero panel at 42px. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's / Bootstrap's */
 .fd-hero-aligned {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* 0-0-2-1 beats Bootstrap's .container 0-0-1-0 */
 .fd-hero-aligned .container.fw-wrapper-shadow {
-  width: calc(100% - 84px);
-  max-width: 1400px;
-  margin-left: 42px;
-  margin-right: 42px;
+  width: calc(100% - 84px) !important;
+  max-width: 1400px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -7924,21 +7831,19 @@ section#featured.grid.bg_color_5 {
    .hero is exclusive to portal_home; subpages use .hero_subpage.
    ══════════════════════════════════════════════════════════════════ */
 /* portal_home hero: 42px on top/left/right; margin-bottom left unchanged. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .hero {
-  margin-top: 42px;
-  margin-left: 42px;
-  margin-right: 42px;
-  width: calc(100% - 84px);
+  margin-top: 42px !important;
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
 
 /* portal_home content sections: 42px left/right margins only.
    .fd-contact-section and #featured are specific to portal_home. */
-/* .grid.fd-contact-section = 0-0-2-0; #featured = 0-1-0-0 — both beat Freshdesk's single-class */
 .grid.fd-contact-section, #featured {
-  margin-left: 42px;
-  margin-right: 42px;
-  width: calc(100% - 84px);
+  margin-left: 42px !important;
+  margin-right: 42px !important;
+  width: calc(100% - 84px) !important;
 }
 
 /* new_topic.html layout is handled via inline <style> in new_topic.html */
@@ -7947,26 +7852,23 @@ section#featured.grid.bg_color_5 {
    Default inside_grid has ~82px percentage margin; hero sits at 42px.
    Scoped to .cats_sections so only forum listing pages are affected.
    ══════════════════════════════════════════════════════════════════ */
-/* 0-0-2-0 beats Freshdesk's .inside_grid 0-0-1-0 */
 .cats_sections .inside_grid {
-  margin-left: 42px;
+  margin-left: 42px !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
    SUBMIT TICKET — inner form left margin
    ══════════════════════════════════════════════════════════════════ */
-/* 0-0-3-0 beats Freshdesk's .fw-content 0-0-1-0 */
 .ticket_list_container .fw-wrapper-shadow .fw-content {
-  margin-left: 1.5rem;
+  margin-left: 1.5rem !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
    ARTICLE VIEW — content body left/right margins
    ══════════════════════════════════════════════════════════════════ */
-/* 0-0-2-0 beats Freshdesk's .content_body 0-0-1-0 */
 .article_content_area .content_body {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -7984,38 +7886,31 @@ section#featured.grid.bg_color_5 {
       → #00768f = 4.79:1 ✓
    ══════════════════════════════════════════════════════════════════ */
 .inner_eyebrow {
-  /* 0-1-0 — later in source than Freshdesk base; wins by cascade order */
-  color: #636370;
+  color: #636370 !important;
 }
 
 .hero_subpage .breadcrumb-item a {
-  /* 0-2-1 beats Freshdesk's a{} 0-0-1 or .breadcrumb-item a 0-1-1 */
-  color: #0060e6;
+  color: #0060e6 !important;
 }
 
 .fd-nav-cat-link {
-  /* 0-1-0 — later in source than our earlier .fd-nav-cat-link{color:#00aac4} */
-  color: #00768f;
+  color: #00768f !important;
 }
 
 .fd-nav-cat-header:hover .fd-nav-cat-link, .fd-nav-cat-link.is-active {
-  /* same selector used earlier; later in source wins */
-  color: #005f73;
+  color: #005f73 !important;
 }
 
 .fd-nav-cat-chevron {
-  /* same selector used earlier; later in source wins */
-  color: #00768f;
+  color: #00768f !important;
 }
 
 .fd-nav-cat-header:hover .fd-nav-cat-chevron {
-  /* same selector used earlier; later in source wins */
-  color: #005f73;
+  color: #005f73 !important;
 }
 
 .fd-nav-section.is-active > .fd-nav-cat-header {
-  /* 0-3-0 — only rule targeting this compound; no !important needed */
-  border-left-color: #00768f;
+  border-left-color: #00768f !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -8027,13 +7922,11 @@ section#featured.grid.bg_color_5 {
       → #00768f = 5.27:1 ✓  (same accessible teal used for nav links)
    ══════════════════════════════════════════════════════════════════ */
 #pr-chat-window {
-  /* ID selector (1-0-0) beats PeopleReign's class selector (0-1-0) */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15) !important;
 }
 
 #pr-chat-launch-button {
-  /* ID selector (1-0-0) beats PeopleReign's class selector (0-1-0) */
-  background-color: #00768f;
+  background-color: #00768f !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -8045,49 +7938,43 @@ section#featured.grid.bg_color_5 {
    7. Forums card link: #ea580c on #fff7ed = 3.35:1 (needs 4.5:1)
       → #a53604 = 6.32:1 on #fff7ed ✓  |  4.96:1 on #fed7aa hover ✓
    ══════════════════════════════════════════════════════════════════ */
-/* 0-0-2-1 beats Freshdesk's .header_tag 0-0-1-0 */
 .hero .inside_hero .header_tag {
-  color: #0f7596;
+  color: #0f7596 !important;
 }
 
-/* 0-0-2-1 beats global a{} 0-0-0-1 */
 .fd-contact-card--forums a, .fd-contact-card--forums button.fd-contact-btn {
-  color: #a53604;
+  color: #a53604 !important;
 }
 
-/* 0-0-2-2 beats global a:hover{} 0-0-0-2 */
 .fd-contact-card--forums a:hover, .fd-contact-card--forums button.fd-contact-btn:hover {
-  color: #a53604;
+  color: #a53604 !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
    PHONE — remove 42px outer margins from hero panels
-   Appears AFTER the desktop .hero / .hero_subpage rules above.
-   Same selector, same specificity — later source order wins on ≤480px.
+   Must appear AFTER the desktop .hero / .hero_subpage rules above so
+   this !important declaration wins the cascade on narrow viewports.
    Desktop and tablet (> 480px) are completely unaffected.
    .hero_subpage margin-bottom (40px) is preserved — it spaces the
    hero from the content below.
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .hero {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
   }
   .hero_subpage {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
   }
 }
 
 @media (prefers-reduced-motion:reduce) {
   html {
-    /* !important legitimately needed: the * universal selector has 0 specificity
-       but motion overrides must win against any animation/transition rule that
-       ships on animated elements. This is the standard reduced-motion pattern. */
     scroll-behavior:auto!important
   }
   *,*::before,*::after {
@@ -8099,21 +7986,18 @@ section#featured.grid.bg_color_5 {
 }
 
 /* Accessibility: WAVE contrast fixes for generated form/editor text. Scoped to the low-contrast required asterisk and Froala placeholder only. */
-/* 0-0-1-0 — our stylesheet loads after Freshdesk's */
 .required-field-asterisk,.fw-asterisk {
-  color:#00768f
+  color:#00768f!important
 }
 
-/* 0-0-1-0 — our stylesheet loads after Froala's */
 .fr-placeholder {
-  color:#666570;
-  opacity:1
+  color:#666570!important;
+  opacity:1!important
 }
 
 /* Accessibility: ticket-list filter label contrast. Scoped to Freshdesk generated filter labels only. */
-/* 0-1-1-0 beats Freshdesk's .form-label 0-0-1-0 */
 #fw-advanced-filters .form-label {
-  color:#0C0B60
+  color:#0C0B60!important
 }
 
 /* -- WAVE: portal-home search autocomplete contrast -----------------
@@ -8130,8 +8014,6 @@ div.fw-search {
 /* Search submit button: visible text is injected with ::after in the
    desktop hero/header search controls, so both button and pseudo-text
    need the accessible color pairing. */
-/* !important legitimately needed: Freshdesk's theme CSS sets these generated
-   search control colors with !important; must match to satisfy WCAG AA contrast. */
 div.fw-search #btnSearch, header.header .menu_area > form #btnSearch, .search_container #btnSearch {
   background-color: #00768f !important;
   border-color: #00768f !important;
@@ -8151,8 +8033,6 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
 /* Autocomplete tab buttons: All/Articles/Topics/Tickets/Featured.
    The active tab keeps Freshdesk's existing active-state styling; only
    inactive tabs are darkened enough to meet contrast requirements. */
-/* !important legitimately needed: Freshdesk's theme CSS sets these generated
-   autocomplete tab colors with !important; must match to satisfy WCAG AA contrast. */
 .fw-search .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab), section.hero .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab), .search_container .fw-autocomplete-header .fw-search-tab:not(.fw-active-search-tab) {
   background-color: #00768f !important;
   border-color: #00768f !important;
@@ -8172,8 +8052,6 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
 /* Recent-search action button. It is generated inside the autocomplete
    dropdown and inherits the same low-contrast teal. Keep the existing
    button shape/spacing and only darken the color pair. */
-/* !important legitimately needed: Freshdesk's theme CSS sets these generated
-   autocomplete button colors with !important; must match to satisfy WCAG AA contrast. */
 .fw-search .fw-clear-all, .fw-search .fw-clear-all:visited {
   background-color: #00768f !important;
   border-color: #00768f !important;
@@ -8190,7 +8068,6 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
 /* ── Sidebar suggestion / topic link contrast ───────────────────
    Scope only to New Topic and Submit Ticket sidebars/results.
    No layout, spacing, sizing, typography, or behaviour changes. */
-/* 0-1-3-1 and higher — ID + multiple classes beats any class-only Freshdesk rule */
 #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic, #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:hover, #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:focus, #fw-main-content .fd-hero-aligned .fw-suggestions-results a, #fw-main-content .fd-hero-aligned .fw-suggestions-results a:hover, #fw-main-content .fd-hero-aligned .fw-suggestions-results a:focus, #fw-main-content .ticket_list_container .suggestions-results a, #fw-main-content .ticket_list_container .suggestions-results a:hover, #fw-main-content .ticket_list_container .suggestions-results a:focus {
-  color: #0060e6;
+  color: #0060e6 !important;
 }
