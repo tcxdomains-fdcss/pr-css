@@ -4980,6 +4980,8 @@ div.fw-search button:hover {
   .article_content_area,.category_content_area,.component_content_area,.requests_content_area,.user_profile {
     max-width:520px;
     width:100%;
+    margin-left:0;
+    margin-right:0;
     padding-left:24px;
     padding-right:24px
   }
@@ -7061,6 +7063,43 @@ footer.footer_section .footer_menu a {
 }
 
 /* ----- Mobile toggle button bar ----- */
+/* ── Mobile home icon in header (hidden on desktop) ─────────────────────── */
+.fd-mobile-home-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1;
+}
+.fd-mobile-home-btn:hover,
+.fd-mobile-home-btn:focus {
+  color: #c7f9ff;
+}
+
+/* ── Mobile Cloud Hosting Forums bar (hidden on desktop) ─────────────────── */
+.fd-nav-mobile-forums-bar {
+  display: none;
+  background: #F3FAFF !important;
+  border-bottom: 1px solid #efefef;
+}
+.fd-nav-mobile-forums-bar-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #04034a;
+  text-decoration: none !important;
+  transition: color .15s;
+}
+.fd-nav-mobile-forums-bar-link:hover {
+  color: #057499;
+}
+
 .fd-nav-mobile-bar {
   display: none;
   background: #F3FAFF !important;
@@ -7499,9 +7538,19 @@ footer.footer_section .footer_menu a {
     max-height: 65vh;
     overflow-y: auto;
   }
-  /* Show the mobile toggle bar */
-  .fd-nav-mobile-bar {
+  /* Show the mobile toggle bar and forums bar */
+  .fd-nav-mobile-bar,
+  .fd-nav-mobile-forums-bar {
     display: flex;
+  }
+  /* Show home icon in header on mobile */
+  .fd-mobile-home-btn {
+    display: flex;
+  }
+  /* Hide sidebar home link and forums link on mobile — replaced by header icon and forums bar */
+  .fd-nav-home-link,
+  .fd-nav-forums-link {
+    display: none !important;
   }
   /* Hero panel -- full-bleed with tighter radius on small screens */
   section.hero.bg_color_6 {
@@ -7864,11 +7913,30 @@ section#featured.grid.bg_color_5 {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   ARTICLE VIEW — content body left/right margins
+   ARTICLE VIEW — content body margins
    ══════════════════════════════════════════════════════════════════ */
 .article_content_area .content_body {
-  margin-left: 1.5rem !important;
-  margin-right: 1.5rem !important;
+  margin-top: 1.5rem !important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PORTAL HOME — below-hero content margins (mobile only)
+   Mirrors the article content_body treatment on small screens.
+   Desktop retains its 42px outer section margins unchanged.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  section.grid.fd-contact-section {
+    margin-top: 1.5rem !important; /* overrides margin-top: 0 !important set above */
+  }
+  .fd-contact-section > .fd-contact-section-header,
+  .fd-contact-section > .inside_grid,
+  .fd-featured-panel > .title_area,
+  .fd-featured-panel > .inside_grid {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -8070,4 +8138,209 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
    No layout, spacing, sizing, typography, or behaviour changes. */
 #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic, #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:hover, #fw-main-content .fd-hero-aligned .fw-sidebar a.fw-topic:focus, #fw-main-content .fd-hero-aligned .fw-suggestions-results a, #fw-main-content .fd-hero-aligned .fw-suggestions-results a:hover, #fw-main-content .fd-hero-aligned .fw-suggestions-results a:focus, #fw-main-content .ticket_list_container .suggestions-results a, #fw-main-content .ticket_list_container .suggestions-results a:hover, #fw-main-content .ticket_list_container .suggestions-results a:focus {
   color: #0060e6 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   WCAG 2.1 AA CONTRAST FIXES — topic_list & bg-grey links
+   ══════════════════════════════════════════════════════════════════ */
+
+/* WCAG 2.1 AA — .reading_link text and arrow: #00aac4 on white = 2.78:1 (fails).
+   #00768f on white = 4.79:1 ✓ */
+.reading_link,
+.reading_link .arrow_item {
+  color: #00768f;
+}
+
+/* WCAG 2.1 AA — links inside .bg-grey fail contrast on grey background.
+   #00768f passes 4.5:1 on backgrounds up to #d9d9d9. */
+.bg-grey a {
+  color: #00768f;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — zero outer margins on all subpage content containers.
+   Desktop rules use !important so overrides here must too.
+   The width reset is critical: without it, width:calc(100% - 84px)
+   leaves an 84px gap on the right even with margins zeroed.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  /* Subpage hero — covers tablets (481-720px); phones already covered by 480px block */
+  .hero_subpage {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  /* Zero margin-bottom on article and new-topic/ticket heroes so the grey bg_color_7
+     extends flush to whatever element follows. Other subpages keep their 40px spacing. */
+  .hero_subpage.article_hero,
+  .hero_subpage.requests_hero {
+    margin-bottom: 0 !important;
+  }
+  /* Hide user avatars on all discussion/topic pages on mobile */
+  .discussion_cat_content_area .user-avatar {
+    display: none !important;
+  }
+  /* Hide all avatars on ticket pages on mobile */
+  .ticket_list_container .comment-avatar,
+  .ticket_list_container .fw-reply-avatar,
+  .ticket_list_container .user-avatar {
+    display: none !important;
+  }
+  /* Reclaim the width that was reserved for the hidden comment avatar */
+  .ticket_list_container .comment-meta,
+  .ticket_list_container .comment-author.has_agent .comment-meta {
+    width: 100% !important;
+  }
+  /* Bootstrap col-md-9 collapses at 768px; our mobile range is ≤720px so it stays
+     at 75% width without this override — text wraps too early inside the ticket row. */
+  .ticket_list_container .col-md-9.d-flex {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  /* Portal home sections — zero outer margins on mobile */
+  .grid.fd-contact-section, #featured {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  /* Contact cards — one per row on mobile, 20px outer margin so card borders
+     don't touch the viewport edge. title_area is outside .inside_grid so unaffected. */
+  .fd-contact-section .inside_grid > .grid_child_4 {
+    flex: 0 0 calc(100% - 40px) !important;
+    min-width: calc(100% - 40px) !important;
+    max-width: calc(100% - 40px) !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  /* Article / solution / listing pages */
+  .article_content_area,
+  .category_content_area,
+  .listing_page {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ticket, discussions, and search pages */
+  .ticket_list_container,
+  .discussion_cat_content_area,
+  .search_content_area {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* New-topic / submit-ticket inner container */
+  .fd-hero-aligned .container.fw-wrapper-shadow {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — topic panels: 1 per row on phones
+   The discussion_cat_content_area uses Bootstrap's row/col pattern
+   (col-lg-9 / col-lg-3). Force the main content col to full width
+   so panels stack vertically rather than side-by-side.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  /* Force topic panels to single column on mobile */
+  .discussion_cat_content_area .row > [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .discussion_cat_content_area .panel.horizontal {
+    width: 100% !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — new_topic sidebar hidden; form takes full width
+   The new_topic layout uses .fd-hero-aligned > .container > .row with
+   col-lg-9 (form) and col-lg-3 (sidebar). On mobile, hide the sidebar
+   and let the form column fill 100% width.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  /* Hide new-topic sidebar on mobile — matches submit_ticket.html mobile behavior */
+  .fd-hero-aligned .fw-sidebar-wrapper {
+    display: none !important;
+  }
+  .fd-hero-aligned .fw-content.fw-new-ticket {
+    padding-right: 0 !important; /* remove the desktop padding-right that reserved sidebar space */
+    width: auto !important;       /* auto = parent − margin-left − margin-right, avoids overflow */
+    margin-top: 1.5rem !important;    /* breathing room above the topic title field */
+    margin-right: 1.5rem !important;  /* match the desktop margin-left: 1.5rem for symmetry */
+  }
+  .fd-hero-aligned .col-lg-9.fw-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — flatpickr date range picker: single month only
+   Freshdesk initialises the ticket-list date filter with showMonths:2
+   (two months side by side). The JS patch in ticket_list.html runs at
+   page load before flatpickr's lazy init fires, so CSS is the reliable
+   fallback. Hide the second rContainer (month body) and its matching
+   header month label; the first month + prev/next arrows remain fully
+   functional for range selection.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  /* Second month body — flatpickr v4 wraps each month in its own
+     flatpickr-innerContainer, so target the adjacent container sibling.
+     The rContainer fallback covers older builds where both sit in one wrapper. */
+  .flatpickr-calendar.multiMonth .flatpickr-innerContainer + .flatpickr-innerContainer,
+  .flatpickr-calendar.multiMonth .flatpickr-rContainer ~ .flatpickr-rContainer {
+    display: none !important;
+  }
+  /* Second month header label — third child of .flatpickr-months
+     (prev-arrow · month1 · month2 · next-arrow) */
+  .flatpickr-calendar.multiMonth .flatpickr-months > .flatpickr-month:nth-child(3) {
+    display: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — article table stacking
+   Applied by JS in article_view.html when any cell's rendered height
+   exceeds 2 lines. Stacks each row's cells vertically so long content
+   doesn't get squeezed into narrow columns.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .article_content_area .content_body table.fw-stack {
+    display: block;
+    width: 100%;
+  }
+  .article_content_area .content_body table.fw-stack thead {
+    display: none; /* column headers hidden — no data-label available on WYSIWYG tables */
+  }
+  .article_content_area .content_body table.fw-stack tbody,
+  .article_content_area .content_body table.fw-stack tr {
+    display: block;
+    width: 100%;
+  }
+  .article_content_area .content_body table.fw-stack tr {
+    border-top: 2px solid #ddd;
+    padding-top: 8px;
+    margin-bottom: 8px;
+  }
+  .article_content_area .content_body table.fw-stack td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    padding: 4px 0;
+  }
 }
