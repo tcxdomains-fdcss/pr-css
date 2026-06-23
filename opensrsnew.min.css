@@ -1787,6 +1787,18 @@ header.header .menu_area .hamburger,header.header .menu_area .searchlink {
   header.header .menu_area .hamburger,header.header .menu_area .searchlink {
     display:inline-block
   }
+  /* Home icon appears alongside search/hamburger at the same breakpoint */
+  /* High specificity beats Freshdesk base rules and our own later display:none */
+  header.header .menu_area .fd-mobile-home-btn {
+    display: inline-flex !important;
+    vertical-align: middle;
+    margin-top: 5px;
+    color: #ffffff !important; /* overrides Freshdesk header link colour */
+  }
+  /* Hide sidebar home link on mobile — replaced by the header home icon */
+  .fd-nav-home-link {
+    display: none !important;
+  }
 }
 
 header.header .search_container,header.header .signin_container {
@@ -7069,13 +7081,13 @@ footer.footer_section .footer_menu a {
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  color: #ffffff;
   text-decoration: none;
   line-height: 1;
+  vertical-align: middle;
 }
-.fd-mobile-home-btn:hover,
-.fd-mobile-home-btn:focus {
-  color: #c7f9ff;
+header.header .menu_area .fd-mobile-home-btn:hover,
+header.header .menu_area .fd-mobile-home-btn:focus {
+  color: #c7f9ff !important;
 }
 
 /* ── Mobile Cloud Hosting Forums bar (hidden on desktop) ─────────────────── */
@@ -7543,12 +7555,7 @@ footer.footer_section .footer_menu a {
   .fd-nav-mobile-forums-bar {
     display: flex;
   }
-  /* Show home icon in header on mobile */
-  .fd-mobile-home-btn {
-    display: flex;
-  }
-  /* Hide sidebar home link and forums link on mobile — replaced by header icon and forums bar */
-  .fd-nav-home-link,
+  /* Hide sidebar forums link on mobile — replaced by the forums bar above Browse Topics */
   .fd-nav-forums-link {
     display: none !important;
   }
