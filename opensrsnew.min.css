@@ -1793,7 +1793,7 @@ header.header .menu_area .hamburger,header.header .menu_area .searchlink {
     display: inline-flex !important;
     vertical-align: middle;
     margin-top: 5px;
-    color: #ffffff !important; /* overrides Freshdesk header link colour */
+    color: #000000 !important; /* overrides Freshdesk header link colour */
   }
   /* Hide sidebar home link on mobile — replaced by the header home icon */
   .fd-nav-home-link {
@@ -7084,6 +7084,9 @@ footer.footer_section .footer_menu a {
   text-decoration: none;
   line-height: 1;
   vertical-align: middle;
+}
+header.header .menu_area .fd-mobile-home-btn:visited {
+  color: #000000 !important;
 }
 header.header .menu_area .fd-mobile-home-btn:hover,
 header.header .menu_area .fd-mobile-home-btn:focus {
