@@ -6979,7 +6979,7 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
   margin: 0 !important;
 }
 .search-clear-btn.visible {
-  display: flex !important;
+  display: none !important; /* clear button removed per UX request */
 }
 .search-clear-btn:hover {
   background: #999 !important; /* overrides div.fw-search button hover */
