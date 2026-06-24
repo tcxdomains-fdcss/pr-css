@@ -4107,7 +4107,7 @@ section.eyebrow .inner_eyebrow {
 
 .hero_subpage .header_tag {
   text-transform:uppercase;
-  color:#1290b3;
+  color:#0f7596; /* WCAG 2.1 AA: #0f7596 on #f7f7fc = 4.94:1 ✓ (was #1290b3 = 3.49:1) */
   line-height:1
 }
 
