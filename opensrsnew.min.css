@@ -6701,6 +6701,16 @@ section#featured.grid.bg_color_5 {
   margin-left: 42px !important;
 }
 
+@media (max-width: 720px) {
+  /* discussions_home: zero the asymmetric margin-left so both sides match on mobile */
+  .cats_sections .inside_grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════════════
    SUBMIT TICKET — inner form left margin
    ══════════════════════════════════════════════════════════════════ */
@@ -6983,6 +6993,11 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
   .ticket_list_container .user-avatar {
     display: none !important;
   }
+  /* Hide Freshdesk initials avatar bubble on ticket and discussion views */
+  .ticket_list_container .fw-avatar,
+  .discussion_cat_content_area .fw-avatar {
+    display: none !important; /* .fw-* requires !important to override Freshdesk base styles */
+  }
   /* Reclaim the width that was reserved for the hidden comment avatar */
   .ticket_list_container .comment-meta,
   .ticket_list_container .comment-author.has_agent .comment-meta {
@@ -7021,16 +7036,24 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
     max-width: 100% !important;
   }
 
-  /* Ticket, discussions, and search pages */
+  /* Ticket and discussion pages — zero outer margins and inner padding */
   .ticket_list_container,
-  .discussion_cat_content_area,
+  .discussion_cat_content_area {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* Search page — full width with 24px side padding to match other subpages */
   .search_content_area {
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    padding-left: 24px !important; /* overrides Freshdesk base search area styles */
+    padding-right: 24px !important;
   }
 
   /* New-topic / submit-ticket inner container */
@@ -7055,7 +7078,13 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
     max-width: 100% !important;
     flex: 0 0 100% !important;
   }
-  .discussion_cat_content_area .panel.horizontal {
+  /* topic_list: inside_grid is a CSS Grid container — collapse to single column */
+  .discussion_cat_content_area .inside_grid {
+    grid-template-columns: 1fr !important;
+    grid-column-gap: 0 !important;
+  }
+  .discussion_cat_content_area .inside_grid > .grid_child_1 {
+    grid-column: 1 / -1 !important; /* span full single column */
     width: 100% !important;
   }
 }
@@ -7138,5 +7167,22 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
     box-sizing: border-box;
     border: none !important;
     padding: 4px 0;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE — responsive table overflow scrolling
+   Wide tables that are not stacked by JS scroll horizontally
+   rather than overflowing off-screen.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  /* :not(.fw-stack) excludes JS-stacked tables (handled by the block above).
+     Only the outer element needs block + scroll — thead/tbody/tr keep their
+     default table display so the browser sizes columns correctly. */
+  .article_content_area table:not(.fw-stack) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+    max-width: 100%;
   }
 }
