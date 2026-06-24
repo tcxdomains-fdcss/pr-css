@@ -7144,9 +7144,13 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
    doesn't get squeezed into narrow columns.
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 720px) {
+  /* Freshdesk's article editor writes inline style="width:X%; height:Ypx" on table, tr, and td.
+     All three need !important to override those inline values when stacking on mobile. */
   .article_content_area .content_body table.fw-stack {
     display: block;
     width: 100%;
+    height: auto !important; /* overrides Freshdesk editor inline style="height: Xpx" on table */
+    border: 1px solid #ddd !important; /* browser default is "outset" which makes left/top edges visually thinner */
   }
   .article_content_area .content_body table.fw-stack thead {
     display: none; /* column headers hidden — no data-label available on WYSIWYG tables */
@@ -7155,6 +7159,7 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
   .article_content_area .content_body table.fw-stack tr {
     display: block;
     width: 100%;
+    height: auto !important; /* overrides Freshdesk editor inline style="height: Xpx" on tr */
   }
   .article_content_area .content_body table.fw-stack tr {
     border-top: 2px solid #ddd;
@@ -7163,10 +7168,12 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
   }
   .article_content_area .content_body table.fw-stack td {
     display: block;
-    width: 100%;
+    width: 100% !important;    /* overrides Freshdesk editor inline style="width: X%" on td */
+    max-width: 100% !important;
+    height: auto !important;   /* overrides Freshdesk editor inline style="height: Xpx" on td */
     box-sizing: border-box;
     border: none !important;
-    padding: 4px 0;
+    padding: 4px 0 4px 8px !important; /* !important overrides Freshdesk theme td { padding: 16px }; 8px left matches ~5px visual gap inside border */
   }
 }
 
