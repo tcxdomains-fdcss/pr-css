@@ -6946,6 +6946,41 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
   color: #0060e6 !important;
 }
 
+/* ── Search clear button (× icon) ──────────────────────────────────
+   Injected into the search form by initSearchClear() in header.html
+   and portal_home.html. Wrapper makes the absolute positioning work;
+   button is hidden until the input has text (.visible class added by JS). */
+.search-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.search-clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #c0c0c0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1;
+  padding: 0;
+}
+.search-clear-btn.visible {
+  display: flex;
+}
+.search-clear-btn:hover {
+  background: #999;
+}
+
 /* ══════════════════════════════════════════════════════════════════
    WCAG 2.1 AA CONTRAST FIXES — topic_list & bg-grey links
    ══════════════════════════════════════════════════════════════════ */
@@ -7116,22 +7151,20 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
 /* ══════════════════════════════════════════════════════════════════
    MOBILE — flatpickr date range picker: single month only
    Freshdesk initialises the ticket-list date filter with showMonths:2
-   (two months side by side). The JS patch in ticket_list.html runs at
-   page load before flatpickr's lazy init fires, so CSS is the reliable
-   fallback. Hide the second rContainer (month body) and its matching
-   header month label; the first month + prev/next arrows remain fully
-   functional for range selection.
+   (two months side by side). In this build both months share one
+   .flatpickr-rContainer — the second month is a second .dayContainer
+   and .flatpickr-weekdaycontainer inside it, not a separate container.
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 720px) {
-  /* Second month body — flatpickr v4 wraps each month in its own
-     flatpickr-innerContainer, so target the adjacent container sibling.
-     The rContainer fallback covers older builds where both sit in one wrapper. */
-  .flatpickr-calendar.multiMonth .flatpickr-innerContainer + .flatpickr-innerContainer,
-  .flatpickr-calendar.multiMonth .flatpickr-rContainer ~ .flatpickr-rContainer {
+  /* Second month day grid (sibling dayContainer inside .flatpickr-days) */
+  .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer + .dayContainer {
     display: none !important;
   }
-  /* Second month header label — third child of .flatpickr-months
-     (prev-arrow · month1 · month2 · next-arrow) */
+  /* Second month weekday header row */
+  .flatpickr-calendar.multiMonth .flatpickr-weekdays .flatpickr-weekdaycontainer + .flatpickr-weekdaycontainer {
+    display: none !important;
+  }
+  /* Second month header label — 3rd child: prev-arrow(1) · month1(2) · month2(3) · next-arrow(4) */
   .flatpickr-calendar.multiMonth .flatpickr-months > .flatpickr-month:nth-child(3) {
     display: none !important;
   }
