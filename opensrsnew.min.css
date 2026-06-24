@@ -6952,33 +6952,43 @@ div.fw-search #btnSearch:hover, div.fw-search #btnSearch:focus, div.fw-search #b
    button is hidden until the input has text (.visible class added by JS). */
 .search-input-wrapper {
   position: relative;
-  display: inline-block;
-  width: 100%;
+  flex: 1 1 auto; /* flex item in Bootstrap .input-group — don't use width:100% or it wraps */
+  min-width: 0;   /* prevent flex overflow */
 }
 .search-clear-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: #c0c0c0;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: #c0c0c0 !important; /* overrides div.fw-search button teal cascade */
+  border: none !important;
+  border-radius: 50% !important;
+  border-top-left-radius: 50% !important;    /* overrides Freshdesk search button corners */
+  border-bottom-left-radius: 50% !important;
+  cursor: pointer !important;
   display: none;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: #fff;
-  line-height: 1;
-  padding: 0;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 .search-clear-btn.visible {
-  display: flex;
+  display: flex !important;
 }
 .search-clear-btn:hover {
-  background: #999;
+  background: #999 !important; /* overrides div.fw-search button hover */
+}
+/* Suppress Freshdesk's div.fw-search button::after { content: 'Search' } on our button */
+.search-clear-btn::before,
+.search-clear-btn::after {
+  content: none !important;
+  margin: 0 !important;
 }
 
 /* ══════════════════════════════════════════════════════════════════
