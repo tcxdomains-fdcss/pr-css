@@ -23,28 +23,32 @@
   font-family:'Sharp Sans';
   src:url(https://tucows-support.s3.amazonaws.com/assets/SharpSansStd-Bold.woff) format('woff');
   font-weight:700;
-  font-style:normal
+  font-style:normal;
+  font-display:swap
 }
 
 @font-face {
   font-family:'Sharp Sans';
   src:url(https://tucows-support.s3.amazonaws.com/assets/SharpSansStd-Semibold.woff) format('woff');
   font-weight:600;
-  font-style:normal
+  font-style:normal;
+  font-display:swap
 }
 
 @font-face {
   font-family:'Sharp Sans';
   src:url(https://tucows-support.s3.amazonaws.com/assets/SharpSansStd-Medium.woff) format('woff');
   font-weight:500;
-  font-style:normal
+  font-style:normal;
+  font-display:swap
 }
 
 @font-face {
   font-family:'Sharp Sans';
   src:url(https://tucows-support.s3.amazonaws.com/assets/SharpSansStd-Book.woff) format('woff');
   font-weight:400;
-  font-style:normal
+  font-style:normal;
+  font-display:swap
 }
 
 .h1 {
@@ -1474,6 +1478,21 @@ header.header .menu_area .hamburger,header.header .menu_area .searchlink {
   .fd-nav-home-link {
     display: none !important;
   }
+  /* Make header the positioning context so the dropdown is positioned relative
+     to it (top: 100% = immediately below header), not relative to the body.
+     body { overflow-x: hidden } makes the body the absolute-position containing
+     block; on narrow viewports the body's scroll-width can exceed the viewport,
+     which pushes right: 10px further right and clips the menu's right edge. */
+  header.header {
+    position: relative !important;
+  }
+  header.header .main_menu {
+    top: 100% !important;   /* immediately below the header, no magic px number */
+    right: 0 !important;    /* flush with header right edge */
+    left: 0 !important;     /* full width */
+    width: 100% !important;
+    min-width: unset !important;
+  }
 }
 
 header.header .search_container,header.header .signin_container {
@@ -2311,6 +2330,7 @@ footer.footer_section .blurb_section .navbar-brand {
 
 footer.footer_section .blurb_section .navbar-brand img {
   max-height:31px;
+  width:auto;
   margin-bottom:0
 }
 
@@ -6339,10 +6359,15 @@ header.header .menu_area .fd-mobile-home-btn:focus {
     max-height: 65vh;
     overflow-y: auto;
   }
-  /* Show the mobile toggle bar and forums bar */
-  .fd-nav-mobile-bar,
+  /* Show the mobile forums bar; hide Browse Topics bar (redundant with header hamburger) */
   .fd-nav-mobile-forums-bar {
     display: flex;
+  }
+  .fd-nav-mobile-bar {
+    display: none !important; /* overrides Freshdesk fd-* base theme */
+  }
+  .fd-left-nav {
+    display: none !important; /* hidden on mobile — no toggle button */
   }
   /* Hide sidebar forums link on mobile — replaced by the forums bar above Browse Topics */
   .fd-nav-forums-link {
